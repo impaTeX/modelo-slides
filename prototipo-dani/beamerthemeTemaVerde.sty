@@ -1,0 +1,155 @@
+\definecolor{lightgreen}{HTML}{a6f865}
+\definecolor{brightgreen}{HTML}{BEFF8B}
+\definecolor{offwhite}{HTML}{FFFCF5}
+\definecolor{darkgreen}{HTML}{193105}
+\definecolor{lightergreen}{HTML}{DEF7C5}
+\definecolor{lighterpurple}{HTML}{DEC5F7}
+\definecolor{brightpurple}{HTML}{8E1BEE}
+\definecolor{beige}{HTML}{EBE0CE}
+\definecolor{darkbeige}{HTML}{AEA281}
+\definecolor{brightpink}{HTML}{FF8AEF}
+\definecolor{brightorange}{HTML}{FFC555}
+\definecolor{brightyellow}{HTML}{ECF47A}
+
+\setbeamercolor{headlinebar}{fg=white, bg=black}
+\setbeamercolor{footlinebar}{fg = black, bg = brightgreen}
+\setbeamercolor{background canvas}{fg = black, bg = offwhite}
+\setbeamercolor{title}{fg = darkgreen}
+\setbeamercolor{frametitle}{fg = darkgreen}
+\setbeamercolor{block title}{fg = black, bg = darkbeige}
+\setbeamercolor{block body}{fg = black, bg = beige}
+\setbeamercolor{block title example}{fg=white,bg= brightpurple}
+\setbeamercolor{block body example}{fg = black, bg = lighterpurple}
+\setbeamercolor{section in head}{fg = black, bg = brightgreen}
+\setbeamercolor{box1}{bg = brightgreen}
+\setbeamercolor{box2}{bg = brightpink}
+\setbeamercolor{box3}{bg = brightorange}
+\setbeamercolor{box4}{bg = brightyellow}
+
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamerfont{title}{size = \huge}
+\useinnertheme[shadow = true]{rounded}
+
+\setbeamertemplate{headline}{
+    \begin{beamercolorbox}[ht = 5.0em, wd = \textwidth]{headlinebar}
+    \vspace{0.9em}\begin{beamercolorbox}[ht = 2.2em, wd = 0.4\textwidth, rounded=false, center]{section in head}
+        \hspace{3mm}\large\textbf{\insertsectionhead \  - \insertsubsectionhead}
+    \end{beamercolorbox}
+    \vspace{-0.92em}
+    \hfill\includegraphics[height = 3em]{Imagens/impa_tech_logo_full_white.png}
+    \hspace*{3mm}
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=0.5\textwidth, ht=2.5ex, dp=1ex, center]{box1}
+            \hspace{1em}\textbf{\insertshortauthor}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.25\textwidth, ht=2.5ex, dp=1ex, center]{box2}
+            \textbf{\insertshorttitle}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.15\textwidth, ht=2.5ex, dp=1ex, center]{box3}
+            \textbf{\insertshortdate}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.1\textwidth, ht=2.5ex, dp=1ex, center]{box4}
+            \textbf{\insertframenumber/\inserttotalframenumber}
+        \end{beamercolorbox}
+    }%
+}
+
+\setbeamertemplate{title page}{
+    \begin{tikzpicture}[remember picture, overlay]
+        % Cria uma barra colorida na lateral esquerda
+        \fill[black] (current page.north west) rectangle ([xshift=0.5cm]current page.south west);
+    \end{tikzpicture}
+    % Logo canto superior esquerdo
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, xshift=-0.8cm, yshift=1.5cm] at (current page.north west) {
+            \includegraphics[height=12em]{Imagens/LogoCompImpatechPreta.png}
+        };
+    \end{tikzpicture}
+
+    % Espaço vertical para empurrar o título para o meio
+    
+    \vspace{2cm} 
+
+    \begin{flushleft} % Alinha tudo à esquerda
+        \hspace{0.5cm} % Pequeno recuo da margem esquerda para não colar na borda
+        \begin{minipage}{0.8\textwidth} % Limita a largura para o título não bater na logo/borda
+            
+            % Título
+            {\usebeamerfont{title}\usebeamercolor[fg]{title}\huge\textbf{\inserttitle}}\par
+            
+            \ifx\insertsubtitle\@empty\else
+                \vskip0.25em
+                {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+            \fi
+            
+            % Linha
+            % [distância vertical] {comprimento} {espessura}
+            \vspace{0.1cm} % Espaço entre o título e a linha
+                {\color{darkgreen}\rule{0.6\textwidth}{1.5pt}}\par
+            \vskip0.6cm % Espaço entre título e autor
+
+            % Autor e instituição
+            {\large \textbf{\insertauthor}}\\[0.1cm]
+            {\footnotesize IMPAtech - Instituto de Matemática Pura e Aplicada}\\[0.6cm]
+            \vspace{-0.3cm}
+            % Data
+            {\normalsize \insertdate}
+            
+        \end{minipage}
+    \end{flushleft}
+    
+    \vfill
+
+}
+
+\newenvironment{framedestaque}[1]
+{
+   
+    \setbeamertemplate{background canvas}{\color{black}\rule{\paperwidth}{\paperheight}}
+    \setbeamertemplate{headline}{
+        \begin{beamercolorbox}[ht = 5.0em, wd = \textwidth]{headlinebar}
+            \hfill\includegraphics[height = 3em]{Imagens/impa_tech_logo_full_white.png}
+            \hspace*{3mm}
+        \end{beamercolorbox}
+    }
+    
+    
+    \begin{frame}
+    \setbeamercolor{normal text}{fg=white}
+    \usebeamercolor[fg]{normal text}
+    \centering
+    \Huge \textbf{#1}
+    \vspace{1cm}
+    \large
+}
+{
+    \end{frame}
+}
+
+%\setbeamertemplate{footline}{
+%    \begin{beamercolorbox}[ht = 2em, wd = \textwidth]{footlinebar}
+%        \vspace{0.4em}
+%        \hspace*{3mm}
+%        \inserttitle
+%        \hfill
+%        \usebeamerfont{footline}\usebeamercolor[fg]{footline}
+%        \insertframenumber{} / \inserttotalframenumber
+%        \hspace*{3mm}
+%    \end{beamercolorbox}
+%}
+
+%\setbeamertemplate{title page}{
+
+%}
+
+\newtheorem{teorema}{Teorema}
+
+
+

@@ -1,0 +1,99 @@
+\documentclass[aspectratio = 169]{beamer}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{lipsum}
+\usepackage[brazil]{babel}
+\usepackage{tikz}
+
+\usetheme{TemaVerde}
+\title{Template de Slides - IMPATeX}
+\subtitle{Subtítulo se houver}
+\author{Daniela Menezes}
+\date{December 2025}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage    
+\end{frame}
+
+\begin{frame}{Sumário}
+    \tableofcontents    
+\end{frame}
+
+\section{Introdução}
+\subsection{Testes}
+\begin{frame}{Template}
+\begin{itemize}
+    \item<1-> teste 1
+    \item<2-> teste 2
+    \item<3-> teste 3 
+    
+\end{itemize}
+    
+\end{frame}
+
+\section{Ambientes especiais}
+\subsection{Blocos}
+    \begin{frame}{Bloco}
+        \begin{block}{1o ambiente especial}
+            \lipsum[2]
+        \end{block}
+    \end{frame}
+    
+    \begin{frame}{Bloco - Teorema e prova}
+        \begin{teorema}
+            blabla
+        \end{teorema}
+
+        \begin{proof}
+            \lipsum[2]
+            
+        \end{proof}
+    \end{frame}
+
+    \begin{frame}{Exemplo}
+        \begin{exampleblock}{Nome do exemplo}
+            Isso é um exemplo.
+        \end{exampleblock}      
+    \end{frame}
+
+    \begin{frame}{Outros ambientes}
+        \begin{definition}
+            isso é uma definição
+        \end{definition}
+    \end{frame}
+
+    \begin{framedestaque}{Atenção}
+
+    Esse é o frame de destaque
+        
+    \end{framedestaque}
+
+\section{Organização}
+\subsection{}
+
+    \begin{frame}{Divisão de tarefas}
+
+    \begin{enumerate}
+        \item<1-> Estética:
+        \begin{enumerate}
+            \item<1-> Paleta de cores;
+            \item<1-> Fontes;
+            \item<1-> Conteúdo de headline e footline;
+            \item<1-> Capa.
+        \end{enumerate}
+        \item<2-> Pesquisa de templates;
+        \item<2-> Tradução de ambientes especiais;
+        \item<2-> Organização dos códigos e comentários;
+        \item<2-> Exemplos de uso.
+        
+        
+    \end{enumerate}
+        
+    \end{frame}
+
+    \begin{framedestaque}{Obrigado!}
+        
+    \end{framedestaque}
+
+\end{document}

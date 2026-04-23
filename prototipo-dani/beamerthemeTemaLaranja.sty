@@ -1,0 +1,82 @@
+\definecolor{lightgreen}{HTML}{a6f865}
+\definecolor{brightgreen}{HTML}{BEFF8B}
+\definecolor{offwhite}{HTML}{FFFCF5}
+\definecolor{darkorange}{HTML}{8B3C03}
+\definecolor{lightergreen}{HTML}{DEF7C5}
+\definecolor{lighterpurple}{HTML}{DEC5F7}
+\definecolor{brightpurple}{HTML}{8E1BEE}
+\definecolor{beige}{HTML}{EBE0CE}
+\definecolor{darkbeige}{HTML}{AEA281}
+\definecolor{brightpink}{HTML}{FF8AEF}
+\definecolor{brightorange}{HTML}{FFC555}
+\definecolor{brightyellow}{HTML}{ECF47A}
+
+\setbeamercolor{headlinebar}{fg=white, bg=black}
+\setbeamercolor{footlinebar}{fg = black, bg = brightgreen}
+\setbeamercolor{background canvas}{fg = black, bg = offwhite}
+\setbeamercolor{title}{fg = darkgreen}
+\setbeamercolor{frametitle}{fg = darkorange}
+\setbeamercolor{block title}{fg = black, bg = darkbeige}
+\setbeamercolor{block body}{fg = black, bg = beige}
+\setbeamercolor{block title example}{fg=white,bg= brightpurple}
+\setbeamercolor{block body example}{fg = black, bg = lighterpurple}
+\setbeamercolor{section in head}{fg = black, bg = brightorange}
+\setbeamercolor{box1}{bg = brightorange}
+\setbeamercolor{box2}{bg = brightpink}
+\setbeamercolor{box3}{bg = brightgreen}
+\setbeamercolor{box4}{bg = brightyellow}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamerfont{title}{size = \huge}
+\useinnertheme[shadow = true]{rounded}
+
+\setbeamertemplate{headline}{
+    \begin{beamercolorbox}[ht = 5.0em, wd = \textwidth]{headlinebar}
+    \vspace{0.9em}\begin{beamercolorbox}[ht = 2.2em, wd = 0.4\textwidth, rounded=false, center]{section in head}
+        \hspace{3mm}\large\textbf{\insertsectionhead \  - \insertsubsectionhead}
+    \end{beamercolorbox}
+    \vspace{-0.92em}
+    \hfill\includegraphics[height = 3em, width = 4.5cm]{Imagens/impa_tech_logo_full_white.png}
+    \hspace*{3mm}
+    \end{beamercolorbox}
+}
+
+\setbeamertemplate{footline}{
+    \leavevmode
+    
+    \hbox{
+            \begin{beamercolorbox}[wd=0.5\paperwidth, ht=2.5ex, dp=1ex, center]{box1}
+            \hspace{1em}\textbf{\insertshortauthor}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.25\paperwidth, ht=2.5ex, dp=1ex, center]{box2}
+            \textbf{\insertshorttitle}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.15\paperwidth, ht=2.5ex, dp=1ex, center]{box3}
+            \textbf{\insertshortdate}
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=0.1\paperwidth, ht=2.5ex, dp=1ex, center]{box4}
+            \textbf{\insertframenumber/\inserttotalframenumber}
+        \end{beamercolorbox}
+    }
+}
+
+%\setbeamertemplate{footline}{
+%    \begin{beamercolorbox}[ht = 2em, wd = \textwidth]{footlinebar}
+%        \vspace{0.4em}
+%        \hspace*{3mm}
+%        \inserttitle
+%        \hfill
+%        \usebeamerfont{footline}\usebeamercolor[fg]{footline}
+%        \insertframenumber{} / \inserttotalframenumber
+%        \hspace*{3mm}
+%    \end{beamercolorbox}
+%}
+
+%\setbeamertemplate{title page}{
+
+%}
+
+\newtheorem{teorema}{Teorema}
+
+
+
