@@ -32,7 +32,12 @@
 
 % 4. Carrega a classe base
 \LoadClass{beamer}
+\usefonttheme{serif}
 
 % 5. Configuração Visual
-\usetheme{\meutema}           % Primeiro o tema
-\usecolortheme{\minhacor}     % Depois a paleta de cores
+\usetheme{boxes}           % Primeiro o tema
+\usecolortheme{dolphin}     % Depois a paleta de cores
+
+% 6. Siglas estilizadas
+\newcommand{\IMPA}{\textsc{impa}}
+\newcommand{\IMPATech}{\textsc{impa} Tech}
