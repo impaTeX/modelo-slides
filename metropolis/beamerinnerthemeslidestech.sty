@@ -1,0 +1,108 @@
+%% This is file 'beamerinnerthemeslidestech.sty'
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeslidestech}[16/05/2026 SlidesTech inner theme]
+\RequirePackage{etoolbox}
+\RequirePackage{keyval}
+\RequirePackage{calc}
+\RequirePackage{pgfopts}
+\RequirePackage{tikz}
+\usetikzlibrary{calc} 
+
+
+%% TITLE PAGE
+%% Definindo a capa do template
+
+% Definindo algumas cores temporariamente aqui (será definido no colortheme depois)
+\definecolor{mainColor}{HTML}{CCC4AF} 
+
+\definecolor{lineColor}{HTML}{000000}
+
+% Define a cor do Autor
+\setbeamercolor{author}{fg=darkgray} 
+
+% Define a cor da Data
+\setbeamercolor{date}{fg=darkgray}
+
+% Define a cor do Instituto
+\setbeamercolor{institute}{fg=darkgray}
+
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \usebeamertemplate*{title separator}
+
+    \vspace*{0.28\paperheight}
+    
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+\def\maketitle{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain,noframenumbering]{\titlepage}
+  \fi
+}
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+\setbeamertemplate{title graphic}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, inner sep=0pt] 
+      at ([xshift=1cm, yshift=-1cm]current page.north west) 
+      {\inserttitlegraphic};
+  \end{tikzpicture}
+}
+\setbeamertemplate{title}{
+  \raggedright%
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+  \raggedright%
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+\newlength{\slidestech@titleseparator@linewidth}
+\setlength{\slidestech@titleseparator@linewidth}{2pt}
+\setbeamertemplate{title separator}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[mainColor] 
+      (current page.north west) 
+      rectangle 
+      ([yshift=1/3*\paperheight]current page.south east);
+    \fill[black] ([yshift=1/3*\paperheight]current page.south west) 
+      rectangle 
+      ([yshift=1/3*\paperheight + \slidestech@titleseparator@linewidth]current page.south east);
+  \end{tikzpicture}%
+  \par%
+}
+\setbeamertemplate{author}{
+  \vspace*{3.5em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
+}
+\setbeamertemplate{date}{
+  \insertdate%
+  \par%
+}
+\setbeamertemplate{institute}{
+  \vspace*{3mm}
+  \insertinstitute%
+  \par%
+}
+
+% É preciso ajustar o tamanho da fonte do título e subtítulo (Será feito no fonttheme, responsável: Emilly).
