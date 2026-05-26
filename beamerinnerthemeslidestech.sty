@@ -10,22 +10,20 @@
 \usetikzlibrary{calc} 
 
 
+
 %% TITLE PAGE
 %% Definindo a capa do template
 
 % Definindo algumas cores temporariamente aqui (será definido no colortheme depois)
 \definecolor{mainColor}{HTML}{CCC4AF} 
-
 \definecolor{lineColor}{HTML}{000000}
-
 % Define a cor do Autor
 \setbeamercolor{author}{fg=darkgray} 
-
 % Define a cor da Data
 \setbeamercolor{date}{fg=darkgray}
-
 % Define a cor do Instituto
 \setbeamercolor{institute}{fg=darkgray}
+
 
 \setbeamertemplate{title page}{
   \begin{minipage}[b][\paperheight]{\textwidth}
@@ -104,5 +102,34 @@
   \insertinstitute%
   \par%
 }
+
+
+% Definindo Table of Contents (ToC) (Conversar com o grupo sobre a estética)
+\setbeamertemplate{sections/subsections in toc}[square]
+
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=2.7em%
+  \usebeamerfont{subsection in toc}%
+  \rlap{\hskip-1.5em\raise.2ex\hbox{\small$\bullet$}}%
+  \inserttocsubsection\par%
+}
+
+% ESSAS DEFINIÇÔES SÂO NO COLORTHEME
+% Cor do quadrado
+\setbeamercolor{section number projected}{bg=mainColor, fg=black}
+% Cor do texto da seção no sumário
+\setbeamercolor{section in toc}{fg=black}
+% Cor da subsecção
+\setbeamercolor{subsection in toc}{fg=black}
+
+% Definindo o itemize (apenas um teste, pois ainda não foi conversado em grupo)
+\setbeamertemplate{itemize item}{\scriptsize$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\small$\bullet$}
+\setbeamertemplate{itemize subsubitem}{\tiny$\bullet$}
+
+% DEFINIÇÔES DO COLORTHEME
+\setbeamercolor{itemize item}{fg=mainColor}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{itemize subsubitem}{fg=gray}
 
 % É preciso ajustar o tamanho da fonte do título e subtítulo (Será feito no fonttheme, responsável: Emilly).
