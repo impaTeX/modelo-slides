@@ -1,0 +1,18 @@
+# Arquivos auxiliares principais do LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Arquivos específicos do Beamer (essenciais para slides)
+*.nav
+*.snm
+*.vrb
+
+# Arquivos de histórico do VS Code e do sistema operacional
+.vscode/
+.DS_Store
+Thumbs.db
