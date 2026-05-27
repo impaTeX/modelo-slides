@@ -16,3 +16,9 @@
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Ignorar todos os PDFs gerados durante os testes
+*.pdf
+
+# Abrir exceção para o PDF oficial de demonstração aparecer no GitHub
+!demo/Template_de_Slides___IMPATeX.pdf
