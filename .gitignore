@@ -1,0 +1,24 @@
+# Arquivos auxiliares do LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Arquivos específicos do Beamer 
+*.nav
+*.snm
+*.vrb
+
+# Arquivos de histórico (VS Code e sistema operacional)
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Arquivo PDFs (gerados durante os testes)
+*.pdf
+
+# Exceção para o PDF oficial de demonstração aparecer no GitHub
+!theme/Inner_Teste.pdf
