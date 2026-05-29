@@ -7,10 +7,15 @@
 # Regras de configuração
 
 \pgfkeys{
-  /impatech/color/enfase/.cd,
+  /impatech/color/tema/.cd,
     .is choice,
-    matematica/.code=\impa@enfase@matematica,
-    dados/.code=\impa@enfase@dados,
-    computacao/.code=\impa@enfase@computacao,
-    fisica/.code=\impa@enfase@fisica,
+    padrao/.code=\impa@tema@padrao,
+    matematica/.code=\impa@tema@matematica,
+    dados/.code=\impa@tema@dados,
+    computacao/.code=\impa@tema@computacao,
+    fisica/.code=\impa@tema@fisica,
+}
+
+\newcommand{\impa@color@setdefaults}{
+  \pgfkeys{/impatech/color/.cd, tema=padrao} 
 }
