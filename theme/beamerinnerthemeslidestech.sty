@@ -123,9 +123,29 @@
 \setbeamercolor{subsection in toc}{fg=black}
 
 % Definindo o itemize (apenas um teste, pois ainda não foi conversado em grupo)
-\setbeamertemplate{itemize item}{\scriptsize$\blacksquare$}
-\setbeamertemplate{itemize subitem}{\small$\bullet$}
-\setbeamertemplate{itemize subsubitem}{\tiny$\bullet$}
+\setbeamertemplate{itemize item}{
+  \tikz\draw[mainColor, fill=mainColor] circle (0.15cm);
+}
+\setbeamertemplate{itemize subitem}{
+  \tikz\draw[mainColor, line width=0.8pt] circle (0.10cm);
+}
+\setbeamertemplate{itemize subsubitem}{
+  \tikz\draw[mainColor, fill=mainColor] circle (0.06cm);
+}
+
+% Definindo o enumerate (apenas um teste, pois ainda não foi conversado em grupo)
+\setbeamertemplate{enumerate item}{%
+  \tikz\node[fill=mainColor, text=black, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.32cm] {\insertenumlabel};%
+}
+\setbeamertemplate{enumerate subitem}{%
+  \tikz\node[draw=mainColor, line width=0.8pt, text=mainColor, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.28cm] {\insertenumlabel};%
+}
+\setbeamertemplate{enumerate subsubitem}{%
+  \tikz\node[fill=mainColor!50, text=black!70, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.24cm] {\insertenumlabel};%
+}
 
 % DEFINIÇÔES DO COLORTHEME
 \setbeamercolor{itemize item}{fg=mainColor}
