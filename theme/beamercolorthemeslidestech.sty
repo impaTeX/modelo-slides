@@ -3,3 +3,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamercolortheslidestech}[16/05/2026 SlidesTech color theme]
 \RequirePackage{pgfopts}
+
+# Regras de configuração
+
+\pgfkeys{
+  /impatech/color/enfase/.cd,
+    .is choice,
+    matematica/.code=\impa@enfase@matematica,
+    dados/.code=\impa@enfase@dados,
+    computacao/.code=\impa@enfase@computacao,
+    fisica/.code=\impa@enfase@fisica,
+}
