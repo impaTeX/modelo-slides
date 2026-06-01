@@ -1,5 +1,53 @@
 %% This is file 'beamercolorthemeslidestech.sty'
 
+% Requisitos básicos
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamercolortheslidestech}[16/05/2026 SlidesTech color theme]
 \RequirePackage{pgfopts}
+
+% Regras de configuração
+\pgfkeys{
+  /impatech/color/tema/.cd,
+    .is choice,
+    padrao/.code=\impa@tema@padrao,
+    matematica/.code=\impa@tema@matematica,
+    dados/.code=\impa@tema@dados,
+    computacao/.code=\impa@tema@computacao,
+    fisica/.code=\impa@tema@fisica,
+}
+
+\newcommand{\impa@color@setdefaults}{
+  \pgfkeys{/impatech/color/.cd, tema=padrao} 
+}
+
+% Paletas de cores
+
+% Cores neutras
+\definecolor{Preto}{HTML}{000000}
+\definecolor{Branco}{HTML}{FFFFFF}
+\definecolor{Cinza}{HTML}{A6A6A6}
+\definecolor{Bege100}{HTML}{FAF7ED} 
+\definecolor{Bege300}{HTML}{CCC4AFFF} % Oficial
+
+% Ênfase de Matemática
+\definecolor{Matematica100}{HTML}{FFE9FD} 
+\definecolor{Matematica200}{HTML}{F59FED} 
+\definecolor{Matematica300}{HTML}{FF8AEF}  % Oficial
+\definecolor{Matematica400}{HTML}{D646C7} 
+
+% Ênfase de Dados
+\definecolor{Dados300}{HTML}{ECF47A} % Oficial
+\definecolor{Dados400}{HTML}{C4CC5B} % Variação escura
+
+% Ênfase de Computação
+\definecolor{Computacao100}{HTML}{FFEED9} 
+\definecolor{Computacao200}{HTML}{F7CB80}
+\definecolor{Computacao300}{HTML}{FFC555} % Oficial
+\definecolor{Computacao400}{HTML}{FCA72B} 
+
+% Ênfase de Física
+\definecolor{Fisica100}{HTML}{E9FED8}
+\definecolor{Fisica200}{HTML}{B2E18B}
+\definecolor{Fisica300}{HTML}{BEFF8B} % Oficial
+\definecolor{Fisica400}{HTML}{7BEE1B}
+
