@@ -2,52 +2,115 @@
 
 % Requisitos básicos
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamercolortheslidestech}[16/05/2026 SlidesTech color theme]
+\ProvidesPackage{beamercolorthemeslidestech}[16/05/2026 SlidesTech color theme]
+
+% Definição de Opções
 \RequirePackage{pgfopts}
 
-% Regras de configuração
 \pgfkeys{
-  /impatech/color/tema/.cd,
+  /impatech/color/enfase/.cd,
     .is choice,
-    padrao/.code=\impa@tema@padrao,
-    matematica/.code=\impa@tema@matematica,
-    dados/.code=\impa@tema@dados,
-    computacao/.code=\impa@tema@computacao,
-    fisica/.code=\impa@tema@fisica,
-}
-
-\newcommand{\impa@color@setdefaults}{
-  \pgfkeys{/impatech/color/.cd, tema=padrao} 
+    padrao/.code=\impatech@enfase@padrao,
+    matematica/.code=\impatech@enfase@matematica,
+    dados/.code=\impatech@enfase@dados,
+    computacao/.code=\impatech@enfase@computacao,
+    fisica/.code=\impatech@enfase@fisica,
 }
 
 % Paletas de cores
 
 % Cores neutras
-\definecolor{Preto}{HTML}{000000}
-\definecolor{Branco}{HTML}{FFFFFF}
-\definecolor{Cinza}{HTML}{A6A6A6}
-\definecolor{Bege100}{HTML}{FAF7ED} 
-\definecolor{Bege300}{HTML}{CCC4AFFF} % Oficial
+\definecolor{preto}{HTML}{000000}
+\definecolor{branco}{HTML}{FFFFFF}
+\definecolor{cinza}{HTML}{A6A6A6}
+\definecolor{bege100}{HTML}{FAF7ED} 
+\definecolor{bege300}{HTML}{CCC4AF} % Oficial
 
 % Ênfase de Matemática
-\definecolor{Matematica100}{HTML}{FFE9FD} 
-\definecolor{Matematica200}{HTML}{F59FED} 
-\definecolor{Matematica300}{HTML}{FF8AEF}  % Oficial
-\definecolor{Matematica400}{HTML}{D646C7} 
+\definecolor{matematica100}{HTML}{FFE9FD} 
+\definecolor{matematica200}{HTML}{F59FED} 
+\definecolor{matematica300}{HTML}{FF8AEF}  % Oficial
+\definecolor{matematica400}{HTML}{D646C7} 
 
 % Ênfase de Dados
-\definecolor{Dados300}{HTML}{ECF47A} % Oficial
-\definecolor{Dados400}{HTML}{C4CC5B} % Variação escura
+\definecolor{dados300}{HTML}{ECF47A} % Oficial
+\definecolor{dados400}{HTML}{C4CC5B} % Variação escura
 
 % Ênfase de Computação
-\definecolor{Computacao100}{HTML}{FFEED9} 
-\definecolor{Computacao200}{HTML}{F7CB80}
-\definecolor{Computacao300}{HTML}{FFC555} % Oficial
-\definecolor{Computacao400}{HTML}{FCA72B} 
+\definecolor{computacao100}{HTML}{FFEED9} 
+\definecolor{computacao200}{HTML}{F7CB80}
+\definecolor{computacao300}{HTML}{FFC555} % Oficial
+\definecolor{computacao400}{HTML}{FCA72B} 
 
 % Ênfase de Física
-\definecolor{Fisica100}{HTML}{E9FED8}
-\definecolor{Fisica200}{HTML}{B2E18B}
-\definecolor{Fisica300}{HTML}{BEFF8B} % Oficial
-\definecolor{Fisica400}{HTML}{7BEE1B}
+\definecolor{fisica100}{HTML}{E9FED8}
+\definecolor{fisica200}{HTML}{B2E18B}
+\definecolor{fisica300}{HTML}{BEFF8B} % Oficial
+\definecolor{fisica400}{HTML}{7BEE1B}
+
+% Macros (para aplicar as paletas de cores)
+
+\newcommand{\impatech@enfase@padrao}{
+    \colorlet{mainColor}{bege300}
+
+    \setbeamercolor{normal text}{fg=preto, bg=branco}
+    \setbeamercolor{structure}{fg=preto, bg=bege300}
+}
+
+\newcommand{\impatech@enfase@matematica}{
+    \colorlet{mainColor}{matematica300}
+
+    \setbeamercolor{normal text}{fg=preto, bg=branco}
+    \setbeamercolor{structure}{fg=preto, bg=preto}
+}
+
+\newcommand{\impatech@enfase@dados}{
+    \colorlet{mainColor}{dados300}
+
+    \setbeamercolor{normal text}{fg=preto, bg=branco}
+    \setbeamercolor{structure}{fg=preto, bg=preto}
+}
+
+\newcommand{\impatech@enfase@computacao}{
+    \colorlet{mainColor}{computacao300}
+
+    \setbeamercolor{normal text}{fg=preto, bg=branco}
+    \setbeamercolor{structure}{fg=preto, bg=preto}
+}
+
+\newcommand{\impatech@enfase@fisica}{
+    \colorlet{mainColor}{fisica300}
+
+    \setbeamercolor{normal text}{fg=preto, bg=branco}
+    \setbeamercolor{structure}{fg=preto, bg=preto}
+}
+
+% Elementos gerais
+
+% Elementos da capa
+\setbeamercolor{titlelike}{use=preto, parent=branco}
+\setbeamercolor{author}{use=preto, parent=normal text}
+\setbeamercolor{date}{use=preto, parent=normal text}
+\setbeamercolor{institute}{use=preto, parent=normal text}
+
+% Elementos do sumário
+\setbeamercolor{section number projected}{bg=mainColor, fg=preto}
+\setbeamercolor{section in toc}{fg=preto}
+\setbeamercolor{subsection in toc}{fg=preto}
+
+% Elementos de lista
+\setbeamercolor{itemize item}{fg=mainColor}
+\setbeamercolor{itemize subitem}{fg=preto}
+\setbeamercolor{itemize subsubitem}{fg=cinza}
+
+% Processamento de opções
+\newcommand{\impatech@color@setdefaults}{
+  \pgfkeys{/impatech/color/.cd, enfase=padrao}
+}
+
+% Aplica o default antes de processar as opções
+\impatech@color@setdefaults
+\ProcessPgfPackageOptions{/impatech/color}
+
+\mode<all>
 
