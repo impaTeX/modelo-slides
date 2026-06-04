@@ -3,11 +3,6 @@
 % Carrega o arquivo específico innertheme
 \useinnertheme{slidestech} 
 
-\usecolortheme{slidestech}
-%\usecolortheme[enfase=matematica]{slidestech}
-%\usecolortheme[enfase=dados]{slidestech}
-%\usecolortheme[enfase=computacao]{slidestech}
-%\usecolortheme[enfase=fisica]{slidestech}
 
 \setbeamercolor{title}{fg=black, bg=gray!20}
 
@@ -63,29 +58,51 @@
 
 \subsection{Teorema e Prova}
 
-\begin{frame}{Teorema}
+\begin{frame}{Teorema e prova}
 
+\begin{theorem}{(Infinidade dos Primos).}
+    Existem infinitos números primos.
+  \end{theorem}
+
+  \begin{proof}
+    Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
     
-
-\end{frame}
-
-\begin{frame}{Prova}
+    Considere o número $P = (p_1 \times p_2 \times \dots \times p_n) + 1$.
+    
+    \begin{itemize}
+        \item $P$ não é divisível por nenhum dos primos da nossa lista, pois o resto da divisão por qualquer $p_i$ será sempre $1$.
+        \item Logo, ou $P$ é ele próprio um novo primo, ou possui um fator primo que não está na lista original.
+    \end{itemize}
+    
+    Em ambos os casos, encontramos um primo que não estava no conjunto finito original, gerando uma contradição. Portanto, o conjunto dos primos é infinito.
+  \end{proof}
     
 \end{frame}
 
 \subsection{Exemplo e Alerta}
 
 \begin{frame}{Exemplo}
+
+\begin{exampleblock}{Exemplo}
+    Isso é um exemplo
+\end{exampleblock}
     
 \end{frame}
 
 \begin{frame}{Alerta}
+
+\begin{alertblock}{Alerta}
+    Isto é um bloco de aviso
+\end{alertblock}
     
 \end{frame}
 
-\subsection{Outro}
-\begin{frame}{Outro}
+\begin{frame}{Bloco padrão}
 
+\begin{block}{Bloco}
+    Este é o bloco padrão
+\end{block}
+    
 \end{frame}
 
 \end{document}

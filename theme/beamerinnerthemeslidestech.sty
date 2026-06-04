@@ -7,7 +7,9 @@
 \RequirePackage{calc}
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
+\RequirePackage[most]{tcolorbox}
 \usetikzlibrary{calc} 
+\tcbuselibrary{breakable}
 
 
 
@@ -17,6 +19,12 @@
 % Definindo algumas cores temporariamente aqui (será definido no colortheme depois)
 \definecolor{mainColor}{HTML}{CCC4AF} 
 \definecolor{lineColor}{HTML}{000000}
+\definecolor{alertTitle}{HTML}{ffc555}
+\definecolor{alertBody}{HTML}{faf7ed}
+\definecolor{exampleTitle}{HTML}{7bee1b}
+\definecolor{exampleBody}{HTML}{e9fed8}
+\definecolor{theoremTitle}{HTML}{d646c7}
+\definecolor{theoremBody}{HTML}{ffe9fd}
 % Define a cor do Autor
 \setbeamercolor{author}{fg=darkgray} 
 % Define a cor da Data
@@ -124,7 +132,7 @@
 
 % Definindo o itemize (apenas um teste, pois ainda não foi conversado em grupo)
 \setbeamertemplate{itemize item}{
-  \tikz\draw[mainColor, fill=mainColor] circle (0.15cm);
+  \tikz\draw[mainColor, fill=mainColor] circle (0.13cm);
 }
 \setbeamertemplate{itemize subitem}{
   \tikz\draw[mainColor, line width=0.8pt] circle (0.10cm);
@@ -151,5 +159,122 @@
 \setbeamercolor{itemize item}{fg=mainColor}
 \setbeamercolor{itemize subitem}{fg=black}
 \setbeamercolor{itemize subsubitem}{fg=gray}
+
+% Configuração de Estilo dos Blocos
+
+\setbeamercolor{qed symbol}{fg=gray, bg=gray!50}
+
+% Bloco Padrão
+\defbeamertemplate{block begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,               
+    boxrule=0.8pt,                
+    colback=white,          % Cor do fundo do corpo
+    colframe=mainColor,           % Cor do contorno e do título
+    coltitle=black,               % Cor do texto do título
+    fonttitle=\bfseries,          % Título em negrito
+    left=5pt, right=5pt, top=5pt, bottom=5pt, % Espaçamento interno
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+\defbeamertemplate{block end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Alerta
+\defbeamertemplate{block alerted begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,
+    boxrule=0.8pt,
+    colback=alertBody,
+    colframe=alertTitle,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+
+\defbeamertemplate{block alerted end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Exemplo
+\defbeamertemplate{block example begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,
+    boxrule=0.8pt,
+    colback=exampleBody,
+    colframe=exampleTitle,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+\defbeamertemplate{block example end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Teorema
+
+\defbeamertemplate{theorem begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,                
+    boxrule=0.8pt,              
+    colback=theoremBody,       
+    colframe=theoremTitle,     
+    coltitle=white,         
+    fonttitle=\bfseries,      
+    left=5pt, right=5pt, top=5pt, bottom=5pt, 
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=Teorema
+  ]
+}
+\defbeamertemplate{theorem end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de prova
+
+\defbeamertemplate{proof begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,               
+    boxrule=0.8pt,              
+    colback=white,
+    colbacktitle = white,
+    colframe=gray,       
+    coltitle=gray,   
+    fonttitle=\bfseries,
+    attach title to upper={\par}, 
+    after title={\medskip},       
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=Prova.
+  ]
+}
+\defbeamertemplate{proof end}{slidestech}{\end{tcolorbox}}
+
+% Ativa os templates criados
+\setbeamertemplate{block begin}[slidestech]
+\setbeamertemplate{block end}[slidestech]
+\setbeamertemplate{block alerted begin}[slidestech]
+\setbeamertemplate{block alerted end}[slidestech]
+\setbeamertemplate{block example begin}[slidestech]
+\setbeamertemplate{block example end}[slidestech]
+\setbeamertemplate{theorem begin}[slidestech]
+\setbeamertemplate{theorem end}[slidestech]
+\setbeamertemplate{proof begin}[slidestech]
+\setbeamertemplate{proof end}[slidestech]
 
 % É preciso ajustar o tamanho da fonte do título e subtítulo (Será feito no fonttheme, responsável: Emilly).
