@@ -31,25 +31,24 @@
       #3%
     \fi%
   }
-%decidir com o grupo se a fonte será Roboto
   \iffontsavailable{Roboto Light,%
                     Roboto Light Italic,%
-                    Roboto,%
-                    Roboto Italic}%
+                    Roboto Medium,%
+                    Roboto Medium Italic}%
   {%
     \setsansfont[ItalicFont={Roboto Light Italic},%
-                 BoldFont={Roboto},%
-                 BoldItalicFont={Roboto Italic}]%
+                 BoldFont={Roboto Medium},%
+                 BoldItalicFont={Roboto Medium Italic}]%
                 {Roboto Light}%
   }{%
     \iffontsavailable{Roboto Light OT,%
                       Roboto Light Italic OT,%
-                      Roboto OT,%
-                      Roboto Italic OT}%
+                      Roboto Medium OT,%
+                      Roboto Medium Italic OT}%
     {%
       \setsansfont[ItalicFont={Roboto Light Italic OT},%
-                   BoldFont={Roboto OT},%
-                   BoldItalicFont={Roboto Italic OT}]%
+                   BoldFont={Roboto Medium OT},%
+                   BoldItalicFont={Roboto Medium Italic OT}]%
                   {Roboto Light OT}%
     }{%
       \PackageWarning{beamerthemeslidestech}{%
@@ -72,9 +71,26 @@
     \addfontfeature{Numbers={Monospaced}}%
   }
 }{%
-  \PackageWarning{beamerthemeslidestech}{%
-    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts%
-  }
+  % FALLBACK PARA PDFLATEX
+  \RequirePackage[T1]{fontenc}
+  
+  % Tenta carregar a fonte Roboto para o texto principal
+  \IfFileExists{roboto.sty}{%
+    \RequirePackage[sfdefault,light,medium]{roboto}%
+  }{%
+    \PackageWarning{beamerthemeslidestech}{%
+      Roboto font package not found. Falling back to Beamer default sans-serif.%
+    }%
+  }%
+  
+  % Tenta carregar a fonte Roboto Mono para código/monofretado
+  \IfFileExists{roboto-mono.sty}{%
+    \RequirePackage{roboto-mono}%
+  }{%
+    \PackageWarning{beamerthemeslidestech}{%
+      Roboto Mono font package not found. Falling back to Beamer default mono.%
+    }%
+  }%
 }
 \setbeamerfont{title}{size=\huge,%
                       series=\bfseries}
@@ -83,7 +99,7 @@
 \setbeamerfont{block title}{size=\normalsize,%
                             series=\bfseries}
 \setbeamerfont*{subtitle}{size=\normalsize}
-\setbeamerfont{frametitle}{size=\normalsize,%
+\setbeamerfont{frametitle}{size=\Large,%
                            series=\bfseries}
 \setbeamerfont{caption}{size=\small}
 \setbeamerfont{caption name}{series=\bfseries}
@@ -283,7 +299,6 @@
     \gdef\beamer@shortframetitle{#1}%
     }}
   {}
-  {\PackageError{beamerfontthemeslidestech}{Patching frame title failed}\@ehc}
 \slidestech@font@setdefaults
 \ProcessPgfPackageOptions{/slidestech/font}
 \endinput
