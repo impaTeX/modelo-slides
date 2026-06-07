@@ -7,6 +7,7 @@
 \RequirePackage{calc}
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
+\RequirePackage{ifthen}
 \RequirePackage[most]{tcolorbox}
 \usetikzlibrary{calc} 
 \tcbuselibrary{breakable}
@@ -159,6 +160,33 @@
 \setbeamercolor{itemize item}{fg=mainColor}
 \setbeamercolor{itemize subitem}{fg=black}
 \setbeamercolor{itemize subsubitem}{fg=gray}
+
+% Configurações de Frames Especiais
+
+%% STANDOUT FRAME
+\newcommand{\standout@start}[1][white]{%
+  \begingroup%
+  \setbeamertemplate{headline}{}%
+  \setbeamertemplate{footline}{}%
+  \setbeamertemplate{navigation symbols}{}%
+  \setbeamertemplate{sidebar right}{}%
+  \setbeamertemplate{sidebar left}{}%
+  \setbeamertemplate{background}{}%
+  \setbeamercolor{background canvas}{bg=#1}%
+  \begin{frame}[plain,noframenumbering]%
+  \vspace*{\fill}%
+  \centering%
+  \large%
+}
+
+\newcommand{\standout@end}{%
+  \vspace*{\fill}%
+  \end{frame}%
+  \endgroup%
+}
+
+\let\standout\standout@start
+\let\endstandout\standout@end
 
 % Configuração de Estilo dos Blocos
 
