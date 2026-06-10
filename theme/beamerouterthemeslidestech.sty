@@ -3,188 +3,152 @@
 \ProvidesPackage{beamerouterthemeslidestech}[16/05/2026 SlidesTech outer theme]
 
 % 1. PACOTES ADICIONAIS
-\RequirePackage{tikz}   % Ferramenta para desenhos ; necessária para desenhar os círculos para nº da página
-\RequirePackage{calc}   % Utilizada para calcular o tamanho das caixas de texto baseada nas dimensões da tela
+\RequirePackage{tikz}
+\RequirePackage{calc}
 
 % 2. CORES DE TESTE
-\setbeamertemplate{navigation symbols}{}    % Remover as setinhas de navegação
+\setbeamertemplate{navigation symbols}{}
 
-\definecolor{TesteBege}{HTML}{CCC4AF}  % Bege feio
-\definecolor{TestePreto}{HTML}{000000} % Preto goat
-\definecolor{TesteCinza}{HTML}{999999} % Cinza
-
-% COISA NOVA: ativa explicitamente os templates definidos neste arquivo
-\setbeamertemplate{headline}[slidestech]
-\setbeamertemplate{footline}[slidestech]
-
-% COISA NOVA: o frametitle será desenhado dentro do headline
-\setbeamertemplate{frametitle}{}
-
-% COISA NOVA: reserva espaço para o cabeçalho e rodapé
-\setbeamersize{
-    text margin left=0.6cm,
-    text margin right=0.6cm
-}
+\definecolor{TesteBege}{HTML}{CCC4AF}
+\definecolor{TestePreto}{HTML}{000000}
+\definecolor{TesteCinza}{HTML}{999999}
 
 % Aplica as cores definidas no background do título do slide
 \setbeamercolor{frametitle}{bg=TesteBege, fg=TestePreto}
 
-% 3. ESTRUTURA DO CABEÇALHO (HEADLINE)
+% 3. ESTRUTURA DO CABEÇALHO (FRAMETITLE)
 
-% COISA NOVA: agora o cabeçalho é um headline real
-\defbeamertemplate*{headline}{slidestech}{
+\defbeamertemplate*{frametitle}{slidestech}
+{
+    \nointerlineskip
 
-    \leavevmode
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=1.2cm,
+        dp=0.15cm
+    ]{frametitle}
 
-    % Cria a "caixa" onde vai ficar o cabeçalho ; parâmetros:
-        % - wd: largura da caixa (paperwidth para ocupar 100%)
-        % - ht: altura da caixa (fixa)
-        % - dp: profundidade da caixa
-    \begin{beamercolorbox}[wd=\paperwidth,ht=1.1cm,dp=0cm]{frametitle}
+        \hbox{
 
-    % 3.1: LADO ESQUERDO (TÍTULOS)
+            % 3.1: LADO ESQUERDO (TÍTULO)
 
-        % Cria um "espaço" que reserva 70% da largura na esquerda ; parâmetros:
-            % - 1º: [c] Alinhamento vertical externo (centralizado)
-            % - 2º: [1.1cm] Altura interna desse espaço
-            % - 3º: [c] Alinhamento vertical interno
-        \begin{minipage}[c][1.1cm][c]{0.70\paperwidth}
+            \begin{minipage}[c][1.2cm][c]{0.72\paperwidth}
 
-            \hspace*{0.6cm}
+                \hspace*{0.6cm}
 
-            % Aplica as propriedades da fonte definida pra título, com negrito
-            {\usebeamerfont{frametitle}\bfseries\insertframetitle}
+                {\usebeamerfont{frametitle}
+                \bfseries
+                \Large
+                \insertframetitle}
 
-            % Configurações para subtítulo
-            \ifx\insertframesubtitle\@empty
-            \else
-                \par
-                \vspace*{0.05cm}
-                {\small\insertframesubtitle}
-            \fi
+                \ifx\insertframesubtitle\@empty
+                \else
+                    \par
+                    \vspace{1pt}
+                    \hspace*{0.6cm}
+                    {\small\insertframesubtitle}
+                \fi
 
-        \end{minipage}%
-        % Fim da configuração de (3.1)
+            \end{minipage}
 
-    % 3.2: LADO DIREITO (Logo) OCULTA PARA TESTE!!
+            % 3.2: LADO DIREITO (LOGO)
 
-        % Cria outro "espaço" que ocupa os outros 30% da caixa (parte direita)
-        % Os parâmetros são os mesmos de 3.1
-        \begin{minipage}[c][1.1cm][c]{0.30\paperwidth}
+            \begin{minipage}[c][1.2cm][c]{0.28\paperwidth}
 
-            \raggedleft
+                \raggedleft
 
-            % LOGO OCULTA
-            % \includegraphics[height=0.6cm]{../images/logo_03.png}
+                % \includegraphics[height=0.6cm]{logo.png}
 
-            \hspace*{0.6cm}
+                \hspace*{0.6cm}
 
-        \end{minipage}
-        % Fim da configuração de (3.2)
+            \end{minipage}
 
-    % Aplica a cor bege definida em (2)
-    \end{beamercolorbox}
-
-    % 3.3: LINHA PRETA DE ENFEITE (a que fica logo embaixo do título)
-    % Parâmetros:
-        % - wd: Largura (mesma largura que a página toda)
-        % - ht: altura
-        % - dp: profundidade
-        % - {} (argumento vazio no final): indica nenhuma cor (transparente)
-
-    % COISA NOVA: linha realmente encostada na borda esquerda
-    \begin{beamercolorbox}[wd=\paperwidth,
-                           ht=2pt,
-                           dp=0pt,
-                           leftskip=0pt,
-                           rightskip=0pt]{}
-
-        % Desenha o retângulo preto ; parâmetros:
-            % - Usa a cor preta definida em (2)
-            % - "0.25\paperwidth": indica para ocupar 25% da largura total da página
-            % - "2.5pt" altura (espessura) da linha preta
-
-        \rule{0.25\paperwidth}{2.5pt}
+        }
 
     \end{beamercolorbox}
+
+    % 3.3: LINHA PRETA
+
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=3pt,
+        dp=0pt
+    ]{}
+
+        \hspace*{0.6cm}
+        \rule{0.20\paperwidth}{3pt}
+
+    \end{beamercolorbox}
+
+    \vspace{0.25cm}
 }
-% Fim da configuração de (3)
 
 % 4. ESTRUTURA DE RODAPÉ (FOOTLINE)
 
-% Reescreve o layout do rodapé do beamer para o nosso layout
-\defbeamertemplate*{footline}{slidestech}{
-
+\defbeamertemplate*{footline}{slidestech}
+{
     \leavevmode
 
-    % COISA NOVA: altura reduzida para evitar invasão do conteúdo
     \hbox{
 
-    % 4.1: LADO ESQUERDO (Informações)
+        % 4.1: TEXTO
 
-        \begin{beamercolorbox}[wd=.88\paperwidth,
-                               ht=.55cm,
-                               dp=.20cm,
-                               left]{}
+        \begin{beamercolorbox}[
+            wd=.88\paperwidth,
+            ht=.8cm,
+            dp=.25cm,
+            left
+        ]{}
 
-            % Espaçamento da borda
             \hspace*{0.6cm}
 
-            % Usa a cor cinza definida em (2) para os textos do rodapé
-            \textcolor{TesteCinza}{\small
-                % Configuração para as informações a serem inseridas (autor, título e instituição, respectivamente)
-                \insertshortauthor\ | \insertshorttitle\ | \insertshortinstitute
+            \textcolor{TesteCinza}{
+                \small
+                \insertshortauthor
+                \ |
+                \insertshorttitle
+                \ |
+                \insertshortinstitute
             }
 
         \end{beamercolorbox}
 
-    % Fim da configuração de (4.1)
+        % 4.2: NÚMERO DA PÁGINA
 
-    % 4.2: LADO DIREITO (nº de página)
+        \begin{beamercolorbox}[
+            wd=.12\paperwidth,
+            ht=.8cm,
+            dp=.25cm,
+            center
+        ]{}
 
-        \begin{beamercolorbox}[wd=.12\paperwidth,
-                               ht=.55cm,
-                               dp=.20cm,
-                               right]{}
-
-            % Inicia um desenho (para o círculo da numeração da página)
-
-            \tikz[baseline=(page.base)]{
-
-                % Desenha um node (elemento com texto); parâmetros:
-                    % - circle: círculo (forma)
-                    % - fill: define a cor definida em (2) a ser usada como preenchimento
-                    % - text: define a cor definida em (2) a ser usada no texto
-                    % - minimum size: fixa o diâmetro do círculo (para TODOS os números)
-                    % - font: configuração pra fonte
+            \begin{tikzpicture}[baseline=(page.center)]
 
                 \node[
                     circle,
                     fill=TesteBege,
                     text=TestePreto,
-                    minimum size=0.6cm,
-                    font=\small\bfseries,
-                    inner sep=0pt
+                    minimum size=0.65cm,
+                    inner sep=0pt,
+                    font=\small\bfseries
                 ] (page)
                 {
-                    % Configuração pra numeração das páginas
-                    \ifnum\insertframenumber<10 0\fi\insertframenumber
+                    \ifnum\insertframenumber<10 0\fi
+                    \insertframenumber
                 };
-            }
 
-            \hspace*{0.6cm}
+            \end{tikzpicture}
 
         \end{beamercolorbox}
-
-    % Fim da configuração de (4.2)
 
     }
 
     \vskip0pt
 }
-% Fim da configuração de (4.2)
 
-% COISA NOVA: remove completamente o frametitle padrão do Beamer
-\setbeamertemplate{frametitle}{}
+% ATIVA OS TEMPLATES
+
+\setbeamertemplate{frametitle}[slidestech]
+\setbeamertemplate{footline}[slidestech]
 
 % Fim do arquivo
