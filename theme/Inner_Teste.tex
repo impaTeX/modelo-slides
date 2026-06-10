@@ -1,10 +1,11 @@
-\documentclass[aspect ratio = 169]{beamer}
+\documentclass[aspectratio=169]{beamer}
 
-% Carrega o arquivo específico innertheme
-\useinnertheme{slidestech} 
+% sectionpage=none, subsectionpage=none
+\useinnertheme[subsectionpage=progressbar]{slidestech}
 
-
-\setbeamercolor{title}{fg=black, bg=gray!20}
+% enfase=computacao, matematica, fisica, dados, padrao
+\usecolortheme[enfase=padrao]{slidestech}
+\usefonttheme{slidestech}
 
 
 \title{Testando Inner Theme}
@@ -60,7 +61,7 @@
 
 \begin{frame}{Teorema e prova}
 
-\begin{theorem}{(Infinidade dos Primos).}
+\begin{theorem}[(Infinidade dos Primos)]
     Existem infinitos números primos.
   \end{theorem}
 
@@ -104,5 +105,15 @@
 \end{block}
     
 \end{frame}
+
+\section{Standout Frame}
+
+\begin{standout}
+  Isso é um standout frame.
+\end{standout}
+
+\begin{standout}[mainColor]
+  Isso é um standout frame.
+\end{standout}
 
 \end{document}
