@@ -10,11 +10,11 @@
 \pgfkeys{
   /impatech/color/enfase/.cd,
     .is choice,
-    padrao/.code=\impatech@enfase@padrao,
-    matematica/.code=\impatech@enfase@matematica,
-    dados/.code=\impatech@enfase@dados,
-    computacao/.code=\impatech@enfase@computacao,
-    fisica/.code=\impatech@enfase@fisica,
+    padrao/.code={\impatech@enfase@padrao},
+    matematica/.code={\impatech@enfase@matematica},
+    dados/.code={\impatech@enfase@dados},
+    computacao/.code={\impatech@enfase@computacao},
+    fisica/.code={\impatech@enfase@fisica},
 }
 
 % Paletas de cores
@@ -52,37 +52,34 @@
 
 \newcommand{\impatech@enfase@padrao}{
     \colorlet{mainColor}{bege300}
-
-    \setbeamercolor{normal text}{fg=preto, bg=branco}
-    \setbeamercolor{structure}{fg=preto, bg=bege300}
+    \colorlet{cabecalho}{bege300}
+    \colorlet{progresso}{preto}
 }
 
 \newcommand{\impatech@enfase@matematica}{
     \colorlet{mainColor}{matematica300}
+    \colorlet{cabecalho}{preto}
+    \colorlet{progresso}{matematica300}
 
-    \setbeamercolor{normal text}{fg=preto, bg=branco}
-    \setbeamercolor{structure}{fg=preto, bg=preto}
 }
 
 \newcommand{\impatech@enfase@dados}{
     \colorlet{mainColor}{dados300}
-
-    \setbeamercolor{normal text}{fg=preto, bg=branco}
-    \setbeamercolor{structure}{fg=preto, bg=preto}
+    \colorlet{cabecalho}{preto}
+    \colorlet{progresso}{dados300}
 }
 
 \newcommand{\impatech@enfase@computacao}{
     \colorlet{mainColor}{computacao300}
-
-    \setbeamercolor{normal text}{fg=preto, bg=branco}
-    \setbeamercolor{structure}{fg=preto, bg=preto}
+    \colorlet{cabecalho}{preto}
+    \colorlet{progresso}{computacao300}
 }
 
 \newcommand{\impatech@enfase@fisica}{
     \colorlet{mainColor}{fisica300}
-
-    \setbeamercolor{normal text}{fg=preto, bg=branco}
-    \setbeamercolor{structure}{fg=preto, bg=preto}
+    \colorlet{cabecalho}{preto}
+    \colorlet{progresso}{fisica300}
+    
 }
 
 % Elementos gerais
@@ -92,6 +89,10 @@
 \setbeamercolor{author}{use=preto, parent=normal text}
 \setbeamercolor{date}{use=preto, parent=normal text}
 \setbeamercolor{institute}{use=preto, parent=normal text}
+
+% Texto normal e estrutura
+\setbeamercolor{normal text}{fg=preto, bg=branco}
+\setbeamercolor{structure}{fg=preto, bg=preto}
 
 % Elementos do sumário
 \setbeamercolor{section number projected}{bg=mainColor, fg=preto}
@@ -105,6 +106,18 @@
 
 % Destaque
 \setbeamercolor{alerted text}{fg=computacao300}
+
+% Cabeçalho e barra de progresso
+
+\setbeamercolor{header}{
+    bg=cabecalho,
+    fg=branco
+}
+
+\setbeamercolor{progress bar}{
+    bg=progresso,
+    fg=branco
+}
 
 % Processamento de opções
 \newcommand{\impatech@color@setdefaults}{
