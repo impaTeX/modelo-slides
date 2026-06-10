@@ -92,19 +92,21 @@
         \begin{beamercolorbox}[
             wd=.88\paperwidth,  % Largura de 88% da página
             ht=.8cm,            % Altura
-            dp=.25cm,           % Profundidade
+            dp=.4cm,            % Profundidade
             left,               % Alinha a esquerda
             leftskip=0.3cm      % Adiciona uma margem com a borda esquerda da página
         ]{}
 
-            % Recebe e exibe as 3 informações do rodapé ao longo de todo o slide:
-            \textcolor{TesteCinza}{
-                \small                  % Deixa o texto pequeno
-                \insertshortauthor      % Nome do autor
-                \ |                     % Barra de separação
-                \insertshorttitle       % Título da apresentação
-                \ |                     % Barra de separação
-                \insertshortinstitute   % Nome da instituição
+            % O \raisebox com valor negativo empurra apenas este texto para baixo
+            \raisebox{-0.15cm}{%
+                \textcolor{TesteCinza}{
+                    \small                  % Deixa o texto pequeno
+                    \insertshortauthor      % Nome do autor
+                    \ |                     % Barra de separação
+                    \insertshorttitle       % Título da apresentação
+                    \ |                     % Barra de separação
+                    \insertshortinstitute   % Nome da instituição
+                }%
             }
 
         \end{beamercolorbox}
@@ -114,8 +116,8 @@
         \begin{beamercolorbox}[ % Cria outra caixa para ocupar o resto do rodapé
             wd=.1\paperwidth,   % Largura de 10% da página
             ht=.9cm,            % Altura
-            dp=.4cm,            % Profundidade
-            rightskip=1cm,      % Adiciona margem com a borda direita
+            dp=.5cm,            % Profundidade
+            rightskip=2cm,      % Adiciona margem com a borda direita
             right               % "Empurra" para o lado direito
         ]{}
 
