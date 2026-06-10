@@ -5,6 +5,7 @@
 % 1. PACOTES ADICIONAIS
 \RequirePackage{tikz}
 \RequirePackage{calc}
+\RequirePackage{graphicx}
 
 % 2. CORES DE TESTE
 \setbeamertemplate{navigation symbols}{}
@@ -26,19 +27,25 @@
         wd=\paperwidth,
         ht=1.0cm,
         dp=0.10cm,
-        sep=0pt,
-        leftskip=0.8cm
+        sep=0pt
     ]{frametitle}
 
-        \vbox to 0.8cm{
-            \vfil
+        \hbox to \paperwidth{
 
-            {\usebeamerfont{frametitle}
-             \bfseries
-             \Large
-             \insertframetitle}
+            \raisebox{0.3cm}{
+                {\usebeamerfont{frametitle}
+                 \bfseries
+                 \Large
+                 \insertframetitle}
+            }
 
-            \vfil
+            \hfill
+
+            \includegraphics[
+                height=0.8cm
+            ]{logo_03.png}
+
+            \hspace*{0.8cm}
         }
 
     \end{beamercolorbox}
@@ -54,9 +61,7 @@
         sep=0pt
     ]{}
 
-        \textcolor{TestePreto}{
-            \rule{0.20\paperwidth}{3pt}
-        }
+        \rule{0.20\paperwidth}{3pt}
 
     \end{beamercolorbox}
 
