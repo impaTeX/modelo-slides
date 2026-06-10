@@ -25,47 +25,43 @@
     \begin{beamercolorbox}[
         wd=\paperwidth,
         ht=1.0cm,
-        dp=0.25cm,
-        sep=0pt
+        dp=0.10cm,
+        sep=0pt,
+        leftskip=0.8cm
     ]{frametitle}
 
-        \hbox{
+        \vbox to 0.8cm{
+            \vfil
 
-            % 3.1: LADO ESQUERDO (TÍTULO)
+            {\usebeamerfont{frametitle}
+             \bfseries
+             \Large
+             \insertframetitle}
 
-            \begin{minipage}[c][1.2cm][c]{0.72\paperwidth}
-                \hspace*{0.6cm}
-                {\usebeamerfont{frametitle}
-                \bfseries
-                \Large
-                \insertframetitle}
-            \end{minipage}
-
-            % 3.2: LADO DIREITO (LOGO)
-
-            \begin{minipage}[c][1.2cm][c]{0.28\paperwidth}
-
-                \raggedleft
-
-                % \includegraphics[height=0.6cm]{logo.png}
-
-                \hspace*{0.6cm}
-
-            \end{minipage}
-
+            \vfil
         }
 
     \end{beamercolorbox}
 
-    % 3.3: LINHA PRETA
+    \nointerlineskip
 
-    \par
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=3pt,
+        dp=0pt,
+        leftskip=0pt,
+        rightskip=0pt,
+        sep=0pt
+    ]{}
 
-    \hspace*{0pt}
-    \rule{0.20\paperwidth}{3pt}
+        \textcolor{TestePreto}{
+            \rule{0.20\paperwidth}{3pt}
+        }
 
-    \vspace{0cm}
-    }
+    \end{beamercolorbox}
+
+    \vspace{0.15cm}
+}
 
 % 4. ESTRUTURA DE RODAPÉ (FOOTLINE)
 
@@ -100,7 +96,7 @@
         % 4.2: NÚMERO DA PÁGINA
 
         \begin{beamercolorbox}[
-            wd=.10\paperwidth,
+            wd=.12\paperwidth,
             ht=.8cm,
             dp=.25cm,
             rightskip=0.4cm,
