@@ -1,0 +1,139 @@
+%% This is file 'beamerouterthemeslidestech.sty'
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeslidestech}[16/05/2026 IMPA Tex outer theme]
+
+% 1. PACOTES ADICIONAIS
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\RequirePackage{graphicx}
+
+% 2. CORES DE TESTE
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{TesteBege}{HTML}{CCC4AF}
+\definecolor{TestePreto}{HTML}{000000}
+\definecolor{TesteCinza}{HTML}{999999}
+
+% Aplica as cores definidas no background do título do slide
+\setbeamercolor{frametitle}{bg=TesteBege, fg=TestePreto}
+
+% 3. ESTRUTURA DO CABEÇALHO (FRAMETITLE)
+
+\defbeamertemplate*{frametitle}{slidestech}
+{
+    \nointerlineskip
+
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=1.0cm,
+        dp=0.10cm,
+        sep=0pt
+    ]{frametitle}
+
+        \hbox to \paperwidth{
+
+            \raisebox{0.3cm}{
+                {\usebeamerfont{frametitle}
+                 \bfseries
+                 \Large
+                 \insertframetitle}
+            }
+
+            \hfill
+
+            \includegraphics[
+                height=0.8cm
+            ]{logo_03.png}
+
+            \hspace*{0.8cm}
+        }
+
+    \end{beamercolorbox}
+
+    \nointerlineskip
+
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=3pt,
+        dp=0pt,
+        leftskip=0pt,
+        rightskip=0pt,
+        sep=0pt
+    ]{}
+
+        \rule{0.20\paperwidth}{3pt}
+
+    \end{beamercolorbox}
+
+    \vspace{0.15cm}
+}
+
+% 4. ESTRUTURA DE RODAPÉ (FOOTLINE)
+
+\defbeamertemplate*{footline}{slidestech}
+{
+    \leavevmode
+
+    \hbox{
+
+        % 4.1: TEXTO
+
+        \begin{beamercolorbox}[
+            wd=.88\paperwidth,
+            ht=.8cm,
+            dp=.25cm,
+            left,
+            leftskip=0.3cm
+        ]{}
+
+            \textcolor{TesteCinza}{
+                \small
+                \insertshortauthor
+                \ |
+                \insertshorttitle
+                \ |
+                \insertshortinstitute
+            }
+
+        \end{beamercolorbox}
+
+        % 4.2: NÚMERO DA PÁGINA
+
+        \begin{beamercolorbox}[
+            wd=.1\paperwidth,
+            ht=.9cm,
+            dp=.4cm,
+            rightskip=1cm,
+            right
+        ]{}
+
+            \begin{tikzpicture}[baseline=(page.center)]
+
+                \node[
+                    circle,
+                    fill=TesteBege,
+                    text=TestePreto,
+                    minimum size=0.65cm,
+                    inner sep=0pt,
+                    font=\small\bfseries
+                ] (page)
+                {
+                    \ifnum\insertframenumber<10 0\fi
+                    \insertframenumber
+                };
+
+            \end{tikzpicture}
+
+        \end{beamercolorbox}
+
+    }
+
+    \vskip0pt
+}
+
+% ATIVA OS TEMPLATES
+
+\setbeamertemplate{frametitle}[slidestech]
+\setbeamertemplate{footline}[slidestech]
+
+% Fim do arquivo
