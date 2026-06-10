@@ -24,8 +24,9 @@
 
     \begin{beamercolorbox}[
         wd=\paperwidth,
-        ht=1.2cm,
-        dp=0.15cm
+        ht=1.0cm,
+        dp=0.25cm,
+        sep=0pt
     ]{frametitle}
 
         \hbox{
@@ -33,22 +34,11 @@
             % 3.1: LADO ESQUERDO (TÍTULO)
 
             \begin{minipage}[c][1.2cm][c]{0.72\paperwidth}
-
                 \hspace*{0.6cm}
-
                 {\usebeamerfont{frametitle}
                 \bfseries
                 \Large
                 \insertframetitle}
-
-                \ifx\insertframesubtitle\@empty
-                \else
-                    \par
-                    \vspace{1pt}
-                    \hspace*{0.6cm}
-                    {\small\insertframesubtitle}
-                \fi
-
             \end{minipage}
 
             % 3.2: LADO DIREITO (LOGO)
@@ -69,19 +59,13 @@
 
     % 3.3: LINHA PRETA
 
-    \begin{beamercolorbox}[
-        wd=\paperwidth,
-        ht=3pt,
-        dp=0pt
-    ]{}
+    \par
 
-        \hspace*{0.6cm}
-        \rule{0.20\paperwidth}{3pt}
+    \hspace*{0pt}
+    \rule{0.20\paperwidth}{3pt}
 
-    \end{beamercolorbox}
-
-    \vspace{0.25cm}
-}
+    \vspace{0cm}
+    }
 
 % 4. ESTRUTURA DE RODAPÉ (FOOTLINE)
 
@@ -100,7 +84,7 @@
             left
         ]{}
 
-            \hspace*{0.6cm}
+            \hspace*{1cm}
 
             \textcolor{TesteCinza}{
                 \small
@@ -116,10 +100,11 @@
         % 4.2: NÚMERO DA PÁGINA
 
         \begin{beamercolorbox}[
-            wd=.12\paperwidth,
+            wd=.10\paperwidth,
             ht=.8cm,
             dp=.25cm,
-            center
+            rightskip=0.4cm,
+            right
         ]{}
 
             \begin{tikzpicture}[baseline=(page.center)]
