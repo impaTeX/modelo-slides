@@ -52,33 +52,53 @@
 
 \newcommand{\impatech@enfase@padrao}{
     \colorlet{mainColor}{bege300}
+
     \colorlet{cabecalho}{bege300}
     \colorlet{progresso}{preto}
+
+    \colorlet{blocopadrao}{bege300}
+    \colorlet{textoblocopadrao}{preto}
 }
 
 \newcommand{\impatech@enfase@matematica}{
     \colorlet{mainColor}{matematica300}
+
     \colorlet{cabecalho}{preto}
     \colorlet{progresso}{matematica300}
+
+    \colorlet{blocopadrao}{preto}
+    \colorlet{textoblocopadrao}{branco}
 
 }
 
 \newcommand{\impatech@enfase@dados}{
     \colorlet{mainColor}{dados300}
+    
     \colorlet{cabecalho}{preto}
     \colorlet{progresso}{dados300}
+
+    \colorlet{blocopadrao}{preto}
+    \colorlet{textoblocopadrao}{branco}
 }
 
 \newcommand{\impatech@enfase@computacao}{
     \colorlet{mainColor}{computacao300}
+
     \colorlet{cabecalho}{preto}
     \colorlet{progresso}{computacao300}
+
+    \colorlet{blocopadrao}{preto}
+    \colorlet{textoblocopadrao}{branco}
 }
 
 \newcommand{\impatech@enfase@fisica}{
     \colorlet{mainColor}{fisica300}
+
     \colorlet{cabecalho}{preto}
     \colorlet{progresso}{fisica300}
+    
+    \colorlet{blocopadrao}{preto}
+    \colorlet{textoblocopadrao}{branco}
     
 }
 
@@ -107,8 +127,32 @@
 % Destaque
 \setbeamercolor{alerted text}{fg=computacao300}
 
-% Cabeçalho e barra de progresso
+% Símbolo QED
+\setbeamercolor{qed symbol}{fg=cinza, bg=cinza}
 
+% Blocos
+
+% Bloco Padrão
+\setbeamercolor{block title}{fg=blocopadrao, bg=textoblocopadrao} 
+\setbeamercolor{block body}{bg=white}
+
+% Bloco de Alerta
+\setbeamercolor{block title alerted}{fg=preto, bg=computacao400}
+\setbeamercolor{block body alerted}{fg=preto, bg=computacao100}
+
+% Bloco de Exemplo
+\setbeamercolor{block title example}{fg=preto, bg=fisica400}
+\setbeamercolor{block body example}{fg=preto, bg=fisica100}
+
+% Bloco de Teorema 
+\setbeamercolor{theorem title}{fg=branco, bg=matematica400}
+\setbeamercolor{theorem body}{fg=preto, bg=matematica100}
+
+% Bloco de Prova 
+\setbeamercolor{proof title}{fg=cinza, bg=branco}
+\setbeamercolor{proof frame}{fg=preto, bg=branco}
+
+% Cabeçalho e barra de progresso (em construção, podem ser ajustados depois)
 \setbeamercolor{header}{
     bg=cabecalho,
     fg=branco
