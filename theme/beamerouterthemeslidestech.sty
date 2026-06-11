@@ -10,16 +10,11 @@
 % =====================================================================================
 
 % =====================================================================================
-% 2. CORES DE TESTE
+% 2. CORES
 \setbeamertemplate{navigation symbols}{}    % Remove os ícones de navegação padrão do Beamer
 
-% 2.1 Cores de teste
-\definecolor{TesteBege}{HTML}{CCC4AF}   % Bege feio
-\definecolor{TestePreto}{HTML}{000000}  % Preto goat
-\definecolor{TesteCinza}{HTML}{999999}  % Cinza (para a parte de texto do rodapé)
-
-% 2.2 Define as cores do background do cabeçalho
-\setbeamercolor{frametitle}{bg=TesteBege, fg=TestePreto}
+% Define as cores do background do cabeçalho ; puxados do arquivo de cores (Yasmin)
+\setbeamercolor{frametitle}{bg=headercolor, fg=textheadercolor}
 % =====================================================================================
 
 % =====================================================================================
@@ -42,6 +37,7 @@
         % Cria uma linha horizontal do tamanho do slide (para conter os elementos)
         \hbox to \paperwidth{
 
+            % Fonte
             \raisebox{0.3cm}{               % Centraliza o título
                 {\usebeamerfont{frametitle} % Puxa fonte padrão para títulos
                  \bfseries                  % Negrito
@@ -104,14 +100,14 @@
         \begin{beamercolorbox}[
             wd=.88\paperwidth,  % Largura de 88% da página
             ht=.8cm,            % Altura
-            dp=.4cm,            % Profundidade
+            dp=.25cm,            % Profundidade
             left,               % Alinha a esquerda
             leftskip=0.3cm      % Adiciona uma margem com a borda esquerda da página
         ]{}
 
             % O \raisebox com valor negativo empurra apenas este texto para baixo
             \raisebox{-0.15cm}{%
-                \textcolor{TesteCinza}{
+                \textcolor{cinza}{
                     \small                  % Deixa o texto pequeno
                     \insertshortauthor      % Nome do autor
                     \ |                     % Barra de separação
@@ -128,8 +124,8 @@
         \begin{beamercolorbox}[ % Cria outra caixa para ocupar o resto do rodapé
             wd=.1\paperwidth,   % Largura de 10% da página
             ht=.9cm,            % Altura
-            dp=.5cm,            % Profundidade
-            rightskip=2cm,      % Adiciona margem com a borda direita
+            dp=.4cm,            % Profundidade
+            rightskip=1cm,      % Adiciona margem com a borda direita
             right               % "Empurra" para o lado direito
         ]{}
 
@@ -139,8 +135,8 @@
                 % Desenha o modelo para numerar as páginas:
                 \node[
                     circle,                 % Forma círculo
-                    fill=TesteBege,         % Preenchimento com a cor base (bege) definida em (2.1)
-                    text=TestePreto,        % Deixa o texto com a cor preta definida em (2.1)
+                    fill=maincolor,         % Preenchimento com a cor base definida em (2)
+                    text=preto,        % Deixa o texto com a cor preta definida em (2)
                     minimum size=0.65cm,    % Diâmetro do círculo
                     inner sep=0pt,          % Remove espaçamento interno
                     font=\small\bfseries    % Define fonte
