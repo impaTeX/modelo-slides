@@ -47,10 +47,8 @@
 
             \hfill  % Garante que o texto fique na esquerda e a logo na direita
 
-            % 3.2 Logo
-            \includegraphics[           % Insere a imagem da logo
-                height=0.8cm            % Altura da logo
-            ]{../images/logo_03.png}    % Logo/arquivo de imagem
+            % 3.2 Logo (Puxa do .tex principal)
+            \insertlogo
 
             \hspace*{0.8cm} % Adiciona margem da logo com a borda direita da página
         }
@@ -71,7 +69,7 @@
             % Evita divisão por zero
             \ifnum\inserttotalframenumber>0
                 % Calcula a largura da barra preta proporcionalmente ao slide atual
-                \rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}
+                \textcolor{progresscolor}{\rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}
             \else
                 % Fallback
                 \rule{0pt}{3pt}
