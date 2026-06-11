@@ -32,6 +32,8 @@
 \setbeamercolor{date}{fg=darkgray}
 % Define a cor do Instituto
 \setbeamercolor{institute}{fg=darkgray}
+% Define a cor do highlight de texto
+\definecolor{hlColor}{HTML}{FFC555}
 
 
 \setbeamertemplate{title page}{
@@ -163,7 +165,7 @@
 
 % Configurações de Frames Especiais
 
-%% STANDOUT FRAME (opção de frame, estilo Metropolis)
+%% STANDOUT FRAME
 \providebool{slidestech@standout}
 
 \def\slidestech@standout@fg{black}
@@ -211,6 +213,30 @@
   \Large\bfseries
 }{%
   \end{tcolorbox}%
+}
+
+% DESTAQUE EM PILULA (combinado que seria em amarelo)
+\newcommand{\pill}[2][dados300]{%
+  \tcbox[%
+    on line,
+    arc=4pt,
+    colback=#1,
+    colframe=#1,
+    boxsep=0pt,
+    left=3pt, right=3pt,
+    top=1.5pt, bottom=1.5pt,
+    boxrule=0pt,
+  ]{#2}%
+}
+
+% Variante em negrito
+\newcommand{\pillbf}[2][dados300]{%
+  \pill[#1]{\textbf{#2}}%
+}
+
+% HIGHLIGHT TEXTO EM NEGRITO
+\newcommand{\hl}[2][hlColor]{%
+  \textcolor{#1}{\textbf{#2}}%
 }
 
 % Configuração de Estilo dos Blocos
