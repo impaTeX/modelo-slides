@@ -66,9 +66,14 @@
     \nointerlineskip
 
     \begin{beamercolorbox}[
-        wd=0.2\paperwidth,  % Largura de 20% da página
+        wd=\paperwidth,     % Largura
         ht=3pt,             % Espessura
+        leftskip=0pt,
+        rightskip=0pt,
+        sep=0pt
     ]{}
+    
+        \rule{0.20\paperwidth}{3pt} % Faz a barra preencher apenas 20% da largura
 
     \end{beamercolorbox}
 
