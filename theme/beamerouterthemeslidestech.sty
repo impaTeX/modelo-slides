@@ -42,43 +42,50 @@
         % Cria uma linha horizontal do tamanho do slide (para conter os elementos)
         \hbox to \paperwidth{
 
-            % 3.1.1 Fonte
-            \raisebox{0.3cm}{   % Centraliza o título
+            \raisebox{0.3cm}{               % Centraliza o título
                 {\usebeamerfont{frametitle} % Puxa fonte padrão para títulos
-                 \bfseries  % Negrito
-                 \Large     % Deixa grande
-                 \insertframetitle} % Insere o texto
+                 \bfseries                  % Negrito
+                 \Large                     % Deixa grande
+                 \insertframetitle}         % Insere o texto
             }
 
             \hfill  % Garante que o texto fique na esquerda e a logo na direita
 
             % 3.2 Logo
-            \includegraphics[   % Insere a imagem da logo
-                height=0.8cm    % Altura da logo
-            ]{../images/logo_03.png}      % Logo/arquivo de imagem
+            \includegraphics[           % Insere a imagem da logo
+                height=0.8cm            % Altura da logo
+            ]{../images/logo_03.png}    % Logo/arquivo de imagem
 
             \hspace*{0.8cm} % Adiciona margem da logo com a borda direita da página
         }
 
     \end{beamercolorbox}
 
-    % 3.3 Linha de enfeite (a preta abaixo do título)
-    \nointerlineskip
+    % 3.3 Barra de Progresso
+        \nointerlineskip
 
-    \begin{beamercolorbox}[
-        wd=\paperwidth,     % Largura
-        ht=3pt,             % Espessura
-        leftskip=0pt,
-        rightskip=0pt,
-        sep=0pt
-    ]{}
-    
-        \rule{0.20\paperwidth}{3pt} % Faz a barra preencher apenas 20% da largura
+        \begin{beamercolorbox}[
+            wd=\paperwidth,     % A caixa ocupa a largura total da página
+            ht=3pt,             % Espessura da barra
+            leftskip=0pt,
+            rightskip=0pt,
+            sep=0pt
+        ]{}
+        
+            % Evita divisão por zero
+            \ifnum\inserttotalframenumber>0
+                % Calcula a largura da barra preta proporcionalmente ao slide atual
+                \rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}
+            \else
+                % Fallback
+                \rule{0pt}{3pt}
+            \fi
 
-    \end{beamercolorbox}
+        \end{beamercolorbox}
 
     % Espaço abaixo da linha para evitar que ela entre em contato com o conteúdo
     \vspace{0.15cm}
+
 }
 % =====================================================================================
 
