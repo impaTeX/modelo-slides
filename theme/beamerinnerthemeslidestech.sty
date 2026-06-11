@@ -1,0 +1,333 @@
+%% This is file 'beamerinnerthemeslidestech.sty'
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeslidestech}[16/05/2026 SlidesTech inner theme]
+\RequirePackage{etoolbox}
+\RequirePackage{keyval}
+\RequirePackage{calc}
+\RequirePackage{pgfopts}
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\RequirePackage[most]{tcolorbox}
+\usetikzlibrary{calc} 
+\tcbuselibrary{breakable}
+
+
+
+%% TITLE PAGE
+%% Definindo a capa do template
+
+% Definindo algumas cores temporariamente aqui (será definido no colortheme depois)
+\definecolor{mainColor}{HTML}{CCC4AF} 
+\definecolor{lineColor}{HTML}{000000}
+\definecolor{alertTitle}{HTML}{ffc555}
+\definecolor{alertBody}{HTML}{faf7ed}
+\definecolor{exampleTitle}{HTML}{7bee1b}
+\definecolor{exampleBody}{HTML}{e9fed8}
+\definecolor{theoremTitle}{HTML}{d646c7}
+\definecolor{theoremBody}{HTML}{ffe9fd}
+% Define a cor do Autor
+\setbeamercolor{author}{fg=darkgray} 
+% Define a cor da Data
+\setbeamercolor{date}{fg=darkgray}
+% Define a cor do Instituto
+\setbeamercolor{institute}{fg=darkgray}
+
+
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \usebeamertemplate*{title separator}
+
+    \vspace*{0.28\paperheight}
+    
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+\def\maketitle{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain,noframenumbering]{\titlepage}
+  \fi
+}
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+\setbeamertemplate{title graphic}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north west, inner sep=0pt] 
+      at ([xshift=1cm, yshift=-1cm]current page.north west) 
+      {\inserttitlegraphic};
+  \end{tikzpicture}
+}
+\setbeamertemplate{title}{
+  \raggedright%
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+  \raggedright%
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+
+\newlength{\slidestech@titleseparator@linewidth}
+\setlength{\slidestech@titleseparator@linewidth}{2pt}
+\setbeamertemplate{title separator}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[mainColor] 
+      (current page.north west) 
+      rectangle 
+      ([yshift=1/3*\paperheight]current page.south east);
+    \fill[black] ([yshift=1/3*\paperheight]current page.south west) 
+      rectangle 
+      ([yshift=1/3*\paperheight + \slidestech@titleseparator@linewidth]current page.south east);
+  \end{tikzpicture}%
+  \par%
+}
+\setbeamertemplate{author}{
+  \vspace*{3.5em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
+}
+\setbeamertemplate{date}{
+  \insertdate%
+  \par%
+}
+\setbeamertemplate{institute}{
+  \vspace*{3mm}
+  \insertinstitute%
+  \par%
+}
+
+
+% Definindo Table of Contents (ToC) (Conversar com o grupo sobre a estética)
+\setbeamertemplate{sections/subsections in toc}[square]
+
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=2.7em%
+  \usebeamerfont{subsection in toc}%
+  \rlap{\hskip-1.5em\raise.2ex\hbox{\small$\bullet$}}%
+  \inserttocsubsection\par%
+}
+
+% ESSAS DEFINIÇÔES SÂO NO COLORTHEME
+% Cor do quadrado
+\setbeamercolor{section number projected}{bg=mainColor, fg=black}
+% Cor do texto da seção no sumário
+\setbeamercolor{section in toc}{fg=black}
+% Cor da subsecção
+\setbeamercolor{subsection in toc}{fg=black}
+
+% Definindo o itemize (apenas um teste, pois ainda não foi conversado em grupo)
+\setbeamertemplate{itemize item}{
+  \tikz\draw[mainColor, fill=mainColor] circle (0.13cm);
+}
+\setbeamertemplate{itemize subitem}{
+  \tikz\draw[mainColor, line width=0.8pt] circle (0.10cm);
+}
+\setbeamertemplate{itemize subsubitem}{
+  \tikz\draw[mainColor, fill=mainColor] circle (0.06cm);
+}
+
+% Definindo o enumerate (apenas um teste, pois ainda não foi conversado em grupo)
+\setbeamertemplate{enumerate item}{%
+  \tikz\node[fill=mainColor, text=black, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.32cm] {\insertenumlabel};%
+}
+\setbeamertemplate{enumerate subitem}{%
+  \tikz\node[draw=mainColor, line width=0.8pt, text=mainColor, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.28cm] {\insertenumlabel};%
+}
+\setbeamertemplate{enumerate subsubitem}{%
+  \tikz\node[fill=mainColor!50, text=black!70, font=\tiny\bfseries,
+    inner sep=2pt, minimum size=0.24cm] {\insertenumlabel};%
+}
+
+% DEFINIÇÔES DO COLORTHEME
+\setbeamercolor{itemize item}{fg=mainColor}
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{itemize subsubitem}{fg=gray}
+
+% Configurações de Frames Especiais
+
+%% STANDOUT FRAME (opção de frame, estilo Metropolis)
+\providebool{slidestech@standout}
+
+\def\slidestech@standout@fg{black}
+
+\pgfkeys{
+  /slidestech/standout/.cd,
+  fg/.store in=\slidestech@standout@fg,
+}
+
+\define@key{beamerframe}{standout}[]{%
+  \booltrue{slidestech@standout}%
+  \def\slidestech@standout@fg{black}%
+  \pgfkeys{/slidestech/standout/.cd, #1}%
+  \begingroup%
+    \setkeys{beamerframe}{c}%
+    \setkeys{beamerframe}{plain}%
+    \setkeys{beamerframe}{noframenumbering}%
+    \setbeamertemplate{headline}{}%
+    \setbeamertemplate{footline}{}%
+    \setbeamertemplate{navigation symbols}{}%
+    \setbeamertemplate{sidebar right}{}%
+    \setbeamertemplate{sidebar left}{}%
+    \setbeamercolor{background canvas}{bg=white}%
+  \centering%
+  \Large\bfseries%
+  \color{\slidestech@standout@fg}%
+}
+
+\apptocmd{\beamer@reseteecodes}{%
+  \ifbool{slidestech@standout}{%
+    \endgroup%
+    \boolfalse{slidestech@standout}%
+  }{}%
+}{}{}
+
+\newenvironment{standoutbox}[1][maincolor]{%
+  \begin{tcolorbox}[
+    enhanced, rounded corners,
+    boxrule=1.5pt,
+    colback=#1!20, colframe=#1, coltitle=black,
+    left=12pt, right=12pt, top=10pt, bottom=10pt, middle=0pt,
+    halign=flush center,
+    width=0.75\textwidth
+  ]%
+  \Large\bfseries
+}{%
+  \end{tcolorbox}%
+}
+
+% Configuração de Estilo dos Blocos
+
+\setbeamercolor{qed symbol}{fg=gray, bg=gray!50}
+
+% Bloco Padrão
+\defbeamertemplate{block begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,               
+    boxrule=0.8pt,                
+    colback=white,          % Cor do fundo do corpo
+    colframe=mainColor,           % Cor do contorno e do título
+    coltitle=black,               % Cor do texto do título
+    fonttitle=\bfseries,          % Título em negrito
+    left=5pt, right=5pt, top=5pt, bottom=5pt, % Espaçamento interno
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+\defbeamertemplate{block end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Alerta
+\defbeamertemplate{block alerted begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,
+    boxrule=0.8pt,
+    colback=alertBody,
+    colframe=alertTitle,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+
+\defbeamertemplate{block alerted end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Exemplo
+\defbeamertemplate{block example begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,
+    boxrule=0.8pt,
+    colback=exampleBody,
+    colframe=exampleTitle,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=\insertblocktitle
+  ]
+}
+\defbeamertemplate{block example end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de Teorema
+
+\defbeamertemplate{theorem begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,                
+    boxrule=0.8pt,              
+    colback=theoremBody,       
+    colframe=theoremTitle,     
+    coltitle=white,         
+    fonttitle=\bfseries,      
+    left=5pt, right=5pt, top=5pt, bottom=5pt, 
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=Teorema
+  ]
+}
+\defbeamertemplate{theorem end}{slidestech}{\end{tcolorbox}}
+
+% Bloco de prova
+
+\defbeamertemplate{proof begin}{slidestech}{
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    rounded corners,               
+    boxrule=0.8pt,              
+    colback=white,
+    colbacktitle = white,
+    colframe=gray,       
+    coltitle=gray,   
+    fonttitle=\bfseries,
+    attach title to upper={\par}, 
+    after title={\medskip},       
+    left=5pt, right=5pt, top=5pt, bottom=5pt,
+    middle=0pt,
+    toptitle=3pt, bottomtitle=3pt,
+    title=Prova.
+  ]
+}
+\defbeamertemplate{proof end}{slidestech}{\end{tcolorbox}}
+
+% Ativa os templates criados
+\setbeamertemplate{block begin}[slidestech]
+\setbeamertemplate{block end}[slidestech]
+\setbeamertemplate{block alerted begin}[slidestech]
+\setbeamertemplate{block alerted end}[slidestech]
+\setbeamertemplate{block example begin}[slidestech]
+\setbeamertemplate{block example end}[slidestech]
+\setbeamertemplate{theorem begin}[slidestech]
+\setbeamertemplate{theorem end}[slidestech]
+\setbeamertemplate{proof begin}[slidestech]
+\setbeamertemplate{proof end}[slidestech]
+
+% É preciso ajustar o tamanho da fonte do título e subtítulo (Será feito no fonttheme, responsável: Emilly).
