@@ -1,9 +1,11 @@
 \documentclass[aspectratio=169]{beamer}
 
-% Carrega o arquivo específico innertheme
-\useinnertheme{slidestech} 
-\usecolortheme[enfase=fisica]{slidestech}
-\setbeamercolor{title}{fg=black, bg=gray!20}
+% sectionpage=none, subsectionpage=none
+\useinnertheme[subsectionpage=progressbar]{slidestech}
+\useoutertheme{slidestech}
+% enfase=computacao, matematica, fisica, dados, padrao
+\usecolortheme[enfase=padrao]{slidestech}
+\usefonttheme{slidestech}
 
 
 \title{Testando Inner Theme}
@@ -53,15 +55,6 @@
 \end{enumerate}
 \end{frame}
 
-\section{Texto}
-
-\subsection{Texto com destaques}
-
-\begin{frame}{Texto com destaques}
-    
-Este é um texto normal. \alert{Este é um texto destacado.} E este é outro texto normal.
-\end{frame}
-
 \section{Blocos}
 
 \subsection{Teorema e Prova}
@@ -71,6 +64,10 @@ Este é um texto normal. \alert{Este é um texto destacado.} E este é outro tex
 \begin{theorem}[(Infinidade dos Primos).]
     Existem infinitos números primos.
   \end{theorem}
+
+\end{frame}
+
+\begin{frame}{Prova do Teorema}
 
   \begin{proof}
     Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
@@ -113,6 +110,24 @@ Este é um texto normal. \alert{Este é um texto destacado.} E este é outro tex
     
 \end{frame}
 
+\section{Outras implementações}
+
+\subsection{Pills e Texto de Alerta}
+
+\begin{frame}{Teste de pill}
+  O \pill{IMPA Tech} oferece o curso de graduação Bacharelado em \pill[matematica300!]{Matemática} da Tecnologia e Inovação, 
+  financiada pelo \pill[dados300]{Governo Federal} por meio do Ministério da \pill[computacao300]{Ciência}, Tecnologia e Inovação (MCTI) 
+  e do \pill[fisica300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[computacao300]{Rio de Janeiro}.
+\end{frame}
+
+\begin{frame}{Teste de pill e negrito colorido}
+   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
+   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
+   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+\end{frame}
+
+\subsection{Standout Frame}
+
 % Standout simples
 \begin{frame}[standout]
   Obrigado pela Atenção!
@@ -139,16 +154,10 @@ Este é um texto normal. \alert{Este é um texto destacado.} E este é outro tex
   \end{standoutbox}
 \end{frame}
 
-\begin{frame}{Teste de pill}
-  O \pill{IMPA Tech} oferece o curso de graduação Bacharelado em \pill[matematica300!]{Matemática} da Tecnologia e Inovação, 
-  financiada pelo \pill[dados300]{Governo Federal} por meio do Ministério da \pill[computacao300]{Ciência}, Tecnologia e Inovação (MCTI) 
-  e do \pill[fisica300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[computacao300]{Rio de Janeiro}.
-\end{frame}
-
-\begin{frame}{Teste de pill e negrito colorido}
-   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
-   \hl{doloremque} laudantium, totam rem aperiam eaque ipsa, \hl{quae ab illo} inventore 
-   veritatis et quasi architecto \hl{beatae vitae dicta sunt}, explicabo.
+\begin{frame}[standout]
+  \begin{standoutbox}
+    Obrigado!
+  \end{standoutbox}
 \end{frame}
 
 \end{document}
