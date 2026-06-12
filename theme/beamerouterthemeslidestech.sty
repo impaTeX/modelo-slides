@@ -50,32 +50,32 @@
             % 3.2 Logo (Puxa do .tex principal)
             \insertlogo
 
-            \hspace*{0.8cm} % Adiciona margem da logo com a borda direita da página
+\hspace*{0.8cm} % Adiciona margem da logo com a borda direita da página
         }
 
-    \end{beamercolorbox}
-
+    \end{beamercolorbox}%
+    %
     % 3.3 Barra de Progresso
-        \nointerlineskip
-
-        \begin{beamercolorbox}[
-            wd=\paperwidth,     % A caixa ocupa a largura total da página
-            ht=3pt,             % Espessura da barra
-            leftskip=0pt,
-            rightskip=0pt,
-            sep=0pt
-        ]{}
-        
-            % Evita divisão por zero
-            \ifnum\inserttotalframenumber>0
-                % Calcula a largura da barra preta proporcionalmente ao slide atual
-                \textcolor{progresscolor}{\rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}
-            \else
-                % Fallback
-                \rule{0pt}{3pt}
-            \fi
-
-        \end{beamercolorbox}
+    \nointerlineskip%
+    \vspace*{-0.5pt}%
+    \begin{beamercolorbox}[
+        wd=\paperwidth,     % A caixa ocupa a largura total da página
+        ht=3pt,             % Espessura da barra
+        dp=0pt,             % Profundidade
+        leftskip=0pt,
+        rightskip=0pt,
+        sep=0pt
+    ]{}%
+        \ifnum\inserttotalframenumber>0\relax
+            % Calcula a largura da barra proporcionalmente ao slide atual
+            \textcolor{progresscolor}{\rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}%
+            % Calcula a largura restante e pinta com a cor do cabeçalho
+            \textcolor{headercolor}{\rule{\dimexpr\paperwidth - \paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}%
+        \else
+            % Fallback
+            \textcolor{headercolor}{\rule{\paperwidth}{3pt}}%
+        \fi
+    \end{beamercolorbox}
 
     % Espaço abaixo da linha para evitar que ela entre em contato com o conteúdo
     \vspace{0.15cm}
@@ -98,7 +98,7 @@
         \begin{beamercolorbox}[
             wd=.88\paperwidth,  % Largura de 88% da página
             ht=.8cm,            % Altura
-            dp=.25cm,            % Profundidade
+            dp=.25cm,           % Profundidade
             left,               % Alinha a esquerda
             leftskip=0.3cm      % Adiciona uma margem com a borda esquerda da página
         ]{}
@@ -106,11 +106,11 @@
             % O \raisebox com valor negativo empurra apenas este texto para baixo
             \raisebox{-0.15cm}{%
                 \textcolor{cinza}{
-                    \small                  % Deixa o texto pequeno
+                    \small                                  % Deixa o texto pequeno
                     \insertshortauthor      % Nome do autor
-                    \ |                     % Barra de separação
+                    \ |                                     % Barra de separação
                     \insertshorttitle       % Título da apresentação
-                    \ |                     % Barra de separação
+                    \ |                                     % Barra de separação
                     \insertshortinstitute   % Nome da instituição
                 }%
             }
@@ -134,7 +134,7 @@
                 \node[
                     circle,                 % Forma círculo
                     fill=maincolor,         % Preenchimento com a cor base definida em (2)
-                    text=preto,        % Deixa o texto com a cor preta definida em (2)
+                    text=preto,             % Deixa o texto com a cor preta definida em (2)
                     minimum size=0.65cm,    % Diâmetro do círculo
                     inner sep=0pt,          % Remove espaçamento interno
                     font=\small\bfseries    % Define fonte
