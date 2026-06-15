@@ -1,6 +1,73 @@
 %% This is file 'beamerthemeimpatechslides.sty'
 
-\NeedsTexFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeimpatechslides}[16/05/2026 SlidesTech Beamer Theme]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeslidestech}[16/05/2026 SlidesTech Beamer Theme]
 \RequirePackage{etoolbox}
 \RequirePackage{pgfopts}
+
+\pgfkeys{/slidestech/.cd,
+  .search also={
+    /slidestech/inner,
+    /slidestech/color,
+    /slidestech/font,
+  }
+}
+
+\pgfkeys{
+  /slidestech/titleformat plain/.cd,
+    .is choice,
+    regular/.code={%
+      \let\slidestech@plaintitleformat\@empty%
+      \setbeamerfont{standout}{shape=\normalfont}%
+    },
+    smallcaps/.code={%
+      \let\slidestech@plaintitleformat\@empty%
+      \setbeamerfont{standout}{shape=\scshape}%
+    },
+    allsmallcaps/.code={%
+      \let\slidestech@plaintitleformat\MakeLowercase%
+      \setbeamerfont{standout}{shape=\scshape}%
+      \PackageWarning{beamerthemeslidestech}{%
+        Be aware that titleformat plain=allsmallcaps can lead to problems%
+      }
+    },
+    allcaps/.code={%
+      \let\slidestech@plaintitleformat\MakeUppercase%
+      \setbeamerfont{standout}{shape=\normalfont}%
+      \PackageWarning{beamerthemeslidestech}{%
+        Be aware that titleformat plain=allcaps can lead to problems%
+      }
+    },
+}
+\pgfkeys{
+  /slidestech/titleformat/.code=\pgfkeysalso{
+      font/titleformat title=#1,
+      font/titleformat subtitle=#1,
+      font/titleformat section=#1,
+      font/titleformat frame=#1,
+      titleformat plain=#1,
+    }
+}
+\pgfkeys{/slidestech/.cd,
+  usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
+  noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
+  usetotalslideindicator/.code=\pgfkeysalso{outer/numbering=fraction},
+  nosectionslide/.code=\pgfkeysalso{inner/sectionpage=none},
+  darkcolors/.code=\pgfkeysalso{color/background=dark},
+  blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
+}
+\newcommand{\slidestech@setdefaults}{
+  \pgfkeys{/slidestech/.cd,
+    titleformat plain=regular,
+  }
+}
+
+\useinnertheme{slidestech}
+\useoutertheme{slidestech}
+\usecolortheme{slidestech}
+\usefonttheme{slidestech}
+
+
+%\slidestech@setdefaults
+\ProcessPgfOptions{/slidestech}
+\endinput
