@@ -3,7 +3,7 @@
 % -------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamercolorthemeslidestech}[16/05/2026 SlidesTech color theme]
+\ProvidesPackage{beamercolorthemeslidestech}[2026/05/16 SlidesTech color theme]
 
 % -------------------------------------------------------------
 % DEFINIÇÃO DAS OPÇÕES DE TEMA 
@@ -11,6 +11,8 @@
 
 \RequirePackage{pgfopts}
 
+% Define a chave "enfase=" para o usuário escolher o tema
+% Opções disponíveis: padrao, matematica, dados, computacao, fisica
 \pgfkeys{
   /slidestech/color/enfase/.cd,
     .is choice,
@@ -25,69 +27,75 @@
 % PALETA DE CORES 
 % -------------------------------------------------------------
 
+% Lógica da Escala Numérica:
+% > Cor100: Tom claro -> Fundo do corpo dos blocos
+% > Cor200: Tom intermediário -> Fundo da barra de progresso entre páginas
+% > Cor300: Tom oficial -> Identidade principal do tema 
+% > Cor400: Tom forte -> Fundo do cabeçalho dos blocos
+
 % --- Paleta neutra ---
 
 \definecolor{preto}{HTML}{000000}
 \definecolor{branco}{HTML}{FFFFFF}
 \definecolor{cinza}{HTML}{A6A6A6}
-\definecolor{bege100}{HTML}{FAF7ED} 
-\definecolor{bege300}{HTML}{CCC4AF} % Oficial
 
-% --- Paleta de Matemática ---
+% --- Paleta padrão (Bege) ---
+
+\definecolor{bege100}{HTML}{FAF7ED} 
+\definecolor{bege300}{HTML}{CCC4AF} 
+
+% --- Paleta de Matemática (Rosa) ---
 
 \definecolor{matematica100}{HTML}{FFE9FD} 
 \definecolor{matematica200}{HTML}{F59FED} 
-\definecolor{matematica300}{HTML}{FF8AEF}  % Oficial
+\definecolor{matematica300}{HTML}{FF8AEF}  
 \definecolor{matematica400}{HTML}{D646C7} 
 
-% --- Paleta de Dados ---
+% --- Paleta de Dados (Amarelo) ---
 
-\definecolor{dados300}{HTML}{ECF47A} % Oficial
+\definecolor{dados300}{HTML}{ECF47A}
 \definecolor{dados400}{HTML}{C4CC5B} 
 
-% --- Paleta de Computação ---
+% --- Paleta de Computação (Laranja) ---
 
 \definecolor{computacao100}{HTML}{FFEED9} 
 \definecolor{computacao200}{HTML}{F7CB80}
-\definecolor{computacao300}{HTML}{FFC555} % Oficial
+\definecolor{computacao300}{HTML}{FFC555} 
 \definecolor{computacao400}{HTML}{FCA72B} 
 
-% --- Paleta de Física ---
+% --- Paleta de Física (Verde) ---
 
 \definecolor{fisica100}{HTML}{E9FED8}
 \definecolor{fisica200}{HTML}{B2E18B}
-\definecolor{fisica300}{HTML}{BEFF8B} % Oficial
+\definecolor{fisica300}{HTML}{BEFF8B} 
 \definecolor{fisica400}{HTML}{7BEE1B}
 
 % -------------------------------------------------------------
 % CONFIGURAÇÃO DE CADA TEMA 
 % -------------------------------------------------------------
 
-% --- Tema de Ênfase Padrão (Bege) ---
+% Estrutura de Atribuição das Cores:
+% > maincolor: Cor principal do tema (usada na capa, sumários, cabeçalhos e numeração de seções)
+% > headercolor / textheadercolor: Fundo do cabeçalho do slide e cor do seu texto
+% > progresscolor / backgroundprogresscolor: Barra de progresso e seu fundo
+% > blocktitlecolor / blocktextcolor: Cabeçalho do bloco padrão e cor do seu texto
+
+% --- Tema de Ênfase Padrão ---
 
 \newcommand{\slidestech@enfase@padrao}{
 
-    % >> Cor principal 
-
     \colorlet{maincolor}{bege300}
-
-    % >> Cores da header, texto do header e barra de progresso
 
     \colorlet{headercolor}{bege300}
     \colorlet{textheadercolor}{preto}
     \colorlet{progresscolor}{preto}
-
-    % >> Barra de progresso na página de seção
-
     \colorlet{backgroundprogresscolor}{bege300!70}
-
-    % >> Cores do bloco padrão
 
     \colorlet{blocktitlecolor}{bege300}
     \colorlet{blocktextcolor}{preto}
 }
 
-% --- Tema de Ênfase de Matemática (Rosa) ---
+% --- Tema de Ênfase de Matemática ---
 
 \newcommand{\slidestech@enfase@matematica}{
     \colorlet{maincolor}{matematica300}
@@ -95,14 +103,13 @@
     \colorlet{headercolor}{preto}
     \colorlet{textheadercolor}{branco}
     \colorlet{progresscolor}{matematica300}
-
     \colorlet{backgroundprogresscolor}{matematica300!75}
 
     \colorlet{blocktitlecolor}{preto}
     \colorlet{blocktextcolor}{branco}
 }
 
-% --- Tema de Ênfase de Dados (Amarelo) ---
+% --- Tema de Ênfase de Dados ---
 
 \newcommand{\slidestech@enfase@dados}{
     \colorlet{maincolor}{dados300}
@@ -110,14 +117,13 @@
     \colorlet{headercolor}{preto}
     \colorlet{textheadercolor}{branco}
     \colorlet{progresscolor}{dados300}
-
     \colorlet{backgroundprogresscolor}{dados300!40}
 
     \colorlet{blocktitlecolor}{preto}
     \colorlet{blocktextcolor}{branco}
 }
 
-% --- Tema de Ênfase de Computação (Laranja) ---
+% --- Tema de Ênfase de Computação ---
 
 \newcommand{\slidestech@enfase@computacao}{
     \colorlet{maincolor}{computacao300}
@@ -125,14 +131,13 @@
     \colorlet{headercolor}{preto}
     \colorlet{textheadercolor}{branco}
     \colorlet{progresscolor}{computacao300}
-
     \colorlet{backgroundprogresscolor}{computacao300!70}
 
     \colorlet{blocktitlecolor}{preto}
     \colorlet{blocktextcolor}{branco}
 }
 
-% --- Tema de Ênfase de Física (Verde) ---
+% --- Tema de Ênfase de Física ---
 
 \newcommand{\slidestech@enfase@fisica}{
     \colorlet{maincolor}{fisica300}
@@ -140,7 +145,6 @@
     \colorlet{headercolor}{preto}
     \colorlet{textheadercolor}{branco}
     \colorlet{progresscolor}{fisica300}
-
     \colorlet{backgroundprogresscolor}{fisica300!59}
     
     \colorlet{blocktitlecolor}{preto}
@@ -148,155 +152,108 @@
 }
 
 % -------------------------------------------------------------
-% ELEMENTOS DO BEAMER
+% TEXTO E ESTRUTURA GERAL
 % -------------------------------------------------------------
 
-% --- Texto normal e estrutura ---
+% --- Texto normal e estrutura base ---
 
-\setbeamercolor{normal text}{
-    fg=preto, 
-    bg=branco
-}
-
-\setbeamercolor{structure}{
-    fg=preto, 
-    bg=preto
-}
+\setbeamercolor{normal text}{fg=preto, bg=branco}
+\setbeamercolor{structure}{fg=preto}
 
 % --- Capa ---
 
-\setbeamercolor{titlelike}{
-    use=preto, 
-    parent=branco
-}
-
-\setbeamercolor{author}{
-    use=preto, 
-    parent=preto
-}
-
-\setbeamercolor{date}{
-    use=preto, 
-    parent=preto
-}
-
-\setbeamercolor{institute}{
-    use=preto, 
-    parent=preto
-}
+\setbeamercolor{titlelike}{use=preto, parent=branco}
+\setbeamercolor{author}{use=preto, parent=preto}
+\setbeamercolor{date}{use=preto, parent=preto}
+\setbeamercolor{institute}{use=preto, parent=preto}
 
 % --- Sumário ---
 
-\setbeamercolor{section number projected}{
-    bg=maincolor, 
-    fg=preto
-}
-
+\setbeamercolor{section number projected}{bg=maincolor, fg=preto}
 \setbeamercolor{section in toc}{fg=preto}
 \setbeamercolor{subsection in toc}{fg=preto}
 
-% --- Lista ---
+% --- Lista (Itemize e Enumerate) ---
 
 \setbeamercolor{itemize item}{fg=maincolor}
 \setbeamercolor{itemize subitem}{fg=preto}
 \setbeamercolor{itemize subsubitem}{fg=cinza}
 
-% --- Destaque ---
+% --- Texto em Destaque ---
 
 \setbeamercolor{alerted text}{fg=computacao300}
 
-% --- Blocos (definidos no innertheme) ---
+% -------------------------------------------------------------
+% CABEÇALHO (HEADLINE)
+% -------------------------------------------------------------
 
-% >> Bloco Padrão
+% --- Fundo do Cabeçalho ---
 
-\setbeamercolor{block title}{
-    fg=blocktextcolor, 
-    bg=blocktitlecolor
-} 
+\setbeamercolor{header}{bg=headercolor,fg=branco}
 
-\setbeamercolor{block body}{
-    fg=preto,
-    bg=branco
-}
+% --- Barra de Progresso ---
 
-% >> Bloco de Alerta
+\setbeamercolor{progress bar}{bg=progresscolor,fg=branco}
 
-\setbeamercolor{block title alerted}{
-    fg=preto, 
-    bg=computacao400
-}
+% -------------------------------------------------------------
+% AMBIENTES DE BLOCOS
+% -------------------------------------------------------------
 
-\setbeamercolor{block body alerted}{
-    fg=preto, 
-    bg=computacao100
-}
+% --- Bloco Padrão ---
 
-% >> Bloco de Exemplo
+% O cabeçalho tem cor bege (no tema padrão) ou preta (nas demais ênfases),
+% sendo o corpo do bloco branco (para todos os temas).
+\setbeamercolor{block title}{fg=blocktextcolor, bg=blocktitlecolor} 
+\setbeamercolor{block body}{fg=preto,bg=branco}
 
-\setbeamercolor{block title example}{
-    fg=preto, 
-    bg=fisica400
-}
+% --- Bloco de Alerta ---
 
-\setbeamercolor{block body example}{
-    fg=preto, 
-    bg=fisica100
-}
+% Mesma estrutura para todos os temas, com tons de laranja.
+\setbeamercolor{block title alerted}{fg=preto, bg=computacao400}
+\setbeamercolor{block body alerted}{fg=preto, bg=computacao100}
 
-% >> Bloco de Teorema 
+% --- Bloco de Exemplo ---
 
-\setbeamercolor{block title theorem}{
-    fg=branco, 
-    bg=matematica400
-}
+% Mesma estrutura para todos os temas, com tons de verde.
+\setbeamercolor{block title example}{fg=preto, bg=fisica400}
+\setbeamercolor{block body example}{fg=preto, bg=fisica100}
 
-\setbeamercolor{block body theorem}{
-    fg=preto, 
-    bg=matematica100
-}
+% --- Bloco de Teorema ---
 
-% >> Bloco de Prova 
+% Mesma estrutura para todos os temas, com tons de rosa.
+\setbeamercolor{block title theorem}{fg=branco, bg=matematica400}
+\setbeamercolor{block body theorem}{fg=preto, bg=matematica100}
 
-\setbeamercolor{block title proof}{
-    fg=preto!60, 
-    bg=cinza
-}
+% --- Bloco de Prova ---
 
-\setbeamercolor{block body proof}{
-    fg=preto, 
-    bg=branco
-}
+% Mesma estrutura para todos os temas, com tons de cinza.
+\setbeamercolor{block title proof}{fg=preto!60, bg=cinza}
+\setbeamercolor{block body proof}{fg=preto, bg=branco}
 
-% --- Cabeçalho, barra de progresso e barra de seção ---
+% -------------------------------------------------------------
+% SÍMBOLOS
+% -------------------------------------------------------------
 
-\setbeamercolor{header}{
-    bg=headercolor,
-    fg=branco
-}
+% --- QED ---
 
-\setbeamercolor{progress bar}{
-    bg=progresscolor,
-    fg=branco
-}
-
-% --- Símbolos ---
-
-% >> QED
-
-\setbeamercolor{qed symbol}{
-    fg=cinza, 
-    bg=cinza
-}
+\setbeamercolor{qed symbol}{fg=cinza, bg=cinza}
 
 % -------------------------------------------------------------
 % PROCESSAMENTO DAS OPÇÕES
 % -------------------------------------------------------------
 
+% Define o tema padrao (Bege) como fallback, caso o usuário 
+% não declare a ênfase no preâmbulo do arquivo principal.
 \newcommand{\slidestech@color@setdefaults}{
   \pgfkeys{/slidestech/color/.cd, enfase=padrao}
 }
 
+% Aplica a configuração definida acima
 \slidestech@color@setdefaults
+
+% Sobrescreve as cores do tema com base na ênfase escolhida pelo usuário.
 \ProcessPgfPackageOptions{/slidestech/color}
+
+% Finaliza a leitura do arquivo 
 \mode<all>
 \endinput
