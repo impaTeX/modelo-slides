@@ -1,11 +1,13 @@
-%% This is file 'beamercolorthemeslidestech.sty'
-
-% 1. REQUISITOS BÁSICOS
+% -------------------------------------------------------------
+% REQUISITOS BÁSICOS 
+% -------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamercolorthemeslidestech}[16/05/2026 SlidesTech color theme]
 
-% 2. DEFINIÇÃO DAS OPÇÕES DE TEMA
+% -------------------------------------------------------------
+% DEFINIÇÃO DAS OPÇÕES DE TEMA 
+% -------------------------------------------------------------
 
 \RequirePackage{pgfopts}
 
@@ -19,9 +21,11 @@
     fisica/.code={\slidestech@enfase@fisica},
 }
 
-% 3. PALETA DE CORES
+% -------------------------------------------------------------
+% PALETA DE CORES 
+% -------------------------------------------------------------
 
-% 3.1. Paleta neutra
+% --- Paleta neutra ---
 
 \definecolor{preto}{HTML}{000000}
 \definecolor{branco}{HTML}{FFFFFF}
@@ -29,59 +33,61 @@
 \definecolor{bege100}{HTML}{FAF7ED} 
 \definecolor{bege300}{HTML}{CCC4AF} % Oficial
 
-% 3.2. Paleta de Matemática
+% --- Paleta de Matemática ---
 
 \definecolor{matematica100}{HTML}{FFE9FD} 
 \definecolor{matematica200}{HTML}{F59FED} 
 \definecolor{matematica300}{HTML}{FF8AEF}  % Oficial
 \definecolor{matematica400}{HTML}{D646C7} 
 
-% 3.3. Paleta de Dados
+% --- Paleta de Dados ---
 
 \definecolor{dados300}{HTML}{ECF47A} % Oficial
 \definecolor{dados400}{HTML}{C4CC5B} 
 
-% 3.4. Paleta de Computação
+% --- Paleta de Computação ---
 
 \definecolor{computacao100}{HTML}{FFEED9} 
 \definecolor{computacao200}{HTML}{F7CB80}
 \definecolor{computacao300}{HTML}{FFC555} % Oficial
 \definecolor{computacao400}{HTML}{FCA72B} 
 
-% 3.5. Paleta de Física
+% --- Paleta de Física ---
 
 \definecolor{fisica100}{HTML}{E9FED8}
 \definecolor{fisica200}{HTML}{B2E18B}
 \definecolor{fisica300}{HTML}{BEFF8B} % Oficial
 \definecolor{fisica400}{HTML}{7BEE1B}
 
-% 4. CONFIGURAÇÃO DE CADA TEMA 
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DE CADA TEMA 
+% -------------------------------------------------------------
 
-% 4.1. Tema de Ênfase Padrão (Bege)
+% --- Tema de Ênfase Padrão (Bege) ---
 
 \newcommand{\slidestech@enfase@padrao}{
 
-    % 4.1.1. Cor principal 
+    % >> Cor principal 
 
     \colorlet{maincolor}{bege300}
 
-    % 4.1.2. Cores da header, texto do header e barra de progresso
+    % >> Cores da header, texto do header e barra de progresso
 
     \colorlet{headercolor}{bege300}
     \colorlet{textheadercolor}{preto}
     \colorlet{progresscolor}{preto}
 
-    % 4.1.3. Barra de progresso na página de seção
+    % >> Barra de progresso na página de seção
 
     \colorlet{backgroundprogresscolor}{bege300!70}
 
-    % 4.1.4. Cores do bloco padrão
+    % >> Cores do bloco padrão
 
     \colorlet{blocktitlecolor}{bege300}
     \colorlet{blocktextcolor}{preto}
 }
 
-% 4.2. Tema de Ênfase de Matemática (Rosa)
+% --- Tema de Ênfase de Matemática (Rosa) ---
 
 \newcommand{\slidestech@enfase@matematica}{
     \colorlet{maincolor}{matematica300}
@@ -96,7 +102,7 @@
     \colorlet{blocktextcolor}{branco}
 }
 
-% 4.3. Tema de Ênfase de Dados (Amarelo)
+% --- Tema de Ênfase de Dados (Amarelo) ---
 
 \newcommand{\slidestech@enfase@dados}{
     \colorlet{maincolor}{dados300}
@@ -111,7 +117,7 @@
     \colorlet{blocktextcolor}{branco}
 }
 
-% 4.4. Tema de Ênfase de Computação (Laranja)
+% --- Tema de Ênfase de Computação (Laranja) ---
 
 \newcommand{\slidestech@enfase@computacao}{
     \colorlet{maincolor}{computacao300}
@@ -126,7 +132,7 @@
     \colorlet{blocktextcolor}{branco}
 }
 
-% 4.5. Tema de Ênfase de Física (Verde)
+% --- Tema de Ênfase de Física (Verde) ---
 
 \newcommand{\slidestech@enfase@fisica}{
     \colorlet{maincolor}{fisica300}
@@ -141,9 +147,11 @@
     \colorlet{blocktextcolor}{branco}
 }
 
-% 5. ELEMENTOS DO BEAMER
+% -------------------------------------------------------------
+% ELEMENTOS DO BEAMER
+% -------------------------------------------------------------
 
-% 5.1. Texto normal e estrutura
+% --- Texto normal e estrutura ---
 
 \setbeamercolor{normal text}{
     fg=preto, 
@@ -155,7 +163,7 @@
     bg=preto
 }
 
-% 5.2. Capa
+% --- Capa ---
 
 \setbeamercolor{titlelike}{
     use=preto, 
@@ -177,7 +185,7 @@
     parent=preto
 }
 
-% 5.3. Sumário
+% --- Sumário ---
 
 \setbeamercolor{section number projected}{
     bg=maincolor, 
@@ -187,19 +195,19 @@
 \setbeamercolor{section in toc}{fg=preto}
 \setbeamercolor{subsection in toc}{fg=preto}
 
-% 5.4. Lista
+% --- Lista ---
 
 \setbeamercolor{itemize item}{fg=maincolor}
 \setbeamercolor{itemize subitem}{fg=preto}
 \setbeamercolor{itemize subsubitem}{fg=cinza}
 
-% 5.5. Destaque
+% --- Destaque ---
 
 \setbeamercolor{alerted text}{fg=computacao300}
 
-% 5.6. Blocos (definidos no innertheme)
+% --- Blocos (definidos no innertheme) ---
 
-% 5.6.1. Bloco Padrão
+% >> Bloco Padrão
 
 \setbeamercolor{block title}{
     fg=blocktextcolor, 
@@ -211,7 +219,7 @@
     bg=branco
 }
 
-% 5.6.2. Bloco de Alerta
+% >> Bloco de Alerta
 
 \setbeamercolor{block title alerted}{
     fg=preto, 
@@ -223,7 +231,7 @@
     bg=computacao100
 }
 
-% 5.6.3. Bloco de Exemplo
+% >> Bloco de Exemplo
 
 \setbeamercolor{block title example}{
     fg=preto, 
@@ -235,7 +243,7 @@
     bg=fisica100
 }
 
-% 5.6.4. Bloco de Teorema 
+% >> Bloco de Teorema 
 
 \setbeamercolor{block title theorem}{
     fg=branco, 
@@ -247,7 +255,7 @@
     bg=matematica100
 }
 
-% 5.6.5. Bloco de Prova 
+% >> Bloco de Prova 
 
 \setbeamercolor{block title proof}{
     fg=preto!60, 
@@ -259,7 +267,7 @@
     bg=branco
 }
 
-% 5.7. Cabeçalho, barra de progresso e barra de seção
+% --- Cabeçalho, barra de progresso e barra de seção ---
 
 \setbeamercolor{header}{
     bg=headercolor,
@@ -271,16 +279,18 @@
     fg=branco
 }
 
-% 5.8. Símbolos
+% --- Símbolos ---
 
-% 5.8.1. QED
+% >> QED
 
 \setbeamercolor{qed symbol}{
     fg=cinza, 
     bg=cinza
 }
 
-% 6. PROCESSAMENTO DAS OPÇÕES
+% -------------------------------------------------------------
+% PROCESSAMENTO DAS OPÇÕES
+% -------------------------------------------------------------
 
 \newcommand{\slidestech@color@setdefaults}{
   \pgfkeys{/slidestech/color/.cd, enfase=padrao}
