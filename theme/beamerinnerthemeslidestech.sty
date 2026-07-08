@@ -347,7 +347,7 @@
 }
 
 % -------------------------------------------------------------
-% COMPONENTES VISUAIS (PILLS)
+% COMPONENTES VISUAIS (PILLS E FOOTNOTE)
 % -------------------------------------------------------------
 
 % Destacador de texto em formato de cápsula arredondada
@@ -367,6 +367,12 @@
 % Variante da pílula aplicando negrito automático no texto inserido
 \newcommand{\pillbf}[2][data300]{%
   \pill[#1]{\textbf{#2}}%
+}
+
+% Redefinição do template de footnote
+\setbeamertemplate{footnote}{%
+  \makebox[1em][l]{\insertfootnotemark}\insertfootnotetext\par%
+  \vskip-10pt
 }
 
 % -------------------------------------------------------------
