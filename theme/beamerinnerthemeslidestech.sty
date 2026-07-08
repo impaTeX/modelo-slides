@@ -1,7 +1,10 @@
-%% This is file 'beamerinnerthemeslidestech.sty'
+% -------------------------------------------------------------
+% REQUISITOS BÁSICOS 
+% -------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerinnerthemeslidestech}[16/05/2026 SlidesTech inner theme]
+
 \RequirePackage{etoolbox}
 \RequirePackage{keyval}
 \RequirePackage{calc}
@@ -9,11 +12,17 @@
 \RequirePackage{tikz}
 \RequirePackage{ifthen}
 \RequirePackage[most]{tcolorbox}
+
+% Carrega as bibliotecas necessárias para as formas geométricas e blocos flexíveis
 \usetikzlibrary{calc} 
 \tcbuselibrary{breakable}
 
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DE CHAVES E OPÇÕES DO TEMA
+% -------------------------------------------------------------
 
-% Criando as chaves de configuração para Section e Subsection
+% Define as opções de comportamento para as páginas de Seção (Section Page)
+% Opções: none (desativa a página) ou progressbar (exibe a página com a barra de progresso)
 \pgfkeys{    
   /slidestech/inner/sectionpage/.cd,
     .is choice,
@@ -22,6 +31,8 @@
                       \setbeamertemplate{section page}[slidestech]},
 }
 
+% Define as opções de comportamento para as páginas de Subseção (Subsection Page)
+% Opções: none (desativa a página) ou progressbar (exibe a página com a barra de progresso)
 \pgfkeys{
   /slidestech/inner/subsectionpage/.cd,
     .is choice,
@@ -30,7 +41,12 @@
                       \setbeamertemplate{subsection page}[slidestech]},
 }
 
-% Padrão: Seção ativada com barra, subseção desativada
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DE VALORES PADRÃO
+% -------------------------------------------------------------
+
+% Default: Página de seção ativada com barra de progresso,
+% página de subseção desativada por padrão.
 \newcommand{\slidestech@inner@setdefaults}{
   \pgfkeys{/slidestech/inner/.cd,
     sectionpage=progressbar,
@@ -38,8 +54,11 @@
   }
 }
 
-%% TITLE PAGE
-%% Definindo a capa do template
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DA CAPA (TITLE PAGE)
+% -------------------------------------------------------------
+
+% --- Layout Geral da Capa ---
 
 \setbeamertemplate{title page}{
   \begin{minipage}[b][\paperheight]{\textwidth}
@@ -58,6 +77,8 @@
     \vspace*{1mm}
   \end{minipage}
 }
+
+% Redefinição dos comandos internos para carregar a capa em modo plain (sem barras/cabeçalhos)
 \def\maketitle{%
   \ifbeamer@inframe
     \titlepage
@@ -65,9 +86,14 @@
     \frame[plain,noframenumbering]{\titlepage}
   \fi
 }
+
 \def\titlepage{%
   \usebeamertemplate{title page}
 }
+
+% --- Elementos Visuais da Capa ---
+
+% Gráfico/Logo da Capa (Posicionado no canto superior esquerdo)
 \setbeamertemplate{title graphic}{
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=north west, inner sep=0pt] 
@@ -75,6 +101,8 @@
       {\inserttitlegraphic};
   \end{tikzpicture}
 }
+
+% Título Principal
 \setbeamertemplate{title}{
   \raggedright%
   \linespread{1.0}%
@@ -82,6 +110,8 @@
   \par%
   \vspace*{0.5em}
 }
+
+% Subtítulo
 \setbeamertemplate{subtitle}{
   \raggedright%
   \insertsubtitle%
@@ -89,6 +119,7 @@
   \vspace*{0.5em}
 }
 
+% Divisor Geométrico (Faixa superior colorida na capa)
 \newlength{\slidestech@titleseparator@linewidth}
 \setlength{\slidestech@titleseparator@linewidth}{2pt}
 \setbeamertemplate{title separator}{
@@ -103,26 +134,34 @@
   \end{tikzpicture}%
   \par%
 }
+
+% Metadados (Autor, Data e Instituição)
 \setbeamertemplate{author}{
   \vspace*{3.5em}
   \insertauthor%
   \par%
   \vspace*{0.25em}
 }
+
 \setbeamertemplate{date}{
   \insertdate%
   \par%
 }
+
 \setbeamertemplate{institute}{
   \vspace*{3mm}
   \insertinstitute%
   \par%
 }
 
+% -------------------------------------------------------------
+% SUMÁRIO (TABLE OF CONTENTS)
+% -------------------------------------------------------------
 
-% Definindo Table of Contents (ToC) (Conversar com o grupo sobre a estética)
+% Estilo padrão dos marcadores das Seções (Quadrados)
 \setbeamertemplate{sections/subsections in toc}[square]
 
+% Layout customizado para as Subseções no Sumário (Marcadas com Bullet)
 \setbeamertemplate{subsection in toc}{%
   \leavevmode\leftskip=2.7em%
   \usebeamerfont{subsection in toc}%
@@ -130,15 +169,15 @@
   \inserttocsubsection\par%
 }
 
-% ESSAS DEFINIÇÔES SÂO NO COLORTHEME
-% Cor do quadrado
-\setbeamercolor{section number projected}{bg=maincolor, fg=black}
-% Cor do texto da seção no sumário
-\setbeamercolor{section in toc}{fg=black}
-% Cor da subsecção
-\setbeamercolor{subsection in toc}{fg=black}
+% NOTA DE SUPORTE: As cores dos elementos do ToC (section number projected,
+% section in toc, subsection in toc) são definidas exclusivamente no 'colortheme'.
 
-% Definindo o itemize (apenas um teste, pois ainda não foi conversado em grupo)
+% -------------------------------------------------------------
+% LISTAS (ITEMIZE E ENUMERATE)
+% -------------------------------------------------------------
+
+% --- Marcadores do Itemize (Círculos via TikZ) ---
+
 \setbeamertemplate{itemize item}{
   \tikz\draw[maincolor, fill=maincolor] circle (0.13cm);
 }
@@ -149,7 +188,8 @@
   \tikz\draw[maincolor, fill=maincolor] circle (0.06cm);
 }
 
-% Definindo o enumerate (apenas um teste, pois ainda não foi conversado em grupo)
+% --- Marcadores do Enumerate (Quadrados Numerados via TikZ) ---
+
 \setbeamertemplate{enumerate item}{%
   \tikz\node[fill=maincolor, text=black, font=\tiny\bfseries,
     inner sep=2pt, minimum size=0.32cm] {\insertenumlabel};%
@@ -163,29 +203,29 @@
     inner sep=2pt, minimum size=0.24cm] {\insertenumlabel};%
 }
 
-% Configurações de Frames Especiais
-
-% Section Page
+% -------------------------------------------------------------
+% PÁGINAS DE TRANSIÇÃO (SECTION & SUBSECTION PAGE)
+% -------------------------------------------------------------
 
 \providecommand{\inserttotalframenumber}{100}
 
-% Comprimentos para o cálculo da barra de progresso
+% Variáveis para medição e desenho da barra de progresso
 \newlength{\slidestech@progressonsectionpage}
 \newlength{\slidestech@progressonsectionpage@linewidth}
 \setlength{\slidestech@progressonsectionpage@linewidth}{1pt}
 
-%  Barra de Progresso
+% Mecanismo da Barra de Progresso nas páginas de Seção
 \setbeamertemplate{progress bar in section page}{
   \setlength{\slidestech@progressonsectionpage}{%
     \textwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
   }%
   \begin{tikzpicture}
-    \fill[maincolor!60] (0,0) rectangle (0.5*\textwidth, \slidestech@progressonsectionpage@linewidth); % Aqui a cor poderia ser um tom mais claro do maincolor
+    \fill[maincolor!60] (0,0) rectangle (0.5*\textwidth, \slidestech@progressonsectionpage@linewidth);
     \fill[black] (0,0) rectangle (0.5*\slidestech@progressonsectionpage, \slidestech@progressonsectionpage@linewidth);
   \end{tikzpicture}%
 }
 
-% Definição do Layout da Section Page
+% --- Layout Estrutural da Section Page ---
 
 \defbeamertemplate{section page}{slidestech}{
   \begin{minipage}[b][\paperheight]{\textwidth}
@@ -197,7 +237,8 @@
     \end{tikzpicture}%
     \vspace*{0.1\paperheight} 
     \vfill
-% Título da Seção Principal
+
+    % Título da Seção Principal (Aplica fontes configuradas no tema de fontes)
     \begin{beamercolorbox}[wd=\textwidth]{section title}
       \raggedright
       \usebeamerfont{section title}
@@ -205,7 +246,7 @@
     \end{beamercolorbox}
     \vspace*{0.3em}
 
-    % Subtítulo da Seção (se existir)
+    % Subtítulo da Seção (Renderizado condicionalmente caso exista)
     \ifx\insertsubsectionhead\@empty\else
       \begin{beamercolorbox}[wd=\textwidth]{subsection title}
         \raggedright
@@ -215,7 +256,7 @@
       \vspace*{0.3em}
     \fi
     
-    % Barra de progresso
+    % Inserção da Barra de Progresso
     \begin{beamercolorbox}[wd=\textwidth]{progress bar container}
       \usebeamertemplate*{progress bar in section page}
     \end{beamercolorbox}
@@ -225,12 +266,13 @@
   \end{minipage}
 }
 
-% Template para Subsection Page
+% Vincula o template da Subsection Page para espelhar o comportamento da Section Page
 \setbeamertemplate{subsection page}{%
   \usebeamertemplate*{section page}%
 }
 
-% Funções de ativação/desativação dos ganchos
+% --- Ganchos de Ativação Automática (Hooks) ---
+
 \newcommand{\slidestech@disablesectionpage}{\AtBeginSection{}}
 \newcommand{\slidestech@enablesectionpage}{
   \AtBeginSection{
@@ -249,9 +291,11 @@
   }
 }
 
-%% STANDOUT FRAME
-\providebool{slidestech@standout}
+% -------------------------------------------------------------
+% SLIDE DE DESTAQUE (STANDOUT FRAME)
+% -------------------------------------------------------------
 
+\providebool{slidestech@standout}
 \def\slidestech@standout@fg{black}
 
 \pgfkeys{
@@ -259,6 +303,7 @@
   fg/.store in=\slidestech@standout@fg,
 }
 
+% Configuração interna do frame [standout] para limpar elementos (header/footer/canvas)
 \define@key{beamerframe}{standout}[]{%
   \booltrue{slidestech@standout}%
   \def\slidestech@standout@fg{black}%
@@ -278,6 +323,7 @@
   \color{\slidestech@standout@fg}%
 }
 
+% Restaura as configurações normais do Beamer ao encerrar o frame standout
 \apptocmd{\beamer@reseteecodes}{%
   \ifbool{slidestech@standout}{%
     \endgroup%
@@ -285,6 +331,7 @@
   }{}%
 }{}{}
 
+% Caixa de Destaque centralizada construída em tcolorbox
 \newenvironment{standoutbox}[1][maincolor]{%
   \begin{tcolorbox}[
     enhanced, rounded corners,
@@ -299,7 +346,11 @@
   \end{tcolorbox}%
 }
 
-% DESTAQUE EM PILULA (combinado que seria em amarelo)
+% -------------------------------------------------------------
+% COMPONENTES VISUAIS (PILLS)
+% -------------------------------------------------------------
+
+% Destacador de texto em formato de cápsula arredondada
 \newcommand{\pill}[2][data300]{%
   \tcbox[%
     on line,
@@ -313,140 +364,100 @@
   ]{#2}%
 }
 
-% Variante em negrito
+% Variante da pílula aplicando negrito automático no texto inserido
 \newcommand{\pillbf}[2][data300]{%
   \pill[#1]{\textbf{#2}}%
 }
 
-% Configuração de Estilo dos Blocos
+% -------------------------------------------------------------
+% AMBIENTES DE BLOCOS CUSTOMIZADOS (TCOLORBOX)
+% -------------------------------------------------------------
 
-% Bloco Padrão
+% Lógica de Importação de Cores:
+% Os blocos herdam as definições dinâmicas de cores configuradas no 'colortheme'
+% através do comando \usebeamercolor antes de renderizar as propriedades do tcolorbox.
+
+% --- Bloco Padrão ---
 \defbeamertemplate{block begin}{slidestech}{
-  
   \usebeamercolor{block body}
   \usebeamercolor{block title}
-
   \begin{tcolorbox}[
-    enhanced,
-    breakable,
-    rounded corners,               
-    boxrule=0.8pt,                
-    colback=block body.bg, 
-    coltext=block body.fg,         
-    colframe=block title.bg,           
-    coltitle=block title.fg,               
+    enhanced, breakable, rounded corners, boxrule=0.8pt,                
+    colback=block body.bg, coltext=block body.fg,         
+    colframe=block title.bg, coltitle=block title.fg,               
     fonttitle=\bfseries,          
-    left=5pt, right=5pt, top=5pt, bottom=5pt, 
-    middle=0pt,
-    toptitle=3pt, bottomtitle=3pt,
-    title=\insertblocktitle
+    left=5pt, right=5pt, top=5pt, bottom=5pt, middle=0pt,
+    toptitle=3pt, bottomtitle=3pt, title=\insertblocktitle
   ]
 }
 \defbeamertemplate{block end}{slidestech}{\end{tcolorbox}}
 
-% Bloco de Alerta
-
+% --- Bloco de Alerta ---
 \defbeamertemplate{block alerted begin}{slidestech}{
-
   \usebeamercolor{block body alerted}
   \usebeamercolor{block title alerted}
-
   \begin{tcolorbox}[
-    enhanced,
-    breakable,
-    rounded corners,
-    boxrule=0.8pt,
-    colback=block body alerted.bg,
-    coltext=block body alerted.fg,
-    colframe=block title alerted.bg,
-    coltitle=block title alerted.fg,
+    enhanced, breakable, rounded corners, boxrule=0.8pt,
+    colback=block body alerted.bg, coltext=block body alerted.fg,
+    colframe=block title alerted.bg, coltitle=block title alerted.fg,
     fonttitle=\bfseries,
-    left=5pt, right=5pt, top=5pt, bottom=5pt,
-    middle=0pt,
-    toptitle=3pt, bottomtitle=3pt,
-    title=\insertblocktitle
+    left=5pt, right=5pt, top=5pt, bottom=5pt, middle=0pt,
+    toptitle=3pt, bottomtitle=3pt, title=\insertblocktitle
   ]
 }
-
 \defbeamertemplate{block alerted end}{slidestech}{\end{tcolorbox}}
 
-% Bloco de Exemplo
+% --- Bloco de Exemplo ---
 \defbeamertemplate{block example begin}{slidestech}{
-
   \usebeamercolor{block body example}
   \usebeamercolor{block title example}
-
   \begin{tcolorbox}[
-    enhanced,
-    breakable,
-    rounded corners,
-    boxrule=0.8pt,
-    colback=block body example.bg,
-    coltext=block body example.fg,
-    colframe=block title example.bg,
-    coltitle=block title example.fg,
+    enhanced, breakable, rounded corners, boxrule=0.8pt,
+    colback=block body example.bg, coltext=block body example.fg,
+    colframe=block title example.bg, coltitle=block title example.fg,
     fonttitle=\bfseries,
-    left=5pt, right=5pt, top=5pt, bottom=5pt,
-    middle=0pt,
-    toptitle=3pt, bottomtitle=3pt,
-    title=\insertblocktitle
+    left=5pt, right=5pt, top=5pt, bottom=5pt, middle=0pt,
+    toptitle=3pt, bottomtitle=3pt, title=\insertblocktitle
   ]
 }
 \defbeamertemplate{block example end}{slidestech}{\end{tcolorbox}}
 
-% Bloco de Teorema
-
+% --- Bloco de Teorema ---
 \defbeamertemplate{theorem begin}{slidestech}{
-
   \usebeamercolor{block body theorem}
   \usebeamercolor{block title theorem}
-
   \begin{tcolorbox}[
-    enhanced,
-    breakable,
-    rounded corners,                
-    boxrule=0.8pt,              
-    colback=block body theorem.bg,   
-    coltext=block body theorem.fg,    
-    colframe=block title theorem.bg,     
-    coltitle=block title theorem.fg,         
+    enhanced, breakable, rounded corners, boxrule=0.8pt,              
+    colback=block body theorem.bg, coltext=block body theorem.fg,    
+    colframe=block title theorem.bg, coltitle=block title theorem.fg,         
     fonttitle=\bfseries,      
-    left=5pt, right=5pt, top=5pt, bottom=5pt, 
-    middle=0pt,
-    toptitle=3pt, bottomtitle=3pt,
-    title=Teorema
+    left=5pt, right=5pt, top=5pt, bottom=5pt, middle=0pt,
+    toptitle=3pt, bottomtitle=3pt, title=Teorema
   ]
 }
 \defbeamertemplate{theorem end}{slidestech}{\end{tcolorbox}}
 
-% Bloco de prova
-
+% --- Bloco de Prova ---
 \defbeamertemplate{proof begin}{slidestech}{
-
   \usebeamercolor{block body proof}
   \usebeamercolor{block title proof}
-
   \begin{tcolorbox}[
-    enhanced,
-    breakable,
-    rounded corners,               
-    boxrule=0.8pt,              
-    colback=block body proof.bg,
-    coltext=block body proof.fg,
-    colframe=block title proof.bg,       
-    coltitle=block title proof.fg,   
+    enhanced, breakable, rounded corners, boxrule=0.8pt,              
+    colback=block body proof.bg, coltext=block body proof.fg,
+    colframe=block title proof.bg, coltitle=block title proof.fg,   
     fonttitle=\bfseries,
-    attach title to upper={\par}, 
-    after title={\medskip},       
-    left=5pt, right=5pt, top=5pt, bottom=5pt,
-    middle=0pt,
-    toptitle=3pt, bottomtitle=3pt,
-    title=Prova.
+    attach title to upper={\par}, after title={\medskip},       
+    left=5pt, right=5pt, top=5pt, bottom=5pt, middle=0pt,
+    toptitle=3pt, bottomtitle=3pt, title=Prova.
   ]
 }
 \defbeamertemplate{proof end}{slidestech}{\end{tcolorbox}}
 
-% Ativa os templates criados
+% -------------------------------------------------------------
+% ATIVAÇÃO DE TEMPLATES E COMPILAÇÃO FINAL
+% -------------------------------------------------------------
+
+% Efetua o mapeamento dos componentes criados para rodarem nativamente no Beamer
 \setbeamertemplate{block begin}[slidestech]
 \setbeamertemplate{block end}[slidestech]
 \setbeamertemplate{block alerted begin}[slidestech]
@@ -458,8 +469,9 @@
 \setbeamertemplate{proof begin}[slidestech]
 \setbeamertemplate{proof end}[slidestech]
 
-% Carrega os padrões
+% Carrega as chaves com os estados padrão (defaults) do inner theme
 \slidestech@inner@setdefaults
 
+% Processa as escolhas passadas pelo usuário na chamada do pacote principal do tema
 \ProcessPgfPackageOptions{/slidestech/inner}
 \endinput
