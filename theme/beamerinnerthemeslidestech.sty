@@ -13,9 +13,6 @@
 \tcbuselibrary{breakable}
 
 
-% Define a cor do highlight de texto
-\definecolor{hlColor}{HTML}{FFC555}
-
 % Criando as chaves de configuração para Section e Subsection
 \pgfkeys{    
   /slidestech/inner/sectionpage/.cd,
@@ -184,7 +181,7 @@
   }%
   \begin{tikzpicture}
     \fill[maincolor!60] (0,0) rectangle (0.5*\textwidth, \slidestech@progressonsectionpage@linewidth); % Aqui a cor poderia ser um tom mais claro do maincolor
-    \fill[preto] (0,0) rectangle (0.5*\slidestech@progressonsectionpage, \slidestech@progressonsectionpage@linewidth);
+    \fill[black] (0,0) rectangle (0.5*\slidestech@progressonsectionpage, \slidestech@progressonsectionpage@linewidth);
   \end{tikzpicture}%
 }
 
@@ -203,6 +200,7 @@
 % Título da Seção Principal
     \begin{beamercolorbox}[wd=\textwidth]{section title}
       \raggedright
+      \usebeamerfont{section title}
       \insertsectionhead\par
     \end{beamercolorbox}
     \vspace*{0.3em}
@@ -211,6 +209,7 @@
     \ifx\insertsubsectionhead\@empty\else
       \begin{beamercolorbox}[wd=\textwidth]{subsection title}
         \raggedright
+        \usebeamerfont{subsection title}
         \insertsubsectionhead\par
       \end{beamercolorbox}
       \vspace*{0.3em}
@@ -301,7 +300,7 @@
 }
 
 % DESTAQUE EM PILULA (combinado que seria em amarelo)
-\newcommand{\pill}[2][dados300]{%
+\newcommand{\pill}[2][data300]{%
   \tcbox[%
     on line,
     arc=4pt,
@@ -315,18 +314,11 @@
 }
 
 % Variante em negrito
-\newcommand{\pillbf}[2][dados300]{%
+\newcommand{\pillbf}[2][data300]{%
   \pill[#1]{\textbf{#2}}%
 }
 
-% HIGHLIGHT TEXTO EM NEGRITO
-\newcommand{\hl}[2][hlColor]{%
-  \textcolor{#1}{\textbf{#2}}%
-}
-
 % Configuração de Estilo dos Blocos
-
-\setbeamercolor{qed symbol}{fg=gray, bg=gray!50}
 
 % Bloco Padrão
 \defbeamertemplate{block begin}{slidestech}{
