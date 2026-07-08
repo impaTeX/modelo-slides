@@ -1,10 +1,23 @@
-%% This is file 'beamerthemeimpatechslides.sty'
+% -------------------------------------------------------------
+% REQUISITOS BÁSICOS 
+% -------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeslidestech}[16/05/2026 SlidesTech Beamer Theme]
+\ProvidesPackage{beamerthemeslidestech}[2026/05/16 SlidesTech Beamer Theme]
+
+% -------------------------------------------------------------
+% DEPENDÊNCIAS
+% -------------------------------------------------------------
+
 \RequirePackage{etoolbox}
 \RequirePackage{pgfopts}
 
+% -------------------------------------------------------------
+% ROTEAMENTO DE OPÇÕES (PGFKEYS)
+% -------------------------------------------------------------
+
+% Define que qualquer opção passada para o tema principal (/slidestech)
+% deve ser repassada e buscada dentro dos módulos.
 \pgfkeys{/slidestech/.cd,
   .search also={
     /slidestech/inner,
@@ -12,6 +25,12 @@
     /slidestech/font,
   }
 }
+
+% -------------------------------------------------------------
+% FORMATAÇÃO
+% -------------------------------------------------------------
+
+% --- Frames Puros (Standout/Plain) ---
 
 \pgfkeys{
   /slidestech/titleformat plain/.cd,
@@ -39,6 +58,9 @@
       }
     },
 }
+
+% --- Formato global dos títulos ---
+
 \pgfkeys{
   /slidestech/titleformat/.code=\pgfkeysalso{
       font/titleformat title=#1,
@@ -48,6 +70,12 @@
       titleformat plain=#1,
     }
 }
+
+% -------------------------------------------------------------
+% ATALHOS DE COMPATIBILIDADE
+% -------------------------------------------------------------
+
+% Cria atalhos para comandos longos
 \pgfkeys{/slidestech/.cd,
   usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
   noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
@@ -56,18 +84,31 @@
   darkcolors/.code=\pgfkeysalso{color/background=dark},
   blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
 }
+
+% -------------------------------------------------------------
+% CARREGAMENTO DOS MÓDULOS
+% -------------------------------------------------------------
+
+% --- Comportamento padrão inicial ---
+
 \newcommand{\slidestech@setdefaults}{
   \pgfkeys{/slidestech/.cd,
     titleformat plain=regular,
   }
 }
 
+% --- Chamada dos arquivos auxiliares (.sty) ---
+
 \useinnertheme{slidestech}
 \useoutertheme{slidestech}
 \usecolortheme{slidestech}
 \usefonttheme{slidestech}
 
+% -------------------------------------------------------------
+% PROCESSAMENTO DAS OPÇÕES
+% -------------------------------------------------------------
 
-%\slidestech@setdefaults
+\slidestech@setdefaults
 \ProcessPgfOptions{/slidestech}
+
 \endinput
