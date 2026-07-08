@@ -1,16 +1,36 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerfontthemeslidestech}[16/05/2026 SlidesTech font theme]
+
+% -------------------------------------------------------------
+% REQUISITOS BÁSICOS 
+% -------------------------------------------------------------
+
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
 \RequirePackage{ifluatex}
 \RequirePackage{pgfopts}
 \RequirePackage{microtype}
+
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DE FONTES POR MOTOR DE COMPILAÇÃO
+% -------------------------------------------------------------
+
+% Lógica de Seleção de Motores:
+% > XeLaTeX / LuaLaTeX: Utiliza o pacote 'fontspec' para carregar fontes do sistema (OTF/TTF).
+% > pdfLaTeX: Utiliza pacotes tradicionais do TeX (.sty) como fallback seguro.
+
 \ifboolexpr{bool {xetex} or bool {luatex}}{
+  
+  % --- Configuração para Motores Modernos (XeLaTeX/LuaLaTeX) ---
+  
+  % Garante o carregamento do fontspec sem interferir nas fontes matemáticas nativas
   \@ifpackageloaded{fontspec}{
     \PassOptionsToPackage{no-math}{fontspec}
   }{
     \RequirePackage[no-math]{fontspec}
   }
+  
+  % Macro auxiliar para verificar se a fonte está instalada no sistema operacional
   \newcounter{fontsnotfound}
   \newcommand{\checkfont}[1]{%
     \suppressfontnotfounderror=1%
@@ -22,6 +42,7 @@
     \suppressfontnotfounderror=0%
   }
 
+  % Condicional para aplicar configurações se a lista de fontes for encontrada
   \newcommand{\iffontsavailable}[3]{%
     \setcounter{fontsnotfound}{0}%
     \expandafter\forcsvlist\expandafter%
@@ -32,6 +53,8 @@
       #3%
     \fi%
   }
+  
+  % Tentativa 1: Carrega a família Roboto TrueType padrão do sistema
   \iffontsavailable{Roboto Light,%
                     Roboto Light Italic,%
                     Roboto Medium,%
@@ -43,6 +66,7 @@
                  BoldItalicFont={Roboto Medium Italic}]%
                 {Roboto Light}%
   }{%
+    % Tentativa 2: Fallback para a variação OpenType (Roboto Light OT)
     \iffontsavailable{Roboto Light OT,%
                       Roboto Light Italic OT,%
                       Roboto Medium OT,%
@@ -53,11 +77,14 @@
                    BoldItalicFont={Roboto Medium Italic OT}]%
                   {Roboto Light OT}%
     }{%
+      % Aviso caso nenhuma variação do Roboto seja localizada
       \PackageWarning{beamerthemeslidestech}{%
         Could not find Roboto fonts%
       }
     }
   }
+  
+  % Configuração da fonte monoespaçada (Roboto Mono) para códigos/tabelas
   \iffontsavailable{Roboto Mono, Roboto Mono Bold}{%
     \setmonofont[BoldFont={Roboto Mono Medium}]{Roboto Mono}%
   }{%
@@ -69,14 +96,17 @@
       }
     }
   }
+  
+  % Força o uso de números monoespaçados (alinhados) dentro de tabelas
   \AtBeginEnvironment{tabular}{%
     \addfontfeature{Numbers={Monospaced}}%
   }
 }{%
-  % FALLBACK PARA PDFLATEX
+  % --- Fallback Seguro para pdfLaTeX ---
+  
   \RequirePackage[T1]{fontenc}
   
-  % Tenta carregar a fonte Roboto para o texto principal
+  % Tenta carregar o pacote da fonte Roboto principal
   \IfFileExists{roboto.sty}{%
     \RequirePackage[sfdefault,light,medium]{roboto}%
   }{%
@@ -85,7 +115,7 @@
     }%
   }%
   
-  % Tenta carregar a fonte Roboto Mono para código/monofretado
+  % Tenta carregar o pacote da fonte Roboto Mono para código
   \IfFileExists{roboto-mono.sty}{%
     \RequirePackage{roboto-mono}%
   }{%
@@ -94,33 +124,50 @@
     }%
   }%
 }
-\setbeamerfont{title}{size=\huge,%
-                      series=\bfseries}
+
+% -------------------------------------------------------------
+% DEFINIÇÃO DOS TAMANHOS E ESTILOS DE FONTE (BEAMER)
+% -------------------------------------------------------------
+
+% --- Elementos da Capa (Title Page) ---
+
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont*{subtitle}{size=\normalsize}
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{date}{size=\small}
 \setbeamerfont{institute}{size=\small}
-\setbeamerfont{block title}{size=\normalsize,%
-                            series=\bfseries}
-\setbeamerfont{section title}{size=\Large,%
-                              series=\bfseries}
-\setbeamerfont{subsection title}{size=\large,
-                                 series=\bfseries}
-\setbeamerfont*{subtitle}{size=\normalsize}
-\setbeamerfont{frametitle}{size=\Large,%
-                           series=\bfseries}
+
+% --- Elementos de Estrutura e Cabeçalhos ---
+
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamerfont{section title}{size=\Large, series=\bfseries}
+\setbeamerfont{subsection title}{size=\large, series=\normalfont}
+
+% --- Elementos de Blocos e Conteúdo ---
+
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{standout}{size=\large, series=\bfseries}
+
+% --- Legendas e Elementos de Suporte ---
+
 \setbeamerfont{caption}{size=\small}
 \setbeamerfont{caption name}{series=\bfseries}
 \setbeamerfont{page number in head/foot}{size=\scriptsize}
-\setbeamerfont{bibliography entry author}{size=\normalsize,%
-                                          series=\normalfont}
-\setbeamerfont{bibliography entry title}{size=\normalsize,%
-                                         series=\bfseries}
-\setbeamerfont{bibliography entry location}{size=\normalsize,%
-                                            series=\normalfont}
-\setbeamerfont{bibliography entry note}{size=\small,%
-                                        series=\normalfont}
-\setbeamerfont{standout}{size=\large,%
-                         series=\bfseries}
+\setbeamerfont{footnote}{size=\scriptsize}
+
+% --- Elementos Bibliográficos (ABNT / Referências) ---
+
+\setbeamerfont{bibliography entry author}{size=\normalsize, series=\normalfont}
+\setbeamerfont{bibliography entry title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{bibliography entry location}{size=\normalsize, series=\normalfont}
+\setbeamerfont{bibliography entry note}{size=\small, series=\normalfont}
+
+% -------------------------------------------------------------
+% CONFIGURAÇÃO DAS OPÇÕES DE FORMATAÇÃO DE TEXTO
+% -------------------------------------------------------------
+
+% --- Formatação do Título Principal ---
+
 \pgfkeys{
   /slidestech/font/titleformat title/.cd,
     .is choice,
@@ -141,12 +188,15 @@
     },
     allcaps/.code={%
       \let\slidestech@titleformat\uppercase%
-      \setbeamerfont{title}{shape=\normalfont}
+      \setbeamerfont{title}{shape=\normalfont}%
       \PackageWarning{beamerthemeslidestech}{%
         Be aware that titleformat title=allcaps can lead to problems%
       }
     },
 }
+
+% --- Formatação do Subtítulo ---
+
 \pgfkeys{
   /slidestech/font/titleformat subtitle/.cd,
     .is choice,
@@ -173,6 +223,9 @@
       }
     },
 }
+
+% --- Formatação dos Títulos de Seção ---
+
 \pgfkeys{
   /slidestech/font/titleformat section/.cd,
     .is choice,
@@ -199,6 +252,9 @@
       }
     },
 }
+
+% --- Formatação dos Títulos dos Slides (Frame Titles) ---
+
 \pgfkeys{
   /slidestech/font/titleformat frame/.cd,
     .is choice,
@@ -219,12 +275,15 @@
     },
     allcaps/.code={%
       \let\slidestech@frametitleformat\MakeUppercase%
-      \setbeamerfont{frametitle}{shape=\normalfont}
+      \setbeamerfont{frametitle}{shape=\normalfont}%
       \PackageWarning{beamerthemeslidestech}{%
         Be aware that titleformat frame=allcaps can lead to problems%
       }
     },
 }
+
+% --- Criação de Aliases/Redirecionamento das Chaves ---
+
 \pgfkeys{
   /slidestech/font/.cd,
   titleformattitle/.code=\pgfkeysalso{titleformat title=#1},
@@ -232,33 +291,42 @@
   titleformatsection/.code=\pgfkeysalso{titleformat section=#1},
   titleformatframe/.code=\pgfkeysalso{titleformat frame=#1},
 }
-\newcommand{\slidestech@font@setdefaults}{
-  \pgfkeys{/slidestech/font/.cd,
-    titleformat title=regular,
-    titleformat subtitle=regular,
-    titleformat section=regular,
-    titleformat frame=regular,
-  }
-}
+
+% -------------------------------------------------------------
+% PROJETOS DE MODIFICAÇÃO EXTERNA (PATCHES DO BEAMER)
+% -------------------------------------------------------------
+
+% Modificações via 'patchcmd' injetam as macros de caixa alta/baixa do PGFKeys 
+% diretamente nos comandos internos e geradores de macros do núcleo do Beamer.
+
+% Inicializadores das macros de transformação de texto (padrão: mantém texto original)
 \def\slidestech@titleformat#1{#1}
 \def\slidestech@subtitleformat#1{#1}
 \def\slidestech@sectiontitleformat#1{#1}
 \def\slidestech@frametitleformat#1{#1}
+
+% Interceptação do Título Principal
 \patchcmd{\beamer@title}%
   {\def\inserttitle{#2}}%
   {\def\inserttitle{\slidestech@titleformat{#2}}}%
   {}%
   {\PackageError{beamerfontthemeslidestech}{Patching title failed}\@ehc}
+
+% Interceptação do Subtítulo
 \patchcmd{\beamer@subtitle}%
   {\def\insertsubtitle{#2}}%
   {\def\insertsubtitle{\slidestech@subtitleformat{#2}}}%
   {}%
   {\PackageError{beamerfontthemeslidestech}{Patching subtitle failed}\@ehc}
+
+% Interceptação da Entrada de Seções simples
 \patchcmd{\sectionentry}
   {\def\insertsectionhead{#2}}
   {\def\insertsectionhead{\slidestech@sectiontitleformat{#2}}}
   {}
   {\PackageError{beamerfontthemeslidestech}{Patching section title failed}\@ehc}
+
+% Interceptação de Cabeçalhos hiperlinkados de Seção (Método 1 e 2)
 \@tempswafalse
 \patchcmd{\beamer@section}
   {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
@@ -275,6 +343,8 @@
 \if@tempswa\else
   \PackageError{beamerfontthemeslidestech}{Patching section title failed}\@ehc
 \fi
+
+% Interceptação de Cabeçalhos hiperlinkados de Subseção (Método 1 e 2)
 \@tempswafalse
 \patchcmd{\beamer@subsection}
   {\def\insertsubsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
@@ -291,6 +361,8 @@
 \if@tempswa\else
   \PackageError{beamerfontthemeslidestech}{Patching section title failed}\@ehc
 \fi
+
+% Interceptação dos Títulos dos Frames (Gerenciador de quebra automática de texto)
 \patchcmd{\beamer@@frametitle}
   {{%
       \gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space%
@@ -306,6 +378,25 @@
     \gdef\beamer@shortframetitle{#1}%
     }}
   {}
+
+% -------------------------------------------------------------
+% PROCESSAMENTO DAS OPÇÕES
+% -------------------------------------------------------------
+
+% Define as opções padrão de estilo de fontes (modo de texto 'regular' sem modificadores)
+\newcommand{\slidestech@font@setdefaults}{
+  \pgfkeys{/slidestech/font/.cd,
+    titleformat title=regular,
+    titleformat subtitle=regular,
+    titleformat section=regular,
+    titleformat frame=regular,
+  }
+}
+
+% Ativa as predefinições limpas
 \slidestech@font@setdefaults
+
+% Sobrescreve e compila os estilos de formatação conforme parâmetros passados pelo usuário
 \ProcessPgfPackageOptions{/slidestech/font}
+
 \endinput
