@@ -1,25 +1,39 @@
-# Arquivos auxiliares do LaTeX
-*.aux
-*.log
-*.toc
-*.out
-*.synctex.gz
-*.fls
-*.fdb_latexmk
+# --- Arquivos auxiliares do LaTeX --- 
 
-# Arquivos específicos do Beamer 
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.run.xml
+*.toc
+*.synctex(busy)
+*.synctex.gz
+*.log
+
+# --- Arquivos específicos do Beamer ---
+
 *.nav
 *.snm
 *.vrb
 
-# Arquivos de histórico (VS Code e sistema operacional)
+# --- Saídas (PDFs gerados) ---
+
+*.pdf
+
+# --- Exceção para o PDF de exemplo (provisório) --- 
+
+!theme/modelo_slide_impatech.pdf
+
+# --- Arquivos do sistema ---
+
 .vscode/
 .DS_Store
 Thumbs.db
-
-# Arquivo PDFs (gerados durante os testes)
-*.pdf
-
-# Exceção para o PDF oficial de demonstração aparecer no GitHub
-!theme/Inner_Teste.pdf
-!theme/example.pdf
