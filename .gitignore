@@ -32,6 +32,9 @@
 
 !theme/modelo_slide_impatech.pdf
 
+# --- Exceção para os logos da Impatech ---
+!img/logos/*.pdf
+
 # --- Arquivos do sistema ---
 
 .vscode/
