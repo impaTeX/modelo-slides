@@ -15,6 +15,7 @@
 \RequirePackage{pgfopts}
 \RequirePackage{tikz}
 \RequirePackage{ifthen}
+\RequirePackage{listings}
 \RequirePackage[most]{tcolorbox}
 
 % Carrega as bibliotecas necessárias para as formas geométricas e blocos flexíveis
@@ -173,8 +174,11 @@
   \inserttocsubsection\par%
 }
 
-% NOTA DE SUPORTE: As cores dos elementos do ToC (section number projected,
-% section in toc, subsection in toc) são definidas exclusivamente no 'colortheme'.
+\newcommand{\slidestechtoc}[2]{%
+  \begin{frame}{#1}
+    \tableofcontents[sections={#2}]
+  \end{frame}
+}
 
 % -------------------------------------------------------------
 % LISTAS (ITEMIZE E ENUMERATE)
@@ -351,8 +355,10 @@
 }
 
 % -------------------------------------------------------------
-% COMPONENTES VISUAIS (PILLS E FOOTNOTE)
+% COMPONENTES VISUAIS
 % -------------------------------------------------------------
+
+% --- Pills ---
 
 % Destacador de texto em formato de cápsula arredondada
 \newcommand{\pill}[2][data300]{%
@@ -373,10 +379,38 @@
   \pill[#1]{\textbf{#2}}%
 }
 
-% Redefinição do template de footnote
+% --- Nota de rodapé ---
 \setbeamertemplate{footnote}{%
   \makebox[1em][l]{\insertfootnotemark}\insertfootnotetext\par%
   \vskip-10pt
+}
+
+% --- Comando de Figuras ---
+
+\setbeamertemplate{caption}[numbered]
+
+% Uso: \slidestechfigure[largura]{caminho da imagem}{legenda}{fonte}
+\newcommand{\slidestechfigure}[4][\linewidth]{%
+  \begin{figure}
+    \centering
+    {\caption{#3}}\par
+    \includegraphics[width=#1]{#2}\par
+    {\tiny \textbf{Fonte:} #4}%
+  \end{figure}%
+}
+
+% --- Listings ---
+\lstset{
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{math400}\bfseries, 
+    commentstyle=\color{gray},      
+    stringstyle=\color{comp400},       
+    numbers=left,               
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    breaklines=true,            
+    frame=single,
+    rulecolor=\color{gray!30}         
 }
 
 % -------------------------------------------------------------
