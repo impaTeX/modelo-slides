@@ -9,20 +9,21 @@
 % PACOTES ADICIONAIS
 % -------------------------------------------------------------
 
-% "tikz" - usado para desenhar o círculo do marcador de página
-% "calc" - usado para calcular as dimensões de comprimento da headline e footline
-%  "graphicx" - usado para inserir imagens
 \RequirePackage{tikz}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
 \RequirePackage{etoolbox}
 
 % -------------------------------------------------------------
-% CORES
+% LIMPEZA DE ELEMENTOS PADRÃO E CORES
 % -------------------------------------------------------------
 
 % Remove os ícones de navegação padrão do Beamer
 \setbeamertemplate{navigation symbols}{}
+
+% Remove a logo flutuante automática do Beamer no canto inferior direito
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{sidebar left}{}
 
 % Define as cores do background do cabeçalho usando o arquivo color
 \setbeamercolor{frametitle}{bg=headercolor, fg=textheadercolor}
@@ -33,67 +34,41 @@
 
 \defbeamertemplate*{frametitle}{slidestech}
 {
-
-% --- Parte textual ---
     \nointerlineskip
 
-    % Cria uma caixa para conter o cabeçalho
+    % Caixa do cabeçalho com padding (sep) automático em vez de altura fixa
     \begin{beamercolorbox}[
-        wd=\paperwidth, % Largura de 100% da página
-        ht=1.0cm,       % Altura
-        dp=0.10cm,      % Profundidade
-        sep=0pt         % Remove padding automático
+        wd=\paperwidth, 
+        sep=0.35cm,       % Espaçamento interno (padding) topo e base
+        leftskip=0.2cm,   % Margem esquerda
+        rightskip=0.2cm   % Margem direita
     ]{frametitle}
-
-        % Cria uma linha horizontal do tamanho do slide para conter os elementos
-        \hbox to \paperwidth{
-
-            % Fonte
-            \raisebox{0.3cm}{               % Centraliza o título
-                {\usebeamerfont{frametitle} % Puxa fonte padrão para títulos
-                 \bfseries
-                 \Large
-                 \insertframetitle}
-            }
-
-            % Garante que o texto fique na esquerda e a logo na direita
-            \hfill
-
-% --- Logo ---
-             % Adiciona margem da logo com a borda direita da página
-            \insertlogo\hspace*{0.8cm}
-        }
-
+        % Título
+        {\usebeamerfont{frametitle}\bfseries\Large\insertframetitle}%
+        \hfill%
+        % Logo (Abaixada levemente para centralizar com o texto)
+        \raisebox{-0.15cm}{\insertlogo}%
     \end{beamercolorbox}%
-    %
+    
+    \nointerlineskip
 
-% --- Barra de PRogresso --
-    \nointerlineskip%
-    \vspace*{-0.5pt}%
+    % Barra de Progresso
     \begin{beamercolorbox}[
-        wd=\paperwidth,     % Cria uma caixa que ocupa a largura da página
-        ht=2pt,             % Espessura da barra
-        dp=0pt,             % Profundidade
-        leftskip=0pt,
-        rightskip=0pt,
+        wd=\paperwidth,
+        ht=1pt,           % Altura exata da barra
+        dp=0pt,
         sep=0pt
     ]{}%
         \ifnum\inserttotalframenumber>0\relax
             % Calcula a largura da barra proporcionalmente ao slide atual
             \textcolor{progresscolor}{\rule{\dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}%
-
-            % Calcula a largura restante e pinta com a cor do cabeçalho
+            % Pinta o restante com a cor de fundo
             \textcolor{headercolor}{\rule{\dimexpr\paperwidth - \paperwidth*\insertframenumber/\inserttotalframenumber\relax}{3pt}}%
-
         \else
             % Fallback (divisão por zero na primeira página)
-            \textcolor{headercolor}{\rule{\paperwidth}{2pt}}%
+            \textcolor{headercolor}{\rule{\paperwidth}{1pt}}%
         \fi
     \end{beamercolorbox}
-
-    % Espaço abaixo da linha para evitar que ela entre em contato com o conteúdo
-    \vspace{0.15cm}
-
 }
 
 % -------------------------------------------------------------
@@ -103,68 +78,49 @@
 \defbeamertemplate*{footline}{slidestech}
 {
     \leavevmode
+    \hbox{%
 
-    \hbox{
-
-% --- Parte textual --
-
-        % Cria uma caixa para conter o texto do rodapé
+        % --- Parte textual ---
         \begin{beamercolorbox}[
-            wd=.88\paperwidth,  % Largura de 88% da página
-            ht=.8cm,            % Altura
-            dp=.25cm,           % Profundidade
-            left,               % Alinha a esquerda
-            leftskip=0.3cm      % Adiciona uma margem com a borda esquerda da página
+            wd=.88\paperwidth,
+            ht=.8cm,
+            dp=.25cm,
+            left,
+            leftskip=0.3cm
         ]{}
-
-            % O \raisebox com valor negativo empurra apenas este texto para baixo
             \raisebox{-0.15cm}{%
-                \textcolor{gray}{
+                \textcolor{gray}{%
                     \small
-                    \insertshortauthor      % Nome do autor
-                    \ |                     % Barra de separação
-                    \insertshorttitle       % Título da apresentação
-                    \ |                     % Barra de separação
-                    \insertshortinstitute   % Nome da instituição
+                    \insertshortauthor      \ | 
+                    \insertshorttitle       \ | 
+                    \insertshortinstitute
                 }%
             }
-
-        \end{beamercolorbox}
-
-  % --- Numeração das páginas ---
-
-        \begin{beamercolorbox}[ % Cria outra caixa para ocupar o resto do rodapé
+        \end{beamercolorbox}%
+        % --- Numeração das páginas ---
+        \begin{beamercolorbox}[
             wd=.1\paperwidth,
             ht=.9cm,
             dp=.4cm,
-            rightskip=1cm,      % Adiciona margem com a borda direita
-            right               % "Empurra" para o lado direito
+            rightskip=1cm,
+            right
         ]{}
-
-            % Inicia o desenho de uma forma com texto dentro
             \begin{tikzpicture}[baseline=(page.center)]
-
                 \node[
-                    circle,                 % Forma de círculo
-                    fill=maincolor,         % Preenchimento com a cor base
-                    text=black,             % Deixa o texto com a cor preta
-                    minimum size=0.60cm,    % Diâmetro do círculo
-                    inner sep=0pt,          % Remove espaçamento interno
+                    circle,
+                    fill=maincolor,
+                    text=black,
+                    minimum size=0.60cm,
+                    inner sep=0pt,
                     font=\small\bfseries
                 ] (page)
                 {   
-                    % Configura para exibição em 2 algarismos
                     \ifnum\insertframenumber<10 0\fi
                     \insertframenumber
                 };
-
             \end{tikzpicture}
-
-        \end{beamercolorbox}
-
+        \end{beamercolorbox}%
     }
-
-    % Garante que o rodapé fique "colado" na parte inferior do slide
     \vskip0pt
 }
 
