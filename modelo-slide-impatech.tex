@@ -1,0 +1,225 @@
+% -------------------------------------------------------------
+% MODELO PARA SLIDES DO IMPA TECH
+%
+% Este documento é um modelo em LaTeX para slides de apresentação do
+% IMPA Tech. O template foi programado pelo grupo de extensão impaTeX.
+%
+% Pacotes (conferir):
+%   > beamer: para criar apresentações em LaTeX
+%   > graphicx: para incluir imagens
+%   > xcolor: para definir cores personalizadas
+%   > tikz: para desenhar elementos gráficos
+%
+% Compilação: pdflatex ou lualatex (conferir)
+% Copyright: © 2026 impaTeX
+
+% São autores deste template: Daniela de Menezes Moraes, Emilly 
+% Vitória Leite Rezende, Gabriela Naomi Ichicawa Ogido, Pedro 
+% Miguel Rocha Santos, Rafael Luis Beraldo, Ryan Kevin da Costa 
+% Felinto e Yasmin de Barros da Silva.
+%
+% Licença/Uso: LaTeX Project Public License (LPPL) versão 1.3c 
+% ou mais atual.
+%
+% Última atualização: 08/07/2026
+% -------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+
+% Esse bloco diz ao LaTeX: "Procure tudo o que for importado também dentro da pasta theme"
+\makeatletter
+\def\input@path{{./theme/}}
+\makeatother
+
+% Agora você pode chamar o tema normalmente que ele vai achar todos os 5 arquivos lá dentro
+\usetheme[enfase=computacao, subsectionpage=progressbar]{slidestech}
+
+\title[Testando SlidesTech]{Testando Beamer Theme SlidesTech}
+
+\subtitle{Subtítulo de Exemplo}
+\author{Seu Nome}
+\institute{\textsc{impa} Tech}
+\titlegraphic{\includegraphics[width = 2.7cm]{./img/logos/impatech-reduzida-preta.pdf}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Sumário}
+
+\tableofcontents
+    
+\end{frame}
+
+\section{Listas}
+
+\subsection{Itemize}
+\begin{frame}{Itemize}
+\begin{itemize}
+    \item Item 1
+    \begin{itemize}
+        \item Item 1.1
+        \begin{itemize}
+            \item Item 1.1.1
+        \end{itemize}
+    \end{itemize}
+    \item Item 2
+\end{itemize}
+\end{frame}
+
+\subsection{Enumerate}
+\begin{frame}{Enumerate}
+\begin{enumerate}
+    \item Item 1
+    \begin{enumerate}
+        \item Item 1.1
+        \begin{enumerate}
+            \item Item 1.1.1
+        \end{enumerate}
+    \end{enumerate}
+    \item Item 2
+\end{enumerate}
+\end{frame}
+
+\section{Blocos}
+
+\subsection{Teorema e Prova}
+
+\begin{frame}{Teorema e prova}
+
+\begin{theorem}[(Infinidade dos Primos).]
+    Existem infinitos números primos.
+  \end{theorem}
+
+\end{frame}
+
+\begin{frame}{Prova do Teorema}
+
+  \begin{proof}
+    Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
+    
+    Considere o número $P = (p_1 \times p_2 \times \dots \times p_n) + 1$.
+    
+    \begin{itemize}
+        \item $P$ não é divisível por nenhum dos primos da nossa lista, pois o resto da divisão por qualquer $p_i$ será sempre $1$.
+        \item Logo, ou $P$ é ele próprio um novo primo, ou possui um fator primo que não está na lista original.
+    \end{itemize}
+    
+    Em ambos os casos, encontramos um primo que não estava no conjunto finito original, gerando uma contradição. Portanto, o conjunto dos primos é infinito.
+  \end{proof}
+
+\end{frame}
+
+\subsection{Exemplo e Alerta}
+
+\begin{frame}{Exemplo}
+
+\begin{exampleblock}{Exemplo}
+    Isso é um exemplo
+\end{exampleblock}
+    
+\end{frame}
+
+\begin{frame}{Alerta}
+
+\begin{alertblock}{Alerta}
+    Isto é um bloco de aviso
+\end{alertblock}
+    
+\end{frame}
+
+\begin{frame}{Bloco padrão}
+
+\begin{block}{Bloco}
+    Este é o bloco padrão
+\end{block}
+    
+\end{frame}
+
+\section{Outras implementações}
+
+\subsection{Pills e Texto de Alerta}
+
+\begin{frame}{Teste de pill}
+  O \pill{IMPA Tech} oferece o curso de graduação Bacharelado em \pill[math300]{Matemática} da Tecnologia e Inovação, 
+  financiada pelo \pill[data300]{Governo Federal} por meio do Ministério da \pill[comp300]{Ciência}, Tecnologia e Inovação (MCTI) 
+  e do \pill[physics300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[comp300]{Rio de Janeiro}.
+\end{frame}
+
+\begin{frame}{Teste de pill e negrito colorido}
+   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
+   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
+   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+\end{frame}
+
+\begin{frame}{Título do Slide}
+    Este é um exemplo de texto explicativo\footnote{Esta é a nota que aparecerá no rodapé.}.
+
+    Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
+   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
+   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+
+   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
+   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
+   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+\end{frame}
+
+\begin{frame}{O Teorema Fundamental do Cálculo}
+    
+    % Testando o bloco de Teorema que configuramos no seu innertheme
+    \begin{theorem}[Parte 1]
+        Se uma função $f$ for contínua no intervalo fechado $[a, b]$, então a função $g$ definida por:
+        $$g(x) = \int_{a}^{x} f(t) \, dt$$
+        é contínua em $[a, b]$, derivável em $(a, b)$, e sua derivada é:
+        $$g'(x) = f(x)$$
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}{O Teorema Fundamental do Cálculo - Prova}
+
+    % Testando o bloco de Prova (Proof) com a nota de rodapé mágica [frame]
+    \begin{proof}
+        Pela definição formal de derivada, avaliamos o limite da taxa de variação\footnote[frame]{Lembrando que aplicamos o Teorema do Valor Médio para Integrais aqui.}:
+        $$g'(x) = \lim_{h \to 0} \frac{1}{h} \int_{x}^{x+h} f(t) \, dt$$
+        Como $f$ é contínua, quando $h \to 0$, o valor médio da integral aproxima-se de $f(x)$, finalizando a demonstração.
+    \end{proof}
+
+\end{frame}
+
+\subsection{Standout Frame}
+
+% Standout simples
+\begin{frame}[standout]
+  Obrigado pela Atenção!
+\end{frame}
+
+% Standout com bloco da cor da ênfase (padrão)
+\begin{frame}[standout]
+  \begin{standoutbox}
+    Dentro de um bloco
+  \end{standoutbox}
+\end{frame}
+
+% Standout com bloco de cor escolhida manualmente
+\begin{frame}[standout]
+  \begin{standoutbox}[math300]
+    Bloco com cor personalizada de outra ênfase.
+  \end{standoutbox}
+\end{frame}
+
+% Standout com bloco laranja e texto longo
+\begin{frame}[standout]
+  \begin{standoutbox}[comp300]
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  \end{standoutbox}
+\end{frame}
+
+\begin{frame}[standout]
+  \begin{standoutbox}
+    Obrigado!
+  \end{standoutbox}
+\end{frame}
+
+\end{document}
