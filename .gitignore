@@ -30,7 +30,7 @@
 
 # --- Exceção para o PDF de exemplo (provisório) --- 
 
-!theme/modelo_slide_impatech.pdf
+!modelo-slide-impatech.pdf
 
 # --- Exceção para os logos da Impatech ---
 !img/logos/*.pdf
