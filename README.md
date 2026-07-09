@@ -71,12 +71,12 @@ O desenvolvimento do template é um processo contínuo. A equipe impaTeX planeja
 O desenvolvimento e programação deste template foram realizados pelo grupo de extensão impaTeX. São autores e contribuidores diretos deste modelo:
 
 * Daniela de Menezes Moraes
+* Yasmin de Barros da Silva
 * Emilly Vitória Leite Rezende
 * Gabriela Naomi Ichicawa Ogido
 * Pedro Miguel Rocha Santos
 * Rafael Luis Beraldo
 * Ryan Kevin da Costa Felinto
-* Yasmin de Barros da Silva
 
 ## ⚖️ Licença
 
