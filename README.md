@@ -78,9 +78,19 @@ O desenvolvimento e programação deste template foram realizados pelo grupo de 
 * Rafael Luis Beraldo
 * Ryan Kevin da Costa Felinto
 
+## 🙏 Créditos e Inspiração
+
+O desenvolvimento deste tema se baseou no tema **Metropolis**, de Matthias Vogelgesang ([`mtheme`](https://github.com/matze/mtheme)). Grande parte da arquitetura do `slidestech` segue de perto as ideias e a organização do Metropolis, adaptadas para a identidade visual e as necessidades do IMPA Tech. Nosso agradecimento ao autor e à comunidade LaTeX por esse trabalho de referência.
+
 ## ⚖️ Licença
 
 Este template de slides do IMPA Tech é distribuído sob a Licença Pública do Projeto LaTeX (LaTeX Project Public License - **LPPL**) na versão **1.3c ou mais atual**.
 
 Para os direitos autorais e afiliação:
 * **Copyright:** © 2026 impaTeX
+
+## 🤖 Disclaimer sobre o Uso de IA
+
+Ferramentas de LLM foram usadas como apoio no desenvolvimento (código, documentação e depuração). Todo o conteúdo foi revisado e validado pela equipe impaTeX, responsável pelas decisões finais e pela correção do material.
+
+
