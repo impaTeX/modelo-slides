@@ -28,8 +28,8 @@
 % Configurações principais do pacote SlidesTech:
 % > Opções de 'enfase': padrao (default, bege), computacao (laranja), matematica (rosa), dados (amarelo), fisica (verde)
 % > Opções de 'sectionpage': none (default), progressbar (aparece uma sectionpage a cada seção)
-% > Opções de 'subsectionpage': none, progressbar (default) (aparece uma sectionpage a cada subseção)
-\usetheme[enfase=computacao, subsectionpage=none]{slidestech}
+% > Opções de 'subsectionpage': none, progressbar (default, aparece uma sectionpage a cada subseção)
+\usetheme[enfase=padrao, subsectionpage=none]{slidestech}
 
 % -------------------------------------------------------------
 % INFORMAÇÕES DO SLIDE
@@ -45,8 +45,9 @@
 
 % --- Logos ---
 
-\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}} % Logo do título (capa)
-\logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}} % Logo do rodapé (aparece em todos os slides)
+\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}} % Logo da capa
+% \logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}} % Logo do rodapé (aparece em todos os slides)
+\logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-preta.pdf}} % RETIRAR DEPOIS
 
 % -------------------------------------------------------------
 % INÍCIO DA APRESENTAÇÃO
@@ -64,8 +65,9 @@
 
 % O comando \slidestechtoc permite "fatiar" o sumário caso ele 
 % fique muito longo. Passe o título e o intervalo de seções [Ex: {1-3}].
-\slidestechtoc{Sumário}{1-3}
-\slidestechtoc{Sumário (cont.)}{4-6}
+\slidestechtoc{Sumário}{1-2}
+\slidestechtoc{Sumário (cont.)}{3-6}
+\slidestechtoc{Sumário (cont.)}{7-8}
 
 % -------------------------------------------------------------
 % SEÇÃO 1: LISTAS 
@@ -119,13 +121,13 @@
 
 \section{Blocos}
 
-\subsection{Teorema e Prova}
+\subsection{Teorema}
 
 \begin{frame}{Bloco de Teorema}
 
 % --- Bloco de Teorema ---
 
-    % Construido com tons de rosa (fixo)
+    % Construído com tons de rosa (fixo)
     \begin{theorem}[(Infinidade dos Primos).]
         O conjunto dos números primos é infinito. Ou seja, não importa quão grande seja o 
         número primo que você encontre, sempre existirá um primo ainda maior, garantindo 
@@ -134,11 +136,13 @@
 
 \end{frame}
 
+\subsection{Prova}
+
 \begin{frame}{Bloco de Prova}
 
 % --- Bloco de Prova ---
 
-    % Construido com tons de cinza (fixo)
+    % Construído com tons de cinza (fixo)
     \begin{proof}
         Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
     
@@ -154,13 +158,13 @@
 
 \end{frame}
 
-\subsection{Exemplo e Alerta}
+\subsection{Exemplo}
 
 \begin{frame}{Bloco de Exemplo}
 
 % --- Bloco de Exemplo --- 
 
-    % Construido com tons de verde (fixo)
+    % Construído com tons de verde (fixo)
     \begin{exampleblock}{Otimização com Gradiente Descendente}
         Na regressão linear, ajustamos os pesos iterativamente para minimizar a função de custo $J(w)$. O passo de atualização é dado por:
         $$w_{i} \leftarrow w_{i} - \alpha \frac{\partial J}{\partial w_{i}}$$
@@ -169,11 +173,13 @@
     
 \end{frame}
 
+\subsection{Alerta}
+
 \begin{frame}{Bloco de Alerta}
 
 % --- Bloco de Alerta --- 
 
-    % Construido com tons de laranja (fixo)
+    % Construído com tons de laranja (fixo)
     \begin{alertblock}{Risco de \textit{Overfitting} (Sobreajuste)}
         Ao treinar modelos complexos com conjuntos de dados pequenos, a rede pode 
         memorizar os exemplos de treino em vez de aprender a generalizar. Sempre utilize 
@@ -189,7 +195,7 @@
 
 % --- Bloco Padrão --- 
 
-    % Construido com tons de preto (tema padrão) ou com tons de bege (demais temas)
+    % Construído com tons de preto (tema padrão) ou com tons de bege (demais temas)
     \begin{block}{Definição: Complexidade de Algoritmos}
         A notação Big-O, denotada formalmente por $\mathcal{O}(f(n))$, descreve o limite superior 
         assintótico do tempo de execução de um algoritmo. Ela nos permite analisar 
@@ -199,69 +205,128 @@
     
 \end{frame}
 
-\section{Outras implementações}
+% -------------------------------------------------------------
+% SEÇÃO 3: COMPONENTES VISUAIS (PILLS E DESTAQUES)
+% -------------------------------------------------------------
 
-\subsection{Pills e Texto de Alerta}
+\section{Componentes Visuais}
+
+\subsection{Pills}
+
+% --- Pills --- 
 
 \begin{frame}{Pills}
-  O \pill{IMPA Tech} oferece o curso de graduação Bacharelado em \pill[math300]{Matemática} da Tecnologia e Inovação, 
-  financiada pelo \pill[data300]{Governo Federal} por meio do Ministério da \pill[comp300]{Ciência}, Tecnologia e Inovação (MCTI) 
-  e do \pill[physics300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[comp300]{Rio de Janeiro}.
+
+    % O comando \pill{} destaca palavras. É possível passar a cor desejada 
+    % opcionalmente entre colchetes. Sem colchetes, usa a cor amarela (Dados).
+    %
+    % Cores disponíveis do modelo slidestech são:
+    % > beige300: bege (Padrão)
+    % > comp300: laranja (Computação)
+    % > math300: rosa (Matemática)
+    % > physics300: verde (Física)
+    %
+    % Podendo também usar outras cores.
+    %
+    % Além disso, é possível usar o comando \pillbf{} para destacar palavras em negrito.
+    O \pill{\textsc{impa} Tech} oferece o curso de graduação Bacharelado em \pill[math300]{Matemática} da Tecnologia e Inovação, 
+    financiada pelo \pill[data300]{Governo Federal} por meio do Ministério da \pill[comp300]{Ciência}, Tecnologia e Inovação (MCTI) 
+    e do \pill[physics300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[comp300]{Rio de Janeiro}.
 \end{frame}
 
-\begin{frame}{Pills, Texto de Alerta e Destaque}
-   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
-   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
-   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+% --- Texto de Alerta --- 
+
+\subsection{Texto de Alerta (Destaque)}
+
+% O comando \alert{} destaca palavras com a cor laranja (fixo). Podendo ser 
+% usadas em qualquer parte do texto, inclusive dentro de blocos.
+\begin{frame}{Texto de Alerta}
+   O \alert{\textsc{impa} Tech} é o primeiro curso de graduação do Instituto de Matemática Pura e 
+   Aplicada. O programa tem como foco a \alert{\bf{Matemática da Tecnologia e Inovação}}, 
+   preparando os alunos para resolverem grandes desafios do mundo real. 
+
+    \vspace{1em}
+
+    A grade curricular integra uma sólida base teórica com \alert{\bf{aplicações práticas}} 
+    em \alert{ciência de dados} e \alert{ciência da computação}, formando profissionais 
+    de excelência para a fronteira da inovação tecnológica.
 \end{frame}
 
+% -------------------------------------------------------------
+% SEÇÃO 4:  RODAPÉ
+% -------------------------------------------------------------
+
+\section{Rodapé}
+
+% Use \footnote{} para adicionar notas de rodapé no fim do slide.
 \begin{frame}{Rodapé}
-    Este é um exemplo de texto explicativo\footnote{Esta é a nota que aparecerá no rodapé.}.
+    Durante a preparação de uma apresentação acadêmica, frequentemente precisamos 
+    adicionar referências bibliográficas ou informações complementares\footnote{O rodapé é o local ideal para incluir esses detalhes sem poluir o slide.}.
 
-    Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
-   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
-   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+    \vspace{1em}
 
-   Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
-   \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
-   veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
+    O uso de \alert{\bf{notas de rodapé}} ajuda a manter a fluidez da leitura principal. Ao mesmo 
+    tempo, garante que o público possa consultar a \pill{fonte da informação} ou ler um 
+    \pill{comentário extra} caso tenha interesse.
 \end{frame}
 
-\subsection{Standout Frame}
+% -------------------------------------------------------------
+% SEÇÃO 5:  STANDOUT FRAME
+% -------------------------------------------------------------
 
-% Standout simples
+\section{Standout Frame}
+
+% --- Standout simples --- 
+
+% Standout frames possibilita aplicar um fundo totalmente branco para criar telas 
+% de impacto ou transição. Basta adicionar a opção [standout] ao \begin{frame}.
 \begin{frame}[standout]
-  Obrigado pela Atenção!
+    A grande questão é: \\ 
+    como aplicamos isso na prática?
 \end{frame}
 
-% Standout com bloco da cor da ênfase (padrão)
-\begin{frame}[standout]
-  \begin{standoutbox}
-    Dentro de um bloco
-  \end{standoutbox}
-\end{frame}
-
-% Standout com bloco de cor escolhida manualmente
-\begin{frame}[standout]
-  \begin{standoutbox}[math300]
-    Bloco com cor personalizada de outra ênfase.
-  \end{standoutbox}
-\end{frame}
-
-% Standout com bloco laranja e texto longo
-\begin{frame}[standout]
-  \begin{standoutbox}[comp300]
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  \end{standoutbox}
-\end{frame}
+% --- Standout com bloco de cor padrão ---
 
 \begin{frame}[standout]
-  \begin{standoutbox}
-    Obrigado!
-  \end{standoutbox}
+
+    % O comando \begin{standoutbox} cria um bloco de destaque com a cor da ênfase 
+    % escolhida no tema.
+    \begin{standoutbox}
+        A conclusão central do nosso estudo 
+        mostra que a adoção destas métricas 
+        reduz a margem de erro drasticamente.
+    \end{standoutbox}
 \end{frame}
 
-\section{Alguns testes importantes}
+% --- Standout com bloco de cor diferente ---
+
+\begin{frame}[standout]
+
+    % O comando \begin{standoutbox}[cor] cria um bloco de destaque com a cor escolhida manualmente. 
+    %
+    % As cores disponíveis do modelo slidestech são: 
+    % > beige300 (bege)
+    % > comp300 (laranja)
+    % > math300 (rosa)
+    % > data300 (amarelo)
+    % > physics300 (verde)
+    %
+    % Sendo possível também usar outras cores.
+    \begin{standoutbox}[math300]
+        Lembrete Importante: \\
+
+        \vspace{0.3cm}
+
+        \normalsize Cores personalizadas são excelentes para guiar a 
+        atenção visual e destacar pontos de alerta.
+    \end{standoutbox}
+\end{frame}
+
+% -------------------------------------------------------------
+% EM CONSTRUÇÃO
+% -------------------------------------------------------------
+
+\section{Alguns testes importantes (em construção)}
 
 \subsection{Ambiente matemático}
 
@@ -382,7 +447,7 @@ saudar("SlidesTech")
 
 \end{frame}
 
-\section{Referências}
+\section{Referências (em construção)}
 
 \begin{frame}[allowframebreaks, noframenumbering]{Referências}
     \nocite{*} % para testar: puxa tudo do .bib mesmo sem citação no texto
@@ -390,7 +455,7 @@ saudar("SlidesTech")
     \bibliography{references}      
 \end{frame}
 
-\section{Agradecimento}
+\section{Agradecimento (em construção)}
 
 \begin{frame}[standout]
     
