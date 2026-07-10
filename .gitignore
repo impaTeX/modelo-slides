@@ -28,11 +28,8 @@
 
 *.pdf
 
-# --- Exceção para o PDF de exemplo (provisório) --- 
-
-!modelo-slide-impatech.pdf
-
 # --- Exceção para os logos da Impatech ---
+
 !img/logos/*.pdf
 
 # --- Arquivos do sistema ---
