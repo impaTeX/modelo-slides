@@ -29,7 +29,7 @@
 % > Opções de 'enfase': padrao (default, bege), computacao (laranja), matematica (rosa), dados (amarelo), fisica (verde)
 % > Opções de 'sectionpage': none (default), progressbar (aparece uma sectionpage a cada seção)
 % > Opções de 'subsectionpage': none, progressbar (default) (aparece uma sectionpage a cada subseção)
-\usetheme[enfase=matematica, subsectionpage=none]{slidestech}
+\usetheme[enfase=computacao, subsectionpage=none]{slidestech}
 
 % -------------------------------------------------------------
 % INFORMAÇÕES DO SLIDE
@@ -113,58 +113,89 @@
     \end{enumerate}
 \end{frame}
 
+% -------------------------------------------------------------
+% SEÇÃO 2: AMBIENTE DE BLOCOS
+% -------------------------------------------------------------
+
 \section{Blocos}
 
 \subsection{Teorema e Prova}
 
-\begin{frame}{Teorema e prova}
+\begin{frame}{Bloco de Teorema}
 
-\begin{theorem}[(Infinidade dos Primos).]
-    Existem infinitos números primos.
-  \end{theorem}
+% --- Bloco de Teorema ---
+
+    % Construido com tons de rosa (fixo)
+    \begin{theorem}[(Infinidade dos Primos).]
+        O conjunto dos números primos é infinito. Ou seja, não importa quão grande seja o 
+        número primo que você encontre, sempre existirá um primo ainda maior, garantindo 
+        que a sequência não tem fim.
+    \end{theorem}
 
 \end{frame}
 
-\begin{frame}{Prova do Teorema}
+\begin{frame}{Bloco de Prova}
 
-  \begin{proof}
-    Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
+% --- Bloco de Prova ---
+
+    % Construido com tons de cinza (fixo)
+    \begin{proof}
+        Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
     
-    Considere o número $P = (p_1 \times p_2 \times \dots \times p_n) + 1$.
+        Considere o número $P = (p_1 \times p_2 \times \dots \times p_n) + 1$.
     
-    \begin{itemize}
-        \item $P$ não é divisível por nenhum dos primos da nossa lista, pois o resto da divisão por qualquer $p_i$ será sempre $1$.
-        \item Logo, ou $P$ é ele próprio um novo primo, ou possui um fator primo que não está na lista original.
-    \end{itemize}
+        \begin{itemize}
+            \item $P$ não é divisível por nenhum dos primos da nossa lista, pois o resto da divisão por qualquer $p_i$ será sempre $1$.
+            \item Logo, ou $P$ é ele próprio um novo primo, ou possui um fator primo que não está na lista original.
+        \end{itemize}
     
-    Em ambos os casos, encontramos um primo que não estava no conjunto finito original, gerando uma contradição. Portanto, o conjunto dos primos é infinito.
+        Em ambos os casos, encontramos um primo que não estava no conjunto finito original, gerando uma contradição. Portanto, o conjunto dos primos é infinito.
   \end{proof}
 
 \end{frame}
 
 \subsection{Exemplo e Alerta}
 
-\begin{frame}{Exemplo}
+\begin{frame}{Bloco de Exemplo}
 
-\begin{exampleblock}{Exemplo}
-    Isso é um exemplo
-\end{exampleblock}
+% --- Bloco de Exemplo --- 
+
+    % Construido com tons de verde (fixo)
+    \begin{exampleblock}{Otimização com Gradiente Descendente}
+        Na regressão linear, ajustamos os pesos iterativamente para minimizar a função de custo $J(w)$. O passo de atualização é dado por:
+        $$w_{i} \leftarrow w_{i} - \alpha \frac{\partial J}{\partial w_{i}}$$
+        Com uma taxa de aprendizado adequada ($\alpha = 0.01$), o algoritmo converge suavemente para o mínimo global.
+    \end{exampleblock}
     
 \end{frame}
 
-\begin{frame}{Alerta}
+\begin{frame}{Bloco de Alerta}
 
-\begin{alertblock}{Alerta}
-    Isto é um bloco de aviso
-\end{alertblock}
+% --- Bloco de Alerta --- 
+
+    % Construido com tons de laranja (fixo)
+    \begin{alertblock}{Risco de \textit{Overfitting} (Sobreajuste)}
+        Ao treinar modelos complexos com conjuntos de dados pequenos, a rede pode 
+        memorizar os exemplos de treino em vez de aprender a generalizar. Sempre utilize 
+        validação cruzada e reserve um conjunto de teste para evitar essa armadilha 
+        metodológica.
+    \end{alertblock}
     
 \end{frame}
+
+\subsection{Padrão}
 
 \begin{frame}{Bloco padrão}
 
-\begin{block}{Bloco}
-    Este é o bloco padrão
-\end{block}
+% --- Bloco Padrão --- 
+
+    % Construido com tons de preto (tema padrão) ou com tons de bege (demais temas)
+    \begin{block}{Definição: Complexidade de Algoritmos}
+        A notação Big-O, denotada formalmente por $\mathcal{O}(f(n))$, descreve o limite superior 
+        assintótico do tempo de execução de um algoritmo. Ela nos permite analisar 
+        teoricamente a eficiência do código conforme o tamanho da entrada $n$ tende ao 
+        infinito.
+    \end{block}
     
 \end{frame}
 
