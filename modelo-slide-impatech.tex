@@ -124,14 +124,13 @@
 \subsection{Teorema}
 
 \begin{frame}{Bloco de Teorema}
-
-% --- Bloco de Teorema ---
-
-    % Construído com tons de rosa (fixo)
-    \begin{theorem}[(Infinidade dos Primos).]
-        O conjunto dos números primos é infinito. Ou seja, não importa quão grande seja o 
-        número primo que você encontre, sempre existirá um primo ainda maior, garantindo 
-        que a sequência não tem fim.
+    
+    % Testando o bloco de Teorema
+    \begin{theorem}[Parte 1]
+        Se uma função $f$ for contínua no intervalo fechado $[a, b]$, então a função $g$ definida por:
+        $$g(x) = \int_{a}^{x} f(t) \, dt$$
+        é contínua em $[a, b]$, derivável em $(a, b)$, e sua derivada é:
+        $$g'(x) = f(x)$$
     \end{theorem}
 
 \end{frame}
@@ -143,18 +142,12 @@
 % --- Bloco de Prova ---
 
     % Construído com tons de cinza (fixo)
+    % Testando o bloco de Prova (Proof) com a nota de rodapé [frame]
     \begin{proof}
-        Suponha que existam apenas finitamente muitos primos $p_1, p_2, \dots, p_n$. 
-    
-        Considere o número $P = (p_1 \times p_2 \times \dots \times p_n) + 1$.
-    
-        \begin{itemize}
-            \item $P$ não é divisível por nenhum dos primos da nossa lista, pois o resto da divisão por qualquer $p_i$ será sempre $1$.
-            \item Logo, ou $P$ é ele próprio um novo primo, ou possui um fator primo que não está na lista original.
-        \end{itemize}
-    
-        Em ambos os casos, encontramos um primo que não estava no conjunto finito original, gerando uma contradição. Portanto, o conjunto dos primos é infinito.
-  \end{proof}
+        Pela definição formal de derivada, avaliamos o limite da taxa de variação\footnote[frame]{Testando ambiente matemático dentro de blocos.}:
+        $$g'(x) = \lim_{h \to 0} \frac{1}{h} \int_{x}^{x+h} f(t) \, dt$$
+        Como $f$ é contínua, quando $h \to 0$, o valor médio da integral aproxima-se de $f(x)$, finalizando a demonstração.
+    \end{proof}
 
 \end{frame}
 
@@ -323,87 +316,10 @@
 \end{frame}
 
 % -------------------------------------------------------------
-% AGRADECIMENTO
+% SEÇÃO 6:  ALGUMAS APLICAÇÕES IMPORTANTES
 % -------------------------------------------------------------
 
-\section{Agradecimento}
-
-% O parâmetro [t] alinha o conteúdo ao topo do slide,
-% permitindo usar \vfill para empurrar os elementos para o centro e para baixo.
-\begin{frame}[t, standout]
-    
-    % --- Logo no canto superior esquerdo ---
-    \vspace*{0.2cm} % Pequeno respiro no topo
-    \begin{flushleft}
-        \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
-    \end{flushleft}
-    
-    \vfill
-    
-    % --- Caixa centralizada ---
-    \begin{center}
-        \begin{standoutbox}
-            \Huge Obrigada!
-        \end{standoutbox}
-    \end{center}
-    
-    \vfill
-    
-    % --- Rodapé---
-    % O parâmetro [b] nas colunas garante que tudo fique alinhado pela base.
-    \begin{columns}[b]
-        
-        % Coluna de Contato (Autor/Email)
-        \begin{column}{0.4\textwidth}
-            \begin{flushleft}
-                \small
-                Nome do Autor \\
-                email@gmail.com
-            \end{flushleft}
-        \end{column}
-        
-        % Coluna das Logos Institucionais
-        \begin{column}{0.6\textwidth}
-            \begin{flushright}
-                \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
-            \end{flushright}
-        \end{column}
-        
-    \end{columns}
-    \vspace*{0.3cm} % Respiro na base do slide
-    
-\end{frame}
-
-% -------------------------------------------------------------
-% Alguns Testes Importantes
-% -------------------------------------------------------------
-
-\section{Alguns Testes Importantes}
-
-\subsection{Ambiente matemático}
-
-\begin{frame}{Ambiente matemático (dentro de bloco)}
-    
-    % Testando o bloco de Teorema
-    \begin{theorem}[Parte 1]
-        Se uma função $f$ for contínua no intervalo fechado $[a, b]$, então a função $g$ definida por:
-        $$g(x) = \int_{a}^{x} f(t) \, dt$$
-        é contínua em $[a, b]$, derivável em $(a, b)$, e sua derivada é:
-        $$g'(x) = f(x)$$
-    \end{theorem}
-
-\end{frame}
-
-\begin{frame}[allowframebreaks]{Ambiente matemático (dentro de bloco)}
-
-    % Testando o bloco de Prova (Proof) com a nota de rodapé [frame]
-    \begin{proof}
-        Pela definição formal de derivada, avaliamos o limite da taxa de variação\footnote[frame]{Lembrando que aplicamos o Teorema do Valor Médio para Integrais aqui.}:
-        $$g'(x) = \lim_{h \to 0} \frac{1}{h} \int_{x}^{x+h} f(t) \, dt$$
-        Como $f$ é contínua, quando $h \to 0$, o valor médio da integral aproxima-se de $f(x)$, finalizando a demonstração.
-    \end{proof}
-
-\end{frame}
+\section{Algumas Aplicações Importantes}
 
 \begin{frame}{Ambiente Matemático (fora de bloco)}
 
@@ -500,7 +416,7 @@ saudar("SlidesTech")
 \end{frame}
 
 % -------------------------------------------------------------
-% Referências
+% SEÇÃO 7:  REFERÊNCIAS
 % -------------------------------------------------------------
 
 \section{Referências}
@@ -509,6 +425,58 @@ saudar("SlidesTech")
     \nocite{*} % para testar: puxa tudo do .bib mesmo sem citação no texto
     \bibliographystyle{abntex2-alf} 
     \bibliography{references}      
+\end{frame}
+
+% -------------------------------------------------------------
+% SEÇÃO 8:  AGRADECIMENTO
+% -------------------------------------------------------------
+
+\section{Agradecimento}
+
+% O parâmetro [t] alinha o conteúdo ao topo do slide,
+% permitindo usar \vfill para empurrar os elementos para o centro e para baixo.
+\begin{frame}[t, standout]
+    
+    % --- Logo no canto superior esquerdo ---
+    \vspace*{0.2cm} % Pequeno respiro no topo
+    \begin{flushleft}
+        \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
+    \end{flushleft}
+    
+    \vfill
+    
+    % --- Caixa centralizada ---
+    \begin{center}
+        \begin{standoutbox}
+            \Huge Obrigada!
+        \end{standoutbox}
+    \end{center}
+    
+    \vfill
+    
+    % --- Rodapé---
+    % O parâmetro [b] nas colunas garante que tudo fique alinhado pela base.
+    \begin{columns}[b]
+        
+        % Coluna de Contato (Autor/Email)
+        \begin{column}{0.4\textwidth}
+            \begin{flushleft}
+                \small
+                \insertauthor \\
+                email@gmail.com
+            \end{flushleft}
+        \end{column}
+        
+        % Coluna das Logos Institucionais
+        \begin{column}{0.6\textwidth}
+            \begin{flushright}
+                \includegraphics[height=2cm]{./img/logos/impatech-completa-vertical-preta.pdf}
+            \end{flushright}
+        \end{column}
+        
+    \end{columns}
+    \vspace*{0.3cm} % Respiro na base do slide
+    
 \end{frame}
 
 \end{document}
