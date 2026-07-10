@@ -6,7 +6,7 @@
 \ProvidesPackage{beamerouterthemeslidestech}[16/05/2026 IMPA Tex outer theme]
 
 % -------------------------------------------------------------
-% PACOTES ADICIONAIS
+% DEPENDÊNCIAS
 % -------------------------------------------------------------
 
 \RequirePackage{tikz}
@@ -36,26 +36,28 @@
 {
     \nointerlineskip
 
-    % Caixa do cabeçalho com padding (sep) automático em vez de altura fixa
+    % --- Caixa do cabeçalho --- 
+    % Utilizado padding (sep) automático em vez de altura fixa
     \begin{beamercolorbox}[
         wd=\paperwidth, 
-        sep=0.35cm,       % Espaçamento interno (padding) topo e base
-        leftskip=0.2cm,   % Margem esquerda
-        rightskip=0.2cm   % Margem direita
+        sep=0.35cm, % Espaçamento interno (padding) topo e base
+        leftskip=0.2cm, % Margem esquerda
+        rightskip=0.2cm % Margem direita
     ]{frametitle}
-        % Título
+        % -- Título ---
         {\usebeamerfont{frametitle}\bfseries\Large\insertframetitle}%
         \hfill%
-        % Logo (Abaixada levemente para centralizar com o texto)
+        % --- Logo --- 
+        % Abaixada levemente para centralizar com o texto
         \raisebox{-0.15cm}{\insertlogo}%
     \end{beamercolorbox}%
     
     \nointerlineskip
 
-    % Barra de Progresso
+    % --- Barra de Progresso ---
     \begin{beamercolorbox}[
         wd=\paperwidth,
-        ht=1pt,           % Altura exata da barra
+        ht=1pt, % Altura exata da barra
         dp=0pt,
         sep=0pt
     ]{}%
