@@ -3,25 +3,13 @@
 %
 % Este documento é um modelo em LaTeX para slides de apresentação do
 % IMPA Tech. O template foi programado pelo grupo de extensão impaTeX.
-%
-% Pacotes (conferir):
-%   > beamer: para criar apresentações em LaTeX
-%   > graphicx: para incluir imagens
-%   > xcolor: para definir cores personalizadas
-%   > tikz: para desenhar elementos gráficos
-%
-% Compilação: pdflatex ou lualatex (conferir)
+
 % Copyright: © 2026 impaTeX
 
-% São autores deste template: Daniela de Menezes Moraes, Emilly 
-% Vitória Leite Rezende, Gabriela Naomi Ichicawa Ogido, Pedro 
-% Miguel Rocha Santos, Rafael Luis Beraldo, Ryan Kevin da Costa 
-% Felinto e Yasmin de Barros da Silva.
-%
 % Licença/Uso: LaTeX Project Public License (LPPL) versão 1.3c 
 % ou mais atual.
 %
-% Última atualização: 08/07/2026
+% Última atualização: 11/07/2026
 % -------------------------------------------------------------
 
 \documentclass[aspectratio=169]{beamer}
@@ -33,13 +21,13 @@
 % Opções de 'enfase': padrão (default), computacao, matematica, dados, fisica (muda a paleta de cores)
 % Opções de 'sectionpage': none (default), progressbar (aparece uma sectionpage a cada seção)
 % Opções de 'subsectionpage': none, progressbar (default) (aparece uma sectionpage a cada subseção)
-\usetheme[enfase=computacao, subsectionpage=none]{slidestech}
+\usetheme[enfase=matematica, subsectionpage=none]{slidestech}
 
 \title[Resumo do título]{Título do Slide}
 
 \subtitle{Subtítulo do Slide}
 \author{Nome do(a) Autor(a)}
-\institute{\textsc{impa} Tech}
+\institute{\textsc{impa} Tech }
 \titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}}
 \logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}}
 \date{Data}
@@ -51,7 +39,7 @@
 % SUMÁRIOS (TOC) CUSTOMIZADOS
 % Permitem fatiar o sumário passando o intervalo de seções [Ex: {1-3}]
 \slidestechtoc{Sumário}{1-3}
-\slidestechtoc{Sumário (cont.)}{4-5}
+\slidestechtoc{Sumário (cont.)}{4-6}
 
 \section{Listas}
 
@@ -142,19 +130,19 @@
 
 \subsection{Pills e Texto de Alerta}
 
-\begin{frame}{Teste de pill}
+\begin{frame}{Pills}
   O \pill{IMPA Tech} oferece o curso de graduação Bacharelado em \pill[math300]{Matemática} da Tecnologia e Inovação, 
   financiada pelo \pill[data300]{Governo Federal} por meio do Ministério da \pill[comp300]{Ciência}, Tecnologia e Inovação (MCTI) 
   e do \pill[physics300]{Ministério da Educação} (MEC), e com apoio da Prefeitura Municipal do \pillbf[comp300]{Rio de Janeiro}.
 \end{frame}
 
-\begin{frame}{Teste de pill e negrito colorido}
+\begin{frame}{Pills, Texto de Alerta e Destaque}
    Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
    \alert{doloremque} laudantium, totam rem aperiam eaque ipsa, \alert{quae ab illo} inventore 
    veritatis et quasi architecto \alert{beatae vitae dicta sunt}, explicabo.
 \end{frame}
 
-\begin{frame}{Título do Slide}
+\begin{frame}{Rodapé}
     Este é um exemplo de texto explicativo\footnote{Esta é a nota que aparecerá no rodapé.}.
 
     Sed ut perspiciatis unde omnis iste natus error sit \pill{voluptatem accusan} 
@@ -328,6 +316,8 @@ saudar("SlidesTech")
     \bibliographystyle{abntex2-alf} 
     \bibliography{references}      
 \end{frame}
+
+\section{Agradecimento}
 
 \begin{frame}[standout]
     
