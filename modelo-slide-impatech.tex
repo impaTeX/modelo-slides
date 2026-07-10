@@ -323,6 +323,58 @@
 \end{frame}
 
 % -------------------------------------------------------------
+% AGRADECIMENTO (EM CONSTRUÇÃO)
+% -------------------------------------------------------------
+
+\section{Agradecimento}
+
+% O parâmetro [t] alinha o conteúdo ao topo do slide,
+% permitindo usar \vfill para empurrar os elementos para o centro e para baixo.
+\begin{frame}[t, standout]
+    
+    % --- Logo no canto superior esquerdo ---
+    \vspace*{0.2cm} % Pequeno respiro no topo
+    \begin{flushleft}
+        \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
+    \end{flushleft}
+    
+    \vfill
+    
+    % --- Caixa centralizada ---
+    \begin{center}
+        \begin{standoutbox}
+            \Huge Obrigada!
+        \end{standoutbox}
+    \end{center}
+    
+    \vfill
+    
+    % --- Rodapé---
+    % O parâmetro [b] nas colunas garante que tudo fique alinhado pela base.
+    \begin{columns}[b]
+        
+        % Coluna de Contato (Autor/Email)
+        \begin{column}{0.4\textwidth}
+            \begin{flushleft}
+                \small
+                Nome do Autor \\
+                email@gmail.com
+            \end{flushleft}
+        \end{column}
+        
+        % Coluna das Logos Institucionais
+        \begin{column}{0.6\textwidth}
+            \begin{flushright}
+                \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
+            \end{flushright}
+        \end{column}
+        
+    \end{columns}
+    \vspace*{0.3cm} % Respiro na base do slide
+    
+\end{frame}
+
+% -------------------------------------------------------------
 % EM CONSTRUÇÃO
 % -------------------------------------------------------------
 
@@ -453,25 +505,6 @@ saudar("SlidesTech")
     \nocite{*} % para testar: puxa tudo do .bib mesmo sem citação no texto
     \bibliographystyle{abntex2-alf} 
     \bibliography{references}      
-\end{frame}
-
-\section{Agradecimento (em construção)}
-
-\begin{frame}[standout]
-    
-    \begin{standoutbox}
-        Obrigado pela Atenção!
-    \end{standoutbox}
-    % Criando duas colunas para separar imagem e logo do resto do layout
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \includegraphics[width=0.8\linewidth]{./img/logos/impatech-reduzida-preta.pdf}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \raggedleft
-            \includegraphics[width=0.8\linewidth]{./img/logos/impatech-reduzida-horizontal-preta.pdf}
-        \end{column}
-    \end{columns}
 \end{frame}
 
 \end{document}
