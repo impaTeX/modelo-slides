@@ -398,7 +398,7 @@ print(f'Senha gerada: {nova_senha}')
     % > Parâmetros: \slidestechfigure[largura]{caminho}{legenda}{fonte}
     %
     % Nota: O '%' no final das linhas é uma boa prática para evitar espaços em branco indesejados.
-    \slidestechfigure[\linewidth]{./img/imagens/saintpauldome.png}%
+    \slidestechfigure[\linewidth]{./img/figuras/saintpauldome.png}%
       {Catedral de São Paulo, Christopher Wren (1675-1710)}%
       {Wikipedia Commons (2008)}
 \end{minipage}
@@ -412,7 +412,7 @@ print(f'Senha gerada: {nova_senha}')
     
     % Nesta imagem, em vez de usar uma porcentagem da linha (\linewidth), 
     % a largura foi fixada em um valor absoluto (4cm).
-    \slidestechfigure[4cm]{./img/imagens/eduardotorroja.jpg}%
+    \slidestechfigure[4cm]{./img/figuras/eduardotorroja.jpg}%
       {Club Tachira, Eduardo Torroja (1899,1961)}%
       {Arch Daily (2008)}
 \end{minipage}
@@ -495,12 +495,14 @@ print(f'Senha gerada: {nova_senha}')
 % > Logo 2 (Rodapé direita - Primeira logo)
 % > Logo 3 (Rodapé direita - Segunda logo)
 %
+% Os quais são "opcionais" (basta deixar as chaves vazias {} caso não queira utilizá-los):
+%
 % Nota: Se for adicionar a logo 3, inclua o espaço antes da imagem!
 % Exemplo: {\hspace{0.8cm} \includegraphics[height=2cm]{logo-rodape2.pdf}}
 \slideagradecimento%
   {email@gmail.com}% Email
   {\includegraphics[height = 1.2cm]{./img/logos/logos-impatech/impatech-reduzida-preta.pdf}}%
-  {\includegraphics[height = 1.2cm]{./img/logos/logos-impa/impa-preta.png}}%
+  {\includegraphics[height = 4cm]{./img/logos/logos-impatex/impatex-preta.pdf}}%
   {}% Nenhuma logo extra no rodapé
 
 \end{document}
