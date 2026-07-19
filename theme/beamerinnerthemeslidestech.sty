@@ -314,7 +314,7 @@
 % Configuração interna do frame [standout] para limpar elementos (header/footer/canvas)
 \define@key{beamerframe}{standout}[]{%
   \booltrue{slidestech@standout}%
-  \def\slidestech@standout@fg{black}%
+  \def\slidestech@standout@fg{white}%
   \pgfkeys{/slidestech/standout/.cd, #1}%
   \begingroup%
     \setkeys{beamerframe}{c}%
@@ -325,7 +325,7 @@
     \setbeamertemplate{navigation symbols}{}%
     \setbeamertemplate{sidebar right}{}%
     \setbeamertemplate{sidebar left}{}%
-    \setbeamercolor{background canvas}{bg=white}%
+    \setbeamercolor{background canvas}{bg=black}%
   \centering%
   \Large\bfseries%
   \color{\slidestech@standout@fg}%
