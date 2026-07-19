@@ -46,11 +46,11 @@
 % --- Logos ---
 
 % >> Logo da capa
-\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}} 
+\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/logos-impatech/impatech-reduzida-preta.pdf}} 
 
 % >> Logo do Rodapé (aparece em todos os slides)
-\logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}} % Logo do IMPA Tech Branca
-% \logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-preta.pdf}} % Logo do IMPA Tech Preta
+\logo{\includegraphics[height = 0.56cm]{./img/logos/logos-impatech/impatech-reduzida-horizontal-branca.pdf}} % Logo do IMPA Tech Branca
+% \logo{\includegraphics[height = 0.56cm]{./img/logos/logos-impatech/impatech-reduzida-horizontal-preta.pdf}} % Logo do IMPA Tech Preta
 
 % -------------------------------------------------------------
 % INÍCIO DA APRESENTAÇÃO
@@ -489,50 +489,18 @@ print(f'Senha gerada: {nova_senha}')
 
 \section{Agradecimento}
 
-% O parâmetro [t] alinha o conteúdo ao topo do slide,
-% permitindo usar \vfill para empurrar os elementos para o centro e para baixo.
-\begin{frame}[t, standout]
-    
-    % --- Logo no canto superior esquerdo ---
-    \vspace*{0.2cm} % Pequeno respiro no topo
-    \begin{flushleft}
-        \includegraphics[height=1.2cm]{./img/logos/impatech-reduzida-preta.pdf}
-    \end{flushleft}
-    
-    \vfill
-    
-    % --- Caixa centralizada ---
-    \begin{center}
-        \begin{standoutbox}
-            \Huge Obrigada!
-        \end{standoutbox}
-    \end{center}
-    
-    \vfill
-    
-    % --- Rodapé---
-    % O parâmetro [b] nas colunas garante que tudo fique alinhado pela base.
-    \begin{columns}[b]
-        
-        % Coluna de Contato (Autor/Email)
-        \begin{column}{0.4\textwidth}
-            \begin{flushleft}
-                \small
-                \insertauthor \\
-                email@gmail.com
-            \end{flushleft}
-        \end{column}
-        
-        % Coluna das Logos Institucionais
-        \begin{column}{0.6\textwidth}
-            \begin{flushright}
-                \includegraphics[height=2cm]{./img/logos/impatech-completa-vertical-preta.pdf}
-            \end{flushright}
-        \end{column}
-        
-    \end{columns}
-    \vspace*{0.3cm} % Respiro na base do slide
-    
-\end{frame}
+% O comando \slideagradecimento cria um slide de finalização, recebendo os seguintes argumentos:
+% > Email 
+% > Logo 1 (Canto superior esquerdo)
+% > Logo 2 (Rodapé direita - Primeira logo)
+% > Logo 3 (Rodapé direita - Segunda logo)
+%
+% Nota: Se for adicionar a logo 3, inclua o espaço antes da imagem!
+% Exemplo: {\hspace{0.8cm} \includegraphics[height=2cm]{logo-rodape2.pdf}}
+\slideagradecimento%
+  {email@gmail.com}% Email
+  {\includegraphics[height = 1.2cm]{./img/logos/logos-impatech/impatech-reduzida-preta.pdf}}%
+  {\includegraphics[height = 1.2cm]{./img/logos/logos-impa/impa-preta.png}}%
+  {}% Nenhuma logo extra no rodapé
 
 \end{document}
