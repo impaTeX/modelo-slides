@@ -466,9 +466,20 @@ print(f'Senha gerada: {nova_senha}')
 
 \section{Referências}
 
-\begin{frame}[allowframebreaks, noframenumbering]{Referências}
-    \nocite{*} % para testar: puxa tudo do .bib mesmo sem citação no texto
+% Parâmetros do frame:
+% > allowframebreaks: Se a lista de referências for longa, divide automaticamente em vários slides.
+% > noframenumbering: Impede que estes slides entrem na contagem total da apresentação.
+% > plain: Remove elementos visuais do rodapé (como a numeração).
+\begin{frame}[allowframebreaks, noframenumbering, plain]{Referências}
+    
+    % O \nocite{*} força que todas as entradas do arquivo .bib apareçam 
+    % nas referências, mesmo que não tenham sido citadas ao longo dos slides.
+    \nocite{*}
+
+    % Define o padrão visual da bibliografia (neste caso, ABNT alfabética).
     \bibliographystyle{abntex2-alf} 
+
+    % Aponta para o arquivo que contém os dados dos livros/artigos (references.bib).
     \bibliography{references}      
 \end{frame}
 
