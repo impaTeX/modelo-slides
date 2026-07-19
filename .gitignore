@@ -28,9 +28,9 @@
 
 *.pdf
 
-# --- Exceção para os logos da Impatech ---
+# --- Exceção para todas as imagens em PDF ---
 
-!img/logos/*.pdf
+!img/**/*.pdf
 
 # --- Arquivos do sistema ---
 
