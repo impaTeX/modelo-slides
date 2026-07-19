@@ -326,13 +326,12 @@
     \end{standoutbox}
 \end{frame}
 
-% -------------------------------------------------------------
-% SEÇÃO 6:  OUTRAS IMPORTANTES
-% -------------------------------------------------------------
 
 \section{Outras Aplicações}
 
-% --- Slide de Código ---
+% -------------------------------------------------------------
+% SEÇÃO 6:  CÓDIGO
+% -------------------------------------------------------------
 
 \subsection{Código}
 
@@ -379,20 +378,40 @@ print(f'Senha gerada: {nova_senha}')
 \end{lstlisting}
 \end{frame}
 
-\subsection{Teste de Imagens}
+% -------------------------------------------------------------
+% SEÇÃO 7:  FIGURAS
+% -------------------------------------------------------------
+
+\subsection{Figuras}
 
 \begin{frame}{Figuras com Comando Customizado}
 
+% Garante que todo o conteúdo (as duas colunas) fique centralizado no slide
 \centering
+
+% --- Primeira Coluna ---
+% O ambiente 'minipage' cria uma "caixa" invisível. Neste caso, 
+% ela ocupará exatamente metade (50%) da largura total da linha (\linewidth).
 \begin{minipage}{0.5\linewidth}
 
-    % Uso: \slidestechfigure[largura]{caminho da imagem}{legenda}{fonte}
+    % \slidestechfigure é um comando customizado do tema para inserir imagens formatadas.
+    % > Parâmetros: \slidestechfigure[largura]{caminho}{legenda}{fonte}
+    %
+    % Nota: O '%' no final das linhas é uma boa prática para evitar espaços em branco indesejados.
     \slidestechfigure[\linewidth]{./img/imagens/saintpauldome.png}%
       {Catedral de São Paulo, Christopher Wren (1675-1710)}%
       {Wikipedia Commons (2008)}
 \end{minipage}
+% O comando \hfill cria um espaçamento horizontal flexível, 
+% empurrando as duas minipages para os lados e evitando que fiquem coladas.
 \hfill
+% --- Segunda Coluna ---
+% Esta segunda "caixa" ocupa 40% da largura da linha. Somando com os 50% 
+% da primeira, sobram 10% de espaço livre que o \hfill distribuiu no meio.
 \begin{minipage}{0.4\linewidth}
+    
+    % Nesta imagem, em vez de usar uma porcentagem da linha (\linewidth), 
+    % a largura foi fixada em um valor absoluto (4cm).
     \slidestechfigure[4cm]{./img/imagens/eduardotorroja.jpg}%
       {Club Tachira, Eduardo Torroja (1899,1961)}%
       {Arch Daily (2008)}
@@ -400,9 +419,13 @@ print(f'Senha gerada: {nova_senha}')
 
 \end{frame}
 
+% -------------------------------------------------------------
+% SEÇÃO 8:  TABELAS
+% -------------------------------------------------------------
+
 \subsection{Tabelas}
 
-\begin{frame}{Exemplo de Tabela}
+\begin{frame}{Tabela}
 
     Um exemplo de tabela\footnotemark:
 
