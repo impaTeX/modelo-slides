@@ -355,6 +355,72 @@
 }
 
 % -------------------------------------------------------------
+% SLIDE DE AGRADECIMENTO 
+% -------------------------------------------------------------
+
+% O comando \slideagradecimento recebe os seguintes argumentos:
+% > #1: Email
+% > #2: Logo 1 (Canto superior esquerdo)
+% > #3: Logo 2 (Rodapé direita - Primeira logo)
+% > #4: Logo 3 (Rodapé direita - Segunda logo)
+\newcommand{\slideagradecimento}[4]{
+    
+  % Inicia um novo slide. 
+  % > [t] (top): Força o conteúdo a começar no topo da tela (em vez de centralizar verticalmente).
+  % > [plain]: Remove os cabeçalhos, rodapés e numeração, deixando o slide totalmente limpo.
+  \begin{frame}[t, plain]
+        
+    % --- Logo 1 (Topo esquerdo) ---
+    \vspace*{0.2cm} 
+    % Alinha todo o conteúdo que estiver dentro deste bloco à margem esquerda.
+    \begin{flushleft}
+      #2 % Renderiza a primeira logo
+    \end{flushleft}
+        
+    \vfill
+        
+    % --- Caixa centralizada ---
+
+    % Centraliza horizontalmente todo o conteúdo que estiver dentro deste bloco.
+    \begin{center}
+      \begin{standoutbox}
+        \Huge Obrigada!
+      \end{standoutbox}
+    \end{center}
+        
+    \vfill
+        
+    % --- Rodapé ---
+
+    % Inicia um ambiente para criar múltiplas colunas no slide.
+    % > [b] (bottom): Alinha o conteúdo de todas as colunas pela base (parte inferior). 
+    % Isso é ótimo para rodapés, pois garante que textos e logos fiquem na mesma linha de chão.
+    \begin{columns}[b]
+            
+      % Coluna de Contato (Autor/Email)
+      \begin{column}{0.4\textwidth}
+        \begin{flushleft}
+          \small
+          \textbf{\insertauthor} \\
+          \textbf{#1} % E-mail do autor
+        \end{flushleft}
+      \end{column}
+            
+      % Coluna das Logos Institucionais
+      \begin{column}{0.6\textwidth}
+        \begin{flushright}
+          % Renderiza as logos 2 e 3 lado a lado com espaço entre elas
+          #3 \hspace{0.8cm} #4
+        \end{flushright}
+      \end{column}
+            
+    \end{columns}
+    \vspace*{0.3cm} 
+        
+  \end{frame}
+}
+
+% -------------------------------------------------------------
 % COMPONENTES VISUAIS
 % -------------------------------------------------------------
 
