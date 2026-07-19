@@ -8,7 +8,7 @@
 % Licença: LaTeX Project Public License (LPPL) versão 1.3c ou mais atual.
 % Repositório: [https://github.com/impaTeX/modelo-slides]
 %
-% Última atualização: 11/07/2026
+% Última atualização: 19/07/2026
 % -------------------------------------------------------------
 
 \documentclass[aspectratio=169]{beamer}
@@ -29,7 +29,7 @@
 % > Opções de 'enfase': padrao (default, bege), computacao (laranja), matematica (rosa), dados (amarelo), fisica (verde)
 % > Opções de 'sectionpage': none (default), progressbar (aparece uma sectionpage a cada seção)
 % > Opções de 'subsectionpage': none, progressbar (default, aparece uma sectionpage a cada subseção)
-\usetheme[enfase=padrao, subsectionpage=none]{slidestech}
+\usetheme[enfase=computacao, subsectionpage=none]{slidestech}
 
 % -------------------------------------------------------------
 % INFORMAÇÕES DO SLIDE
@@ -37,7 +37,7 @@
 
 % --- Capa ---
 
-\title[Resumo do título]{Título do Slide} % Título curto (usado durante a apresentação) e título longo (usado na capa).
+\title[Resumo do Título]{Título do Slide} % Resumo do Título (usado durante a apresentação, sendo mais curto) e Título do Slide (usado na capa).
 \subtitle{Subtítulo do Slide} % Subtítulo do slide 
 \author{Nome do(a) Autor(a)} % Autor 
 \date{Data} % Data 
@@ -45,9 +45,12 @@
 
 % --- Logos ---
 
-\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}} % Logo da capa
-% \logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}} % Logo do rodapé (aparece em todos os slides)
-\logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-preta.pdf}} % RETIRAR DEPOIS
+% >> Logo da capa
+\titlegraphic{\includegraphics[height = 1.4cm]{./img/logos/impatech-reduzida-preta.pdf}} 
+
+% >> Logo do Rodapé (aparece em todos os slides)
+\logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-branca.pdf}} % Logo do IMPA Tech Branca
+% \logo{\includegraphics[height = 0.56cm]{./img/logos/impatech-reduzida-horizontal-preta.pdf}} % Logo do IMPA Tech Preta
 
 % -------------------------------------------------------------
 % INÍCIO DA APRESENTAÇÃO
@@ -63,11 +66,12 @@
 % SUMÁRIO (TOC)
 % -------------------------------------------------------------
 
-% O comando \slidestechtoc permite "fatiar" o sumário caso ele 
-% fique muito longo. Passe o título e o intervalo de seções [Ex: {1-3}].
+% O comando \slidestechtoc permite "fatiar" o sumário caso ele fique 
+% muito longo. Passe o título e o intervalo de seções [Ex: {1-3}].
+% Para exibir de uma seção específica até o final, omita o último número [Ex: {1-}].
 \slidestechtoc{Sumário}{1-2}
-\slidestechtoc{Sumário (cont.)}{3-4}
-\slidestechtoc{Sumário (cont.)}{7-8}
+\slidestechtoc{Sumário (cont.)}{3-5}
+\slidestechtoc{Sumário (cont.)}{6-}
 
 % -------------------------------------------------------------
 % SEÇÃO 1: LISTAS 
@@ -123,10 +127,13 @@
 
 \subsection{Teorema}
 
+% --- Bloco de Teorema ---
+
 \begin{frame}{Bloco de Teorema}
     
-    % Testando o bloco de Teorema
-    \begin{theorem}[Parte 1]
+    % Construído com tons de rosa (fixo)
+    % Função: Utilizado para enunciar teoremas.
+    \begin{theorem}
         Se uma função $f$ for contínua no intervalo fechado $[a, b]$, então a função $g$ definida por:
         $$g(x) = \int_{a}^{x} f(t) \, dt$$
         é contínua em $[a, b]$, derivável em $(a, b)$, e sua derivada é:
@@ -142,9 +149,9 @@
 % --- Bloco de Prova ---
 
     % Construído com tons de cinza (fixo)
-    % Testando o bloco de Prova (Proof) com a nota de rodapé [frame]
+    % Função: Utilizado para apresentar a demonstração matemática de um teorema.
     \begin{proof}
-        Pela definição formal de derivada, avaliamos o limite da taxa de variação\footnote[frame]{Testando ambiente matemático dentro de blocos.}:
+        Pela definição formal de derivada, avaliamos o limite da taxa de variação:
         $$g'(x) = \lim_{h \to 0} \frac{1}{h} \int_{x}^{x+h} f(t) \, dt$$
         Como $f$ é contínua, quando $h \to 0$, o valor médio da integral aproxima-se de $f(x)$, finalizando a demonstração.
     \end{proof}
@@ -158,6 +165,7 @@
 % --- Bloco de Exemplo --- 
 
     % Construído com tons de verde (fixo)
+    % Função: Ideal para ilustrar a teoria abordada anteriormente com casos de uso práticos, numéricos ou aplicados.
     \begin{exampleblock}{Otimização com Gradiente Descendente}
         Na regressão linear, ajustamos os pesos iterativamente para minimizar a função de custo $J(w)$. O passo de atualização é dado por:
         $$w_{i} \leftarrow w_{i} - \alpha \frac{\partial J}{\partial w_{i}}$$
@@ -173,6 +181,7 @@
 % --- Bloco de Alerta --- 
 
     % Construído com tons de laranja (fixo)
+    % Função: Usado para chamar a atenção para avisos críticos, exceções ou erros comuns.
     \begin{alertblock}{Risco de \textit{Overfitting} (Sobreajuste)}
         Ao treinar modelos complexos com conjuntos de dados pequenos, a rede pode 
         memorizar os exemplos de treino em vez de aprender a generalizar. Sempre utilize 
@@ -189,6 +198,7 @@
 % --- Bloco Padrão --- 
 
     % Construído com tons de preto (tema padrão) ou com tons de bege (demais temas)
+    % Função: Bloco genérico, utilizado para encapsular definições, conceitos chaves ou organizar informações diversas.
     \begin{block}{Definição: Complexidade de Algoritmos}
         A notação Big-O, denotada formalmente por $\mathcal{O}(f(n))$, descreve o limite superior 
         assintótico do tempo de execução de um algoritmo. Ela nos permite analisar 
@@ -235,12 +245,12 @@
 % usadas em qualquer parte do texto, inclusive dentro de blocos.
 \begin{frame}{Texto de Alerta}
    O \alert{\textsc{impa} Tech} é o primeiro curso de graduação do Instituto de Matemática Pura e 
-   Aplicada. O programa tem como foco a \alert{\bf{Matemática da Tecnologia e Inovação}}, 
+   Aplicada. O programa tem como foco a \alert{\textbf{Matemática da Tecnologia e Inovação}}, 
    preparando os alunos para resolverem grandes desafios do mundo real. 
 
     \vspace{1em}
 
-    A grade curricular integra uma sólida base teórica com \alert{\bf{aplicações práticas}} 
+    A grade curricular integra uma sólida base teórica com \alert{\textbf{aplicações práticas}} 
     em \alert{ciência de dados} e \alert{ciência da computação}, formando profissionais 
     de excelência para a fronteira da inovação tecnológica.
 \end{frame}
@@ -258,9 +268,9 @@
 
     \vspace{1em}
 
-    O uso de \alert{\bf{notas de rodapé}} ajuda a manter a fluidez da leitura principal. Ao mesmo 
-    tempo, garante que o público possa consultar a \pill{fonte da informação} ou ler um 
-    \pill{comentário extra} caso tenha interesse.
+    O uso de \textbf{notas de rodapé} ajuda a manter a fluidez da leitura principal. Ao mesmo 
+    tempo, garante que o público possa consultar a \textbf{fonte da informação} ou ler um 
+    \textbf{comentário extra} caso tenha interesse.
 \end{frame}
 
 % -------------------------------------------------------------
@@ -283,7 +293,7 @@
 \begin{frame}[standout]
 
     % O comando \begin{standoutbox} cria um bloco de destaque com a cor da ênfase 
-    % escolhida no tema.
+    % escolhida (tema).
     \begin{standoutbox}
         A conclusão central do nosso estudo 
         mostra que a adoção destas métricas 
@@ -306,65 +316,66 @@
     %
     % Sendo possível também usar outras cores.
     \begin{standoutbox}[math300]
-        Lembrete Importante: \\
+        O impacto em números: \\
 
         \vspace{0.3cm}
 
-        \normalsize Cores personalizadas são excelentes para guiar a 
-        atenção visual e destacar pontos de alerta.
+        \normalsize Com essa nova abordagem, a taxa de falha 
+        caiu de 14\% para apenas 1,2\%, validando 
+        matematicamente o nosso modelo.
     \end{standoutbox}
 \end{frame}
 
 % -------------------------------------------------------------
-% SEÇÃO 6:  ALGUMAS APLICAÇÕES IMPORTANTES
+% SEÇÃO 6:  OUTRAS IMPORTANTES
 % -------------------------------------------------------------
 
-\section{Algumas Aplicações Importantes}
+\section{Outras Aplicações}
 
-\begin{frame}{Ambiente Matemático (fora de bloco)}
+% --- Slide de Código ---
 
-    Vamos considerar a equação quadrática:
-    \begin{equation}
-        ax^2 + bx + c = 0
-    \end{equation}
-    A solução para esta equação é dada pela fórmula de Bhaskara:
-    \begin{equation}
-        x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-    \end{equation}
+\subsection{Código}
 
-\end{frame}
-
-\subsection{Exemplos de Código}
-
-% ATENÇÃO: Todo slide com código precisa dos argumentos [fragile] e [allowframebreaks] (se for longo)
-\begin{frame}[fragile, allowframebreaks]{Exemplo de Código Python}
+% Todo slide que contém código (como lstlisting ou verbatim) exige
+% obrigatoriamente a opção [fragile] no \begin{frame}. A opção
+% [allowframebreaks] é recomendada para códigos longos, pois 
+% divide automaticamente o slide em várias telas se o código não couber.
+\begin{frame}[fragile, allowframebreaks]{Código - Parte}
     Estrutura de uma função em Python:
 
-\begin{lstlisting}[language=Python]
-# Função para saudar o usuário
-def saudar(nome):
-    if nome == "SlidesTech":
-        print("Olá, desenvolvedor!")
-    else:
-        print(f"Olá, {nome}!")  
+% Inicia o ambiente de código, com os parâmetros:
+% > language=Python: Aplica as cores e o realce de sintaxe da linguagem Python.
+% > showstringspaces=false: Remove o símbolo "u" que marca os espaços dentro de textos (strings).
+\begin{lstlisting}[language=Python, showstringspaces=false]
+import random
+import string
 
-saudar("SlidesTech")
-# Função para saudar o usuário
-def exemplo(nome):
-    if nome == "Alguma coisa":
-        print("Olá, mundo!")
-    else:
-        print(f"Olá, {nome}!")  
+def gerar_senha(tamanho = 12):
+    '''Gera uma senha segura com letras, números e símbolos.'''
+    if tamanho < 4:
+        return 'Erro: Tamanho mínimo de 4 caracteres.'
+        
+    caracteres = string.ascii_letters + string.digits + string.punctuation
+    
+    # Garante a presença de diferentes tipos de caracteres
+    senha = [
+        random.choice(string.ascii_lowercase),
+        random.choice(string.ascii_uppercase),
+        random.choice(string.digits),
+        random.choice(string.punctuation)
+    ]
+    
+    # Preenche o restante do tamanho desejado
+    senha += random.choices(caracteres, k = tamanho - 4)
+    
+    # Embaralha para não seguir um padrão previsível
+    random.shuffle(senha)
+    
+    return ''.join(senha)
 
-saudar("SlidesTech")
-# Função para saudar o usuário
-def exemplo(nome):
-    if nome == "SlidesTech":
-        print("Apenas um exemplo de código longo")
-    else:
-        print(f"Olá, {nome}!")  
-
-saudar("SlidesTech")
+# Execução do código
+nova_senha = gerar_senha(16)
+print(f'Senha gerada: {nova_senha}')
 \end{lstlisting}
 \end{frame}
 
