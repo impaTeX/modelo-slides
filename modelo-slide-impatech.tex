@@ -427,25 +427,36 @@ print(f'Senha gerada: {nova_senha}')
 
 \begin{frame}{Tabela}
 
-    Um exemplo de tabela\footnotemark:
+    % Em tabelas, minipages e certos blocos no LaTeX/Beamer, o comando 
+    % tradicional \footnote{} costuma falhar (o texto não vai para o rodapé).
+    % Para contornar isso, dividimos a nota em duas partes:
+    % > \footnotemark: Fica no texto onde o número/símbolo da nota deve aparecer.
+    % > \footnotetext{...}: Fica fora do ambiente da tabela (geralmente no 
+    % final do frame) contendo o texto real que será exibido no rodapé.
+    Desempenho dos modelos de Machine Learning testados\footnotemark:
 
     \vspace{0.4cm}
 
     \begin{table}
         \centering
-        \begin{tabular}{lrrr}
+        % O argumento {l c c c} define o alinhamento de cada coluna:
+        % l = left (esquerda)
+        % c = center (centro)
+        % r = right (direita)
+        \begin{tabular}{ l c c c}
             \hline
-            \textbf{Produto} & \textbf{Categoria 1} & \textbf{Categoria 2} & \textbf{Categoria 3} \\ 
+            \textbf{Modelo} & \textbf{Complexidade} & \textbf{Acurácia} & \textbf{Tempo de Treino} \\ 
             \hline
-            Produto 1   & A               & 1                 & 10\%            \\
-            Produto 2   & B                & 2                   & 20\%            \\
-            Produto 3 & C               & 3                   & 30\%            \\
+            Regressão Linear      & Baixa  & 78,5\% & 1,2s  \\
+            Árvore de Decisão     & Média  & 85,2\% & 4,5s  \\
+            Rede Neural Profunda  & Alta   & 96,8\% & 45,0s \\
             \hline
         \end{tabular}
-        \caption{Legenda genérica}
+        \caption{Comparativo das métricas de avaliação no conjunto de teste.}
     \end{table}
 
-    \footnotetext{Alguma nota de rodapé explicativa sobre a tabela.}
+    % O texto da nota de rodapé que aparecerá na base do slide
+    \footnotetext{O tempo de treino foi medido utilizando uma GPU NVIDIA RTX 3060.}
 
 \end{frame}
 
